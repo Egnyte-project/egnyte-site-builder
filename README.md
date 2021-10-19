@@ -16,8 +16,8 @@ These components are designed as individual sub-modules that you may enable as n
 
 The following Content Types are available:
 
-- Page: A means to create the Cavalla Basic Page Content Type.
-- Egnyte Profile: Use Cavalla Blog for time-sensitive content like news, press releases or blog posts.
+- Page: A means to create a Basic Page Content Type.
+- Egnyte Profile: Provides a node to create Profiles for Egnyte.com.
 
 The following Widgets are available:
 
