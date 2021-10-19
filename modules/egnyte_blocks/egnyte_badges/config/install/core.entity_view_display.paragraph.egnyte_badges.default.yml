@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_badges.field_egnyte_badges__theme
+    - field.field.paragraph.egnyte_badges.field_egnyte_badges__title
+    - paragraphs.paragraphs_type.egnyte_badges
+  module:
+    - options
+id: paragraph.egnyte_badges.default
+targetEntityType: paragraph
+bundle: egnyte_badges
+mode: default
+content:
+  field_egnyte_badges__theme:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_egnyte_badges__title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

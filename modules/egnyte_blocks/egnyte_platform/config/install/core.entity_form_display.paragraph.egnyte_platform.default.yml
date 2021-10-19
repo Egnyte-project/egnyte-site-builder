@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_platform.field_egnyte_platform__title
+    - field.field.paragraph.egnyte_platform.field_egnyte_platform__type
+    - paragraphs.paragraphs_type.egnyte_platform
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_egnyte_platform:
+      children:
+        - field_egnyte_platform__title
+        - field_egnyte_platform__type
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Platform Block'
+id: paragraph.egnyte_platform.default
+targetEntityType: paragraph
+bundle: egnyte_platform
+mode: default
+content:
+  field_egnyte_platform__title:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_platform__type:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

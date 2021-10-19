@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_hero__theme
+    - paragraphs.paragraphs_type.egnyte_hero
+  module:
+    - options
+id: paragraph.egnyte_hero.field_egnyte_hero__theme
+field_name: field_egnyte_hero__theme
+entity_type: paragraph
+bundle: egnyte_hero
+label: Theme
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Solution
+default_value_callback: ''
+settings: {  }
+field_type: list_string

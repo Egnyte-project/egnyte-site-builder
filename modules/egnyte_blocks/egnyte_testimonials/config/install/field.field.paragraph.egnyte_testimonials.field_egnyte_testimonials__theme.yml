@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_testimonials__theme
+    - paragraphs.paragraphs_type.egnyte_testimonials
+  module:
+    - options
+id: paragraph.egnyte_testimonials.field_egnyte_testimonials__theme
+field_name: field_egnyte_testimonials__theme
+entity_type: paragraph
+bundle: egnyte_testimonials
+label: Theme
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Slider
+default_value_callback: ''
+settings: {  }
+field_type: list_string

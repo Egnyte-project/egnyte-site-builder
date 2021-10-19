@@ -1,0 +1,193 @@
+<?php
+
+/**
+ * @file
+ * egnyte_two_columns module file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\media\Entity\Media;
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function egnyte_two_columnhelp($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.egnyte_two_columns':
+      $text = file_get_contents(dirname(__FILE__) . "/README.md");
+      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_theme().
+ * Lets us define our paragraphs templates in this module.
+ */
+function egnyte_two_column_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__egnyte_two_column' => [
+      'base hook' => 'paragraph',
+    ],
+
+    'paragraph__egnyte_two_column_default' => [
+      'base hook' => 'paragraph',
+    ],
+
+    'paragraph__egnyte_two_column_lt' => [
+      'base hook' => 'paragraph',
+    ],
+
+    'paragraph__egnyte_two_column_item' => [
+      'base hook' => 'paragraph',
+    ],
+
+    'paragraph__egnyte_two_column_cont' => [
+      'base hook' => 'paragraph',
+    ],
+
+    'paragraph__egnyte_2column_cont_item' => [
+      'base hook' => 'paragraph',
+    ],
+    
+  ];
+}
+
+/**
+ *
+ */
+function egnyte_two_column_preprocess_paragraph__egnyte_two_column_default(array &$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+  
+  if ( $paragraph->get('field_egnyte_two_column_df__alig')->value) {
+        $variables['alignment'] = $paragraph->get('field_egnyte_two_column_df__alig')->value;
+  }
+
+  if ( $paragraph->get('field_egnyte_two_column_df__hsiz')->value) {
+      $variables['header'] = $paragraph->get('field_egnyte_two_column_df__hsiz')->value;
+  }
+  
+  if ($paragraph->hasField('field_egnyte_two_column_df__med')) {
+    $bkrd_image = $paragraph->get('field_egnyte_two_column_df__med')->getValue();
+    if ($bkrd_image && !empty($bkrd_image)) {
+      $entity = Media::load($bkrd_image[0]['target_id']);
+      if (isset($entity->field_media_image->entity)) {
+        $variables['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
+      }
+      $variables['bundle'] = $entity->bundle();
+      $variables['video_url'] = $entity->field_media_oembed_video->value;
+
+
+    }
+
+  }
+
+  if ($paragraph->hasField('field_egnyte_two_column__thnail')) {
+    $bkrd_image = $paragraph->get('field_egnyte_two_column__thnail')->getValue();
+    if ($bkrd_image && !empty($bkrd_image)) {
+      $entity = Media::load($bkrd_image[0]['target_id']);
+      if (isset($entity->field_media_image->entity)) {
+        $variables['video_thumbnail'] = file_create_url($entity->field_media_image->entity->getFileUri());
+      }
+     
+    }
+
+  }
+
+  if ( $paragraph->get('field_egnyte_two_column_df__them')->value) {
+      
+      $variables['theme']= $paragraph->get('field_egnyte_two_column_df__them')->value;
+
+      if ($variables['theme'] =='Dark' ){
+          $variables['theme']= 'mt-500 industry-approval';
+          $variables['theme_header']= 'tc--white';
+          $variables['theme_text']= 'mt-100 p p--medium industry-approval__text';
+          $variables['theme_margin'] ='';
+      }
+      else{
+          $variables['theme'] = 'grid-cont mt-500';
+          $variables['theme_text']= 'mt-100 p p--medium tc--dark ';
+          $variables['theme_margin'] ='mt-250';
+      }
+
+  }
+
+}
+
+function egnyte_two_column_preprocess_paragraph__egnyte_two_column_lt(array &$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+  
+  if ( $paragraph->get('field_egnyte_two_column_lt__alig')->value) {
+        $variables['alignment'] = $paragraph->get('field_egnyte_two_column_lt__alig')->value;
+  }
+
+
+  if ($paragraph->hasField('field_egnyte_two_column_lt__img')) {
+    $bkrd_image = $paragraph->get('field_egnyte_two_column_lt__img')->getValue();
+    if ($bkrd_image && !empty($bkrd_image)) {
+      $entity = Media::load($bkrd_image[0]['target_id']);
+      if (isset($entity->field_media_image->entity)) {
+        $variables['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
+      }
+      $variables['bundle'] = $entity->bundle();
+      $variables['video_url'] = $entity->field_media_oembed_video->value;
+
+
+    }
+
+  }
+
+}
+
+
+
+
+function egnyte_two_column_preprocess_paragraph__egnyte_two_column_item(array &$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+  
+
+
+  if ($paragraph->hasField('field_egnyte_two_column__item_im')) {
+    $bkrd_image = $paragraph->get('field_egnyte_two_column__item_im')->getValue();
+    if ($bkrd_image && !empty($bkrd_image)) {
+      $entity = Media::load($bkrd_image[0]['target_id']);
+      if (isset($entity->field_media_image->entity)) {
+        $variables['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
+      }
+    }
+  }
+
+}
+
+function egnyte_two_column_preprocess_paragraph__egnyte_2column_cont_item(array &$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+
+
+  if ($paragraph->hasField('field_egnyte_2column_cont_it__im')) {
+    $bkrd_image = $paragraph->get('field_egnyte_2column_cont_it__im')->getValue();
+    if ($bkrd_image && !empty($bkrd_image)) {
+        $entity = Media::load($bkrd_image[0]['target_id']);
+      if (isset($entity->field_media_image->entity)) {
+        $variables['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
+      }
+    }
+  }
+
+  if ( $paragraph->get('field_egnyte_2column_cont_it__al')->value) {
+      $variables['alignment'] = $paragraph->get('field_egnyte_2column_cont_it__al')->value;
+  }
+
+
+}

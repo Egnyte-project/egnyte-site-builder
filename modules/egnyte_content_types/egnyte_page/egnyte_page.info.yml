@@ -1,0 +1,10 @@
+name: 'Egnyte Site Builder: Page'
+type: module
+description: 'Provides a node to create webpages for Egnyte.com.'
+version: 8.x-1.0
+core: 8.x
+package: 'Egnyte Site Builder'
+dependencies:
+  - menu_ui
+
+core_version_requirement: ^8 || ^9

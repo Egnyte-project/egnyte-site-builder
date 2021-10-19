@@ -1,0 +1,93 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__link
+    - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__md1
+    - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__md2
+    - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__t1
+    - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__text
+    - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__them
+    - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__titl
+    - field.field.paragraph.egnyte_three_col_cta.field_three_col_cta__t2
+    - paragraphs.paragraphs_type.egnyte_three_col_cta
+  module:
+    - link
+    - options
+id: paragraph.egnyte_three_col_cta.default
+targetEntityType: paragraph
+bundle: egnyte_three_col_cta
+mode: default
+content:
+  field_egnyte_three_col_cta__link:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_egnyte_three_col_cta__md1:
+    type: entity_reference_entity_view
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_egnyte_three_col_cta__md2:
+    type: entity_reference_entity_view
+    weight: 4
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_egnyte_three_col_cta__t1:
+    type: entity_reference_entity_view
+    weight: 6
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_egnyte_three_col_cta__text:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_egnyte_three_col_cta__them:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_egnyte_three_col_cta__titl:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_three_col_cta__t2:
+    type: entity_reference_entity_view
+    weight: 7
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true

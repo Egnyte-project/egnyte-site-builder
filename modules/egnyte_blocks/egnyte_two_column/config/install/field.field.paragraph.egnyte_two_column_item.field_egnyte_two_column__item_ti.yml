@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_two_column__item_ti
+    - paragraphs.paragraphs_type.egnyte_two_column_item
+id: paragraph.egnyte_two_column_item.field_egnyte_two_column__item_ti
+field_name: field_egnyte_two_column__item_ti
+entity_type: paragraph
+bundle: egnyte_two_column_item
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,13 @@
+name: 'Egnyte Site Builder: Intro Text Block'
+type: module
+description: Use Intro Text Block to create custom Eyebrow, Header and Sub-text.
+version: '8.x-1.0'
+core: '8.x'
+
+package: Egnyte Site Builder
+dependencies:
+  - entity_reference_revisions
+  - paragraphs
+  - field_group
+
+core_version_requirement: ^8 || ^9

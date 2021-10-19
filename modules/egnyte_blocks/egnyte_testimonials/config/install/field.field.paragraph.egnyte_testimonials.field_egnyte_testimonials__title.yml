@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_testimonials__title
+    - paragraphs.paragraphs_type.egnyte_testimonials
+id: paragraph.egnyte_testimonials.field_egnyte_testimonials__title
+field_name: field_egnyte_testimonials__title
+entity_type: paragraph
+bundle: egnyte_testimonials
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

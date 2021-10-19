@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_egnyte_two_column_df__them
+field_name: field_egnyte_two_column_df__them
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Default
+      label: Default
+    -
+      value: Dark
+      label: Dark
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

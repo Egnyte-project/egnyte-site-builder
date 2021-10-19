@@ -1,0 +1,277 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.egnyte_profiles.field_egnyte_profile___company
+    - field.field.node.egnyte_profiles.field_egnyte_profile__email
+    - field.field.node.egnyte_profiles.field_egnyte_profile__facebook
+    - field.field.node.egnyte_profiles.field_egnyte_profile__fname
+    - field.field.node.egnyte_profiles.field_egnyte_profile__headshot
+    - field.field.node.egnyte_profiles.field_egnyte_profile__job_title
+    - field.field.node.egnyte_profiles.field_egnyte_profile__linkedin
+    - field.field.node.egnyte_profiles.field_egnyte_profile__lname
+    - field.field.node.egnyte_profiles.field_egnyte_profile__phone
+    - field.field.node.egnyte_profiles.field_egnyte_profile__prefix
+    - field.field.node.egnyte_profiles.field_egnyte_profile__suffix
+    - field.field.node.egnyte_profiles.field_egnyte_profile__testimony
+    - field.field.node.egnyte_profiles.field_egnyte_profile__theader
+    - field.field.node.egnyte_profiles.field_egnyte_profile__tlink
+    - field.field.node.egnyte_profiles.field_egnyte_profile__twitter
+    - node.type.egnyte_profiles
+  module:
+    - field_group
+    - link
+    - media_library
+    - path
+third_party_settings:
+  field_group:
+    group_egnyte_profile__name:
+      children:
+        - field_egnyte_profile__prefix
+        - field_egnyte_profile__fname
+        - field_egnyte_profile__lname
+        - field_egnyte_profile__suffix
+        - field_egnyte_profile__headshot
+      parent_name: ''
+      weight: 1
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+        open: false
+      label: Name/Photo
+    group_egnyte_profile__testimony:
+      children:
+        - field_egnyte_profile__theader
+        - field_egnyte_profile__testimony
+        - field_egnyte_profile__tlink
+      parent_name: ''
+      weight: 4
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        weight: 0
+      label: Testimonial
+    group_egnyte_profile__company:
+      children:
+        - field_egnyte_profile__job_title
+        - field_egnyte_profile___company
+      parent_name: ''
+      weight: 2
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        weight: 0
+      label: 'Job Description'
+    group_egnyte_profile__contact:
+      children:
+        - field_egnyte_profile__phone
+        - field_egnyte_profile__email
+        - field_egnyte_profile__facebook
+        - field_egnyte_profile__twitter
+        - field_egnyte_profile__linkedin
+      parent_name: ''
+      weight: 3
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Contact / Social Media'
+id: node.egnyte_profiles.default
+targetEntityType: node
+bundle: egnyte_profiles
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_egnyte_profile___company:
+    weight: 13
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_profile__email:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_profile__facebook:
+    weight: 30
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_profile__fname:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_profile__headshot:
+    type: media_library_widget
+    weight: 7
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_egnyte_profile__job_title:
+    weight: 12
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_profile__linkedin:
+    weight: 32
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_profile__lname:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_profile__phone:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_profile__prefix:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_egnyte_profile__suffix:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_egnyte_profile__testimony:
+    weight: 12
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_egnyte_profile__theader:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_profile__tlink:
+    weight: 13
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_egnyte_profile__twitter:
+    weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  path:
+    type: path
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 7
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 11
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 8
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

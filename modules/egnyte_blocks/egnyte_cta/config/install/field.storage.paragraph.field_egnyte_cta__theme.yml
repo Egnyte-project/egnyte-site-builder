@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_egnyte_cta__theme
+field_name: field_egnyte_cta__theme
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: industry-callout
+      label: Industry
+    -
+      value: solution-callout
+      label: Solution
+    -
+      value: dark-cta
+      label: 'Dark Theme'
+    -
+      value: dark-mini-cta
+      label: 'Dark Mini Theme'
+    -
+      value: light-cta
+      label: 'Light Theme'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

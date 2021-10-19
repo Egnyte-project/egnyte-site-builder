@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_trusted_by.field_egnyte_trusted_by__title
+    - paragraphs.paragraphs_type.egnyte_trusted_by
+id: paragraph.egnyte_trusted_by.default
+targetEntityType: paragraph
+bundle: egnyte_trusted_by
+mode: default
+content:
+  field_egnyte_trusted_by__title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

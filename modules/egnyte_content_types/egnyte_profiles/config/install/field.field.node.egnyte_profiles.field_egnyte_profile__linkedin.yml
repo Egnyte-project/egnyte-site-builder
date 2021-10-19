@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_egnyte_profile__linkedin
+    - node.type.egnyte_profiles
+id: node.egnyte_profiles.field_egnyte_profile__linkedin
+field_name: field_egnyte_profile__linkedin
+entity_type: node
+bundle: egnyte_profiles
+label: Linkedin
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

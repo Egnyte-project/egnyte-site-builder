@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_three_col_cta__them
+    - paragraphs.paragraphs_type.egnyte_three_col_cta
+  module:
+    - options
+id: paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__them
+field_name: field_egnyte_three_col_cta__them
+entity_type: paragraph
+bundle: egnyte_three_col_cta
+label: Theme
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: light-cta
+default_value_callback: ''
+settings: {  }
+field_type: list_string

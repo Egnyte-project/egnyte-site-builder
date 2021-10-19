@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_four_column.field_egnyte_four_column__bcolor
+    - field.field.paragraph.egnyte_four_column.field_egnyte_four_column__theme
+    - field.field.paragraph.egnyte_four_column.field_egnyte_four_column__widget
+    - paragraphs.paragraphs_type.egnyte_four_column
+  module:
+    - entity_reference_revisions
+    - options
+id: paragraph.egnyte_four_column.default
+targetEntityType: paragraph
+bundle: egnyte_four_column
+mode: default
+content:
+  field_egnyte_four_column__bcolor:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_egnyte_four_column__theme:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_egnyte_four_column__widget:
+    type: entity_reference_revisions_entity_view
+    weight: 6
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true

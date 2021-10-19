@@ -1,0 +1,23 @@
+<div class="plans-compare__spoiler" style="display: block;">
+                  <div class="plans-compare__table-overflow">
+                    <div class="plans-compare__table-wrap removed-md">
+                      <table class="plans-compare__table">
+                        <tbody>
+                          {% for jobs in careers_feed %}
+
+                          <tr>
+                            <td>
+                              <div class="plans-compare__name">{{ jobs.title }}</div>
+                              <div class="plans-compare__description">{{ jobs.description }}</div>
+                            </td>
+                            <td></td>
+                            <td>{{ jobs.location }}</td>
+                            <td>30 mins</td>
+                          </tr><!-- Acknowledgement -->
+                            {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>

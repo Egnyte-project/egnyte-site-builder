@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_platform__type
+    - paragraphs.paragraphs_type.egnyte_platform
+  module:
+    - options
+id: paragraph.egnyte_platform.field_egnyte_platform__type
+field_name: field_egnyte_platform__type
+entity_type: paragraph
+bundle: egnyte_platform
+label: 'Platform Type'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Blue
+default_value_callback: ''
+settings: {  }
+field_type: list_string

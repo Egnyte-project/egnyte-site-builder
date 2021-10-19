@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * egnyte_cta module file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function egnyte_cta_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.egnyte_cta':
+      $text = file_get_contents(dirname(__FILE__) . "/README.md");
+      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_theme().
+ * Lets us define our paragraphs templates in this module.
+ */
+function egnyte_cta_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__egnyte_cta' => [
+      'base hook' => 'paragraph',
+    ],
+
+  ];
+}
+
+function egnyte_cta_preprocess_paragraph__egnyte_cta(&$variables) {
+  
+  $paragraph = $variables['elements']['#paragraph'];
+  
+  if ( $paragraph->get('field_egnyte_cta__theme')->value) {
+      $theme =  $paragraph->get('field_egnyte_cta__theme')->value;  
+  }
+
+  $variables['theme'] = $theme;
+
+  if ( $theme == "dark-cta" ){
+      $variables['theme_div_class'] = 'mt-500 solution-calculate';
+      $variables['theme_p_class'] = 'mt-75 p p--medium';
+  }
+
+  if ( $theme == "light-cta" ) {
+    $variables['theme_div_class'] = 'mt-500 industry-watch';
+    $variables['theme_p_class'] = 'mt-50 p p--medium tc--dark';
+  }
+
+
+}

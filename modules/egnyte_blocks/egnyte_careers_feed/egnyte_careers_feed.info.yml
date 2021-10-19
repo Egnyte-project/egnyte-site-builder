@@ -1,0 +1,11 @@
+name: 'Egnyte Site Builder: Careers Feed'
+type: module
+description: Provides a paragraphs bundle to display Egnyte Job listings directly from the Egnyte Jobvite API.
+version: '8.x-1.0'
+core: '8.x'
+
+
+package: Egnyte Site Builder
+dependencies:
+
+core_version_requirement: ^8 || ^9

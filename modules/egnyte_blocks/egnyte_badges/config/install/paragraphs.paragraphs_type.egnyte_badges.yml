@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: egnyte_badges
+label: 'Badge Blocks'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

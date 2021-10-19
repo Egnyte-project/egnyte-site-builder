@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_cta__theme
+    - paragraphs.paragraphs_type.egnyte_cta
+  module:
+    - options
+id: paragraph.egnyte_cta.field_egnyte_cta__theme
+field_name: field_egnyte_cta__theme
+entity_type: paragraph
+bundle: egnyte_cta
+label: Theme
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: industry-callout
+default_value_callback: ''
+settings: {  }
+field_type: list_string

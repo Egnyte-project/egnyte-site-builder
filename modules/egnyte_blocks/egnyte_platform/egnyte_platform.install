@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * egnyte_cta install file.
+ */
+
+function egnyte_platform_update_8001() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_platform');
+}
+
+function egnyte_platform_update_8002() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_platform');
+}
+
+function egnyte_platform_update_8003() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_platform');
+}
+

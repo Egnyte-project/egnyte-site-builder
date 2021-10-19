@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_4_column__cards_img
+    - media.type.image
+    - paragraphs.paragraphs_type.egnyte_four_column__cards
+id: paragraph.egnyte_four_column__cards.field_egnyte_4_column__cards_img
+field_name: field_egnyte_4_column__cards_img
+entity_type: paragraph
+bundle: egnyte_four_column__cards
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

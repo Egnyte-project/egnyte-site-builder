@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_two_column_df__med
+    - media.type.image
+    - media.type.remote_video
+    - paragraphs.paragraphs_type.egnyte_two_column_default
+id: paragraph.egnyte_two_column_default.field_egnyte_two_column_df__med
+field_name: field_egnyte_two_column_df__med
+entity_type: paragraph
+bundle: egnyte_two_column_default
+label: Image/Videos
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      remote_video: remote_video
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

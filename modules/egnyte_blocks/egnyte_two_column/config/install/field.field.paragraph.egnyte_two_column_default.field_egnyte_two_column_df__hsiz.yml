@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_two_column_df__hsiz
+    - paragraphs.paragraphs_type.egnyte_two_column_default
+  module:
+    - options
+id: paragraph.egnyte_two_column_default.field_egnyte_two_column_df__hsiz
+field_name: field_egnyte_two_column_df__hsiz
+entity_type: paragraph
+bundle: egnyte_two_column_default
+label: 'Header type'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: H2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

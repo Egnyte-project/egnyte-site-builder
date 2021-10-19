@@ -1,0 +1,28 @@
+<div class="mt-500 resources">
+  <div class="grid-cont">
+    <div class="grid-row grid-row--aic">
+      <div class="grid-col">
+        <h2 class="resources__title h2">Additional Resources</h2>
+      </div>
+      <div class="grid-col grid-col--auto removed-xs">
+        <a href="/resource-center" class="mt-50 more-link resources__more-link">View More<span class="removed-xs"> Resources</span><svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+      </div>
+    </div>
+
+    <div class="grid-row grid-row--jcc">
+        {% for value in resource_cards  %}
+          <div class="mt-200 grid-col grid-col--4 grid-col--md-6 grid-col--xs-12">
+            <div class="resources__item">
+              <img src="{{ value.image }}" width="380" height="210" alt="{{ value.image_alt }}" class="resources__image">
+              <div class="resources__cont">
+                <div class="tag tag--{{ value.tag | lower  }} resources__badge">{{ value.tag }}</div>
+                  <h4 class="h5 resources__heading">{{ value.title }}</h4>
+                  <p class="p p--xsmall resources__summary">{{ value.body }}</p>
+                  <a href="{{ value.link.0.uri }}" class="more-link more-link--small more-link--enlarged">{{ value.link.0.title }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>

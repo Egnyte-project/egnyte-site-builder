@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_cards.field_egnyte_cards__image
+    - field.field.paragraph.egnyte_cards.field_egnyte_cards__item
+    - field.field.paragraph.egnyte_cards.field_egnyte_cards__text
+    - field.field.paragraph.egnyte_cards.field_egnyte_cards__theme
+    - field.field.paragraph.egnyte_cards.field_egnyte_cards__title
+    - paragraphs.paragraphs_type.egnyte_cards
+  module:
+    - entity_reference_revisions
+    - options
+id: paragraph.egnyte_cards.default
+targetEntityType: paragraph
+bundle: egnyte_cards
+mode: default
+content:
+  field_egnyte_cards__image:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_egnyte_cards__item:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_egnyte_cards__text:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_egnyte_cards__theme:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_egnyte_cards__title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

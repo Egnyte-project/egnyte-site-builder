@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_adr.field_egnyte_adr__resources
+    - paragraphs.paragraphs_type.egnyte_adr
+id: paragraph.egnyte_adr.default
+targetEntityType: paragraph
+bundle: egnyte_adr
+mode: default
+content:
+  field_egnyte_adr__resources:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+hidden:
+  search_api_excerpt: true

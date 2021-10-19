@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.egnyte_page.field_egnyte_page___site_blocks
+    - field.field.node.egnyte_page.field_egnyte_page__hero
+    - node.type.egnyte_page
+  module:
+    - entity_reference_revisions
+    - user
+id: node.egnyte_page.default
+targetEntityType: node
+bundle: egnyte_page
+mode: default
+content:
+  field_egnyte_page___site_blocks:
+    type: entity_reference_revisions_entity_view
+    weight: 102
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_egnyte_page__hero:
+    type: entity_reference_revisions_entity_view
+    weight: 101
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,44 @@
+{%  if theme == 'Industry' %}
+
+<div class="mt-100 grid-col grid-col--6 grid-col--sm-12">
+  <div class="industry-foundation__item">
+    <div class="industry-foundation__figure">
+      <img src="{{ image__1 }}" alt="{{ image__1_alt }}" class="industry-foundation__image" style="object-fit: cover;max-width: 100%;" >
+    </div>
+    <h3 class="mt-250 tc--white h3">{{ content.field_egnyte_4_column__cards_hd[0] }}</h3>
+    <p class="mt-75 p--medium p">{{ content.field_egnyte_4_column__cards_txt[0] }}</p>
+  </div>
+</div>
+
+<div class="mt-100 grid-col grid-col--6 grid-col--sm-12">
+  <div class="industry-foundation__item">
+    <div class="industry-foundation__figure">
+      <img src="{{ image__2 }}" alt="{{ image__2_alt }}" class="industry-foundation__image" style="object-fit: cover;max-width: 100%;" >
+    </div>
+    <h3 class="mt-250 tc--white h3">{{ content.field_egnyte_4_column__cards_hd[0] }}</h3>
+    <p class="mt-75 p--medium p">{{ content.field_egnyte_4_column__cards_txt[0] }}</p>
+  </div>
+</div>
+{% endif %}
+
+{%  if theme == 'Solutions' %}
+<div class="mt-200 grid-col grid-col--6 grid-col--sm-12">
+  <div class="solution-remote__item solution-remote__item--16">
+    <h3 class="h3--small tc--white h3">{{ content.field_egnyte_4_column__cards_hd[0] }}</h3>
+    <p class="mt-75 solution-remote__subtitle p">{{ content.field_egnyte_4_column__cards_txt[0] }}</p>
+    <div class="solution-remote__figure solution-remote__figure--16">
+      <img src="{{ image__1 }}"  alt="" class="solution-remote__image">
+    </div>
+  </div>
+</div>
+
+<div class="mt-200 grid-col grid-col--6 grid-col--sm-12">
+  <div class="solution-remote__item solution-remote__item--17">
+    <h3 class="h3--small tc--white h3">{{ content.field_egnyte_4_column__cards_hd[0] }}</h3>
+    <p class="mt-75 solution-remote__subtitle p">{{ content.field_egnyte_4_column__cards_txt[0] }}</p>
+    <div class="solution-remote__figure solution-remote__figure--17">
+      <img src="{{ image__1 }}"  alt="" class="solution-remote__image">
+    </div>
+  </div>
+</div>
+{% endif %}

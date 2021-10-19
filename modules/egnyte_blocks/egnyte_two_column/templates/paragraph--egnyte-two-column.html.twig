@@ -1,0 +1,17 @@
+<div class="grid-cont mt-500">
+    <div class="center-align">
+        {%  if true in content.field_egnyte_two_column__eyebrow[0] %}
+        <h6 class="h6">{{ content.field_egnyte_two_column__eyebrow[0] }}</h6>
+        {% endif %}
+
+        {%  if true in content.field_egnyte_two_column__title[0] %}
+        <h1 class="h1">{{ content.field_egnyte_two_column__title[0] }}</h1>
+        {% endif %}
+
+        {%  if true in content.field_egnyte_two_column__text[0] %}
+        <p class="mt-50 p p--xlarge">{{ content.field_egnyte_two_column__text[0] }}</p>
+        {% endif %}
+    </div>
+
+    {{ content.field_egnyte_two_column__blocks }}
+</div>

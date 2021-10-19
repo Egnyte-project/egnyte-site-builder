@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_three_col_cta__text
+    - paragraphs.paragraphs_type.egnyte_three_col_cta
+id: paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__text
+field_name: field_egnyte_three_col_cta__text
+entity_type: paragraph
+bundle: egnyte_three_col_cta
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

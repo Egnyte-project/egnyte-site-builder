@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: egnyte_two_column_item
+label: 'Two Column with List Block Items'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

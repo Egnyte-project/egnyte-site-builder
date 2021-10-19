@@ -1,0 +1,75 @@
+{% if theme == 'Three' %}
+<div class="wp-block-group grid-cont grid-cont--small">
+  <div class="wp-block-group__inner-container">
+    <div class="wp-block-group mt-500 industry-ranking">
+      <div class="wp-block-group__inner-container">
+        <div class="wp-block-columns grid-row grid-row--aic industry-v2">
+          <div class="wp-block-column grid-col grid-col--5 grid-col--lg-4 grid-col--md-12">
+            <h3 class="industry-ranking__title h3">{{ content.field_egnyte_badges__title[0] }}</h3>
+          </div>
+          <div class="wp-block-column grid-col grid-col--md-12">
+            <div class="wp-block-columns grid-row grid-row--aic grid-row--jcc">
+              <div class="wp-block-column grid-col grid-col--auto">
+                <figure class="wp-block-image industry-ranking__image">
+                  <img src="/sites/default/files/2021-07/CloudContCollabLeader.png" alt="">
+                </figure>
+              </div>
+              <div class="wp-block-column grid-col grid-col--auto">
+                <figure class="wp-block-image industry-ranking__image">
+                  <img src="/sites/default/files/2021-07/DataCentricSecLeader.png" alt="">
+                </figure>
+              </div>
+              <div class="wp-block-column grid-col grid-col--auto">
+                <figure class="wp-block-image industry-ranking__image">
+                  <img src="/sites/default/files/2021-07/DataGovLeader.png" alt="">
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if theme == 'Four' %}
+<div class="mt-200 featured-awards wow animated" style="">
+  <div class="grid-cont grid-cont--xl">
+    <div class="featured-awards__cont">
+      <h3 class="featured-awards__title h3 fw-bold">{{ content.field_egnyte_badges__title[0] }}</h3>
+      <div class="grid-row grid-row--nog grid-row--jcc">
+        <div class="mt-250 grid-col grid-col--md-4 grid-col--sm-6">
+          <div data-anim-name="fadeIn" data-anim-delay="0.25s" class="featured-awards__item">
+            <img src="/sites/default/files/2021-07/DataGovLeader.png" srcset="/sites/default/files/2021-07/DataGovLeader2x.png 2x" alt="Data Governance Leader" width="139" height="180">
+            <p class="p p--small featured-awards__caption">Egnyte #1 Customer Rated for Data Governance by&nbsp;G2
+            </p>
+          </div>
+        </div>
+        <div class="mt-250 grid-col grid-col--md-4 grid-col--sm-6">
+          <div data-anim-name="fadeIn" data-anim-delay="0.375s" class="featured-awards__item">
+            <img src="/sites/default/files/2021-07/DataCentricSecLeader.png" srcset="/sites/default/files/2021-07/DataCentricSecLeader2x.png 2x" alt="Data-Centric Security Leader" width="139" height="180">
+            <p class="p p--small featured-awards__caption">Egnyte Ranked #1 for Data-Centric Security by&nbsp;G2
+            </p>
+          </div>
+        </div>
+        <div class="mt-250 grid-col grid-col--md-4 grid-col--sm-6">
+          <div data-anim-name="fadeIn" data-anim-delay="0.625s" class="featured-awards__item">
+            <img src="/sites/default/files/2021-07/CloudContCollabLeader.png" srcset="/sites/default/files/2021-07/CloudContCollabLeader2x.png 2x" alt="Cloud Content Collaboration Leader" width="139" height="180">
+            <p class="p p--small featured-awards__caption">Egnyte Ranked #1 for Cloud Content Collaboration
+              by&nbsp;G2</p>
+          </div>
+        </div>
+        <div class="mt-250 grid-col grid-col--md-4 grid-col--sm-6">
+          <div data-anim-name="fadeIn" data-anim-delay="0.75s" class="featured-awards__item">
+            <img src="/sites/default/files/2021-07/ForITMgrsLeader.png" srcset="/sites/default/files/2021-07/ForITMgrsLeader2x.png 2x" alt="For IT Managers Leader" width="139" height="180">
+            <p class="p p--small featured-awards__caption">Rated Top Tools for IT Managers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% endif %}
+

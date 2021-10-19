@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_four_column__2col.field_egnyte_4_column__2col_hd
+    - field.field.paragraph.egnyte_four_column__2col.field_egnyte_4_column__2col_img
+    - field.field.paragraph.egnyte_four_column__2col.field_egnyte_4_column__2col_txt
+    - paragraphs.paragraphs_type.egnyte_four_column__2col
+  module:
+    - field_group
+    - media_library
+third_party_settings:
+  field_group:
+    group_egnyte_4_column__2col:
+      children:
+        - field_egnyte_4_column__2col_hd
+        - field_egnyte_4_column__2col_txt
+        - field_egnyte_4_column__2col_img
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Two Column Block'
+id: paragraph.egnyte_four_column__2col.default
+targetEntityType: paragraph
+bundle: egnyte_four_column__2col
+mode: default
+content:
+  field_egnyte_4_column__2col_hd:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_4_column__2col_img:
+    type: media_library_widget
+    weight: 3
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_egnyte_4_column__2col_txt:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+hidden:
+  created: true
+  status: true

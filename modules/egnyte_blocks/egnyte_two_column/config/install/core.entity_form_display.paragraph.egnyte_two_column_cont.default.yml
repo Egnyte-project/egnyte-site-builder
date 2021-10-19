@@ -1,0 +1,96 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_two_column_cont.field_egnyte_2column_cont__text
+    - field.field.paragraph.egnyte_two_column_cont.field_egnyte_2column_cont__ti
+    - field.field.paragraph.egnyte_two_column_cont.field_egnyte_2column_cont_item
+    - paragraphs.paragraphs_type.egnyte_two_column_cont
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_egnyte_2column_cont__copy:
+      children:
+        - field_egnyte_2column_cont__ti
+        - field_egnyte_2column_cont__text
+      parent_name: group_egnyte_two_column_cont
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+        open: false
+      label: Copy
+    group_egnyte_two_column_cont:
+      children:
+        - group_egnyte_2column_cont__copy
+        - group_egnyte_two_column_cont_it
+      parent_name: ''
+      weight: 1
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+        open: false
+      label: 'Two Column - Continuous'
+    group_egnyte_two_column_cont_it:
+      children:
+        - field_egnyte_2column_cont_item
+      parent_name: group_egnyte_two_column_cont
+      weight: 1
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+        open: false
+      label: Items
+id: paragraph.egnyte_two_column_cont.default
+targetEntityType: paragraph
+bundle: egnyte_two_column_cont
+mode: default
+content:
+  field_egnyte_2column_cont__text:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_egnyte_2column_cont__ti:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_2column_cont_item:
+    type: entity_reference_paragraphs
+    weight: 21
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

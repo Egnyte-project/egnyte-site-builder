@@ -1,0 +1,11 @@
+name: 'Egnyte Site Builder: Cards'
+type: module
+description: Provides a paragraphs bundle for adding Card Elements to site.
+version: '8.x-1.0'
+core: '8.x'
+
+
+package: Egnyte Site Builder
+dependencies:
+ 
+core_version_requirement: ^8 || ^9

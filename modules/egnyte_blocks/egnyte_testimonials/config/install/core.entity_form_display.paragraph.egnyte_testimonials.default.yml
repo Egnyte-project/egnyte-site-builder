@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_testimonials.field_egnyte_testimonials__quote
+    - field.field.paragraph.egnyte_testimonials.field_egnyte_testimonials__theme
+    - field.field.paragraph.egnyte_testimonials.field_egnyte_testimonials__title
+    - paragraphs.paragraphs_type.egnyte_testimonials
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_egnyte_testimonials:
+      children:
+        - field_egnyte_testimonials__title
+        - field_egnyte_testimonials__theme
+        - field_egnyte_testimonials__quote
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Testimonials
+id: paragraph.egnyte_testimonials.default
+targetEntityType: paragraph
+bundle: egnyte_testimonials
+mode: default
+content:
+  field_egnyte_testimonials__quote:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_egnyte_testimonials__theme:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_egnyte_testimonials__title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

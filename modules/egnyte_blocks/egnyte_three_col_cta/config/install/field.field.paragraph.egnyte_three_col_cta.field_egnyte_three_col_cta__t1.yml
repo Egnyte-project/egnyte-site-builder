@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_three_col_cta__t1
+    - media.type.image
+    - paragraphs.paragraphs_type.egnyte_three_col_cta
+id: paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__t1
+field_name: field_egnyte_three_col_cta__t1
+entity_type: paragraph
+bundle: egnyte_three_col_cta
+label: 'Video Thumbnail Left'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

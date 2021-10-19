@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_three_col_cta__t2
+    - media.type.image
+    - paragraphs.paragraphs_type.egnyte_three_col_cta
+  content:
+    - 'media:image:34d80abd-a4fc-4d21-a385-094bf9b45b60'
+id: paragraph.egnyte_three_col_cta.field_three_col_cta__t2
+field_name: field_three_col_cta__t2
+entity_type: paragraph
+bundle: egnyte_three_col_cta
+label: 'Video Thumbnail Right'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    weight: 0
+    target_uuid: 34d80abd-a4fc-4d21-a385-094bf9b45b60
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

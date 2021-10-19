@@ -1,0 +1,145 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column__thnail
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__alig
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__ebro
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__hsiz
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__link
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__med
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__text
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__them
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__titl
+    - paragraphs.paragraphs_type.egnyte_two_column_default
+  module:
+    - field_group
+    - link
+    - media_library
+    - text
+third_party_settings:
+  field_group:
+    group_egnyte_two_column_df__tex:
+      children:
+        - field_egnyte_two_column_df__ebro
+        - group_egnyte_two_column_df__
+        - field_egnyte_two_column_df__text
+        - field_egnyte_two_column_df__link
+        - group_egnyte_two_column_df__tnai
+        - field_egnyte_two_column_df__alig
+        - field_egnyte_two_column_df__them
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Default Two Column Block'
+    group_egnyte_two_column_df__:
+      children:
+        - field_egnyte_two_column_df__titl
+        - field_egnyte_two_column_df__hsiz
+      parent_name: group_egnyte_two_column_df__tex
+      weight: 3
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: Title
+    group_egnyte_two_column_df__tnai:
+      children:
+        - field_egnyte_two_column_df__med
+        - field_egnyte_two_column__thnail
+      parent_name: group_egnyte_two_column_df__tex
+      weight: 6
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Media
+id: paragraph.egnyte_two_column_default.default
+targetEntityType: paragraph
+bundle: egnyte_two_column_default
+mode: default
+content:
+  field_egnyte_two_column__thnail:
+    type: media_library_widget
+    weight: 8
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_egnyte_two_column_df__alig:
+    weight: 7
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_egnyte_two_column_df__ebro:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_two_column_df__hsiz:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_egnyte_two_column_df__link:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_egnyte_two_column_df__med:
+    type: media_library_widget
+    weight: 7
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_egnyte_two_column_df__text:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_egnyte_two_column_df__them:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_egnyte_two_column_df__titl:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

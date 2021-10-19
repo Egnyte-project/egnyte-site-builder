@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_two_column.field_egnyte_two_column__blocks
+    - field.field.paragraph.egnyte_two_column.field_egnyte_two_column__eyebrow
+    - field.field.paragraph.egnyte_two_column.field_egnyte_two_column__text
+    - field.field.paragraph.egnyte_two_column.field_egnyte_two_column__title
+    - paragraphs.paragraphs_type.egnyte_two_column
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_two_column:
+      children:
+        - field_egnyte_two_column__blocks
+      parent_name: ''
+      weight: 3
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Two Column Block'
+id: paragraph.egnyte_two_column.default
+targetEntityType: paragraph
+bundle: egnyte_two_column
+mode: default
+content:
+  field_egnyte_two_column__blocks:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_egnyte_two_column__eyebrow:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_two_column__text:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_egnyte_two_column__title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

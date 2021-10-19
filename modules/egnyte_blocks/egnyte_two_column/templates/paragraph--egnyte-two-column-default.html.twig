@@ -1,0 +1,75 @@
+<div class=" {{ theme }}">
+  <div class="grid-cont grid-cont--xl">
+  {%  if alignment == 0 %}
+    <div class="grid-row grid-row--aic">
+        <div class="{{ theme_margin }} grid-col grid-col--md-12">
+            {% if content.field_egnyte_two_column_df__ebro[0] is not null %}
+            <h6 class="h6">{{ content.field_egnyte_two_column_df__ebro[0] }}</h6>
+            {% endif %}
+
+            {%  if header == 'H2' %}
+            <h2 class="h2 {{ theme_header }}">{{ content.field_egnyte_two_column_df__titl[0] }}</h2>
+            {% endif %}
+
+            {%  if header == 'H3' %}
+            <h3 class="h3 {{ theme_header }}">{{ content.field_egnyte_two_column_df__titl[0] }}</h3>
+            {% endif %}
+
+            <div class="{{ theme_text}}">{{ content.field_egnyte_two_column_df__text[0] }}</div>
+                
+            {% if content.field_egnyte_two_column_df__link[0] is not null %}
+            <a href="{{ content.field_egnyte_two_column_df__link[0]['#url'] }}" class="mt-150 more-link more-link--large">{{ content.field_egnyte_two_column_df__link[0]['#title'] }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+            {% endif %}
+        </div>
+         <div class="{{ theme_margin }} grid-col grid-col--md-12">
+            {% if bundle == 'remote_video' %}
+            <div class="vimeo-video">
+                <a class="our-story__video" href="{{ video_url }}">
+                    <img src="{{ video_thumbnail }}" alt="" width="100%">
+                </a>
+            </div>   
+            {% else %}
+                <img src="{{ image }}"  alt="" class="{{ theme }}__image" width="100%">
+            {% endif %}
+        </div>
+    </div>
+  {% endif %}
+
+  {%  if alignment == 1 %}
+      <div class="grid-row grid-row--aic">
+              <div class="{{ theme_margin }} grid-col grid-col--md-12">
+                {% if bundle == 'remote_video' %}
+                  <div class="vimeo-video">
+                      <a class="our-story__video" href="{{ video_url }}">
+                          <img src="{{ video_thumbnail }}" class="{{ theme }}__image" width="100%">
+                      </a>
+                  </div>   
+                {% else %}
+                    <img src="{{ image }}"  alt="" class="{{ theme }}__image" width="100%">
+                {% endif %}
+              </div>
+              <div class="{{ theme_margin }} grid-col grid-col--md-12">
+                  {% if content.field_egnyte_two_column_df__ebro[0] is not null %}
+                <h6 class="h6">{{ content.field_egnyte_two_column_df__ebro[0] }}</h6>
+                  {% endif %}
+
+                {%  if header == 'H2' %}
+                <h2 class="h2 {{ theme_header }}">{{ content.field_egnyte_two_column_df__titl[0] }}</h2>
+                {% endif %}
+
+                {%  if header == 'H3' %}
+                <h3 class="h3 {{ theme_header }}">{{ content.field_egnyte_two_column_df__titl[0] }}</h3>
+                {% endif %}
+
+                <div class="{{ theme_text}}">{{ content.field_egnyte_two_column_df__text[0] }}</div>
+                    
+
+
+                  {% if content.field_egnyte_two_column_df__link[0] is not null %}
+                  <a href="{{ content.field_egnyte_two_column_df__link[0]['#url'] }}" class="mt-150 more-link more-link--large">{{ content.field_egnyte_two_column_df__link[0]['#title'] }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+                  {% endif %}
+              </div>
+          </div>
+  {% endif %}
+  </div>
+</div>

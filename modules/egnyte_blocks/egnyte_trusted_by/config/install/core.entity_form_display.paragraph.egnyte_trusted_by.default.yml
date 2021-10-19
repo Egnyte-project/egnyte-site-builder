@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_trusted_by.field_egnyte_trusted_by__title
+    - paragraphs.paragraphs_type.egnyte_trusted_by
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_egnyte_trusted_by:
+      children:
+        - field_egnyte_trusted_by__title
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Trusted By Block'
+id: paragraph.egnyte_trusted_by.default
+targetEntityType: paragraph
+bundle: egnyte_trusted_by
+mode: default
+content:
+  field_egnyte_trusted_by__title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

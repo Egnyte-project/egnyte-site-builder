@@ -1,0 +1,41 @@
+<div class="grid-cont grid-cont--xl">
+  <div class="{{ theme }}">
+    <div class="grid-row grid-row--aic grid-row--jcc">
+      <div class="grid-col grid-col--auto grid-col--md-12">
+        <div class="industry-video__logos">
+        {% if bundle_left_col == 'remote_video' %}
+          <div class="vimeo-video">
+            <a class="industry-video__figure" href="{{ video_url_left_col }}">
+              <img src="{{ video_thumbnail_left_col }}" class="" width="100%" />
+            </a>
+          </div>   
+        {% else %}
+          <img src="{{ image_left_col }}"   width="100%" height="" alt="" />
+        {% endif %}
+        </div>
+      </div>
+      <div class="grid-col grid-col--auto grid-col--md-12">
+          <div class="industry-video__divider"></div>
+      </div>
+      <div class="grid-col grid-col--sm-12">
+         <h3 class="fw--500 tc--white h3">{{ content.field_egnyte_three_col_cta__titl[0] }}</h3>
+          <p class="fw--500 p margin-bottom-0">{{ content.field_egnyte_three_col_cta__text[0] }}</p>
+          {% if  true in content.field_egnyte_three_col_cta__link[0] %}
+          <a href="{{ content.field_egnyte_three_col_cta__link[0]['#url'] }}" class="mt-100 more-link more-link--large">{{ content.field_egnyte_three_col_cta__link[0]['#title'] }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+          {% endif %}
+      </div>
+      <div class="grid-col grid-col--auto removed-lg"></div>
+      <div class="grid-col grid-col--auto grid-col--xs-12">
+       {% if bundle_right_col == 'remote_video' %}
+          <div class="vimeo-video">
+            <a class="industry-video__figure" href="{{ video_url_right_col }}">
+              <img src="{{ video_thumbnail_right_col }}" class="" width="100%" />
+            </a>
+          </div>   
+        {% else %}
+          <img src="{{ image_right_col }}"   width="100%" height="" alt="" />
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

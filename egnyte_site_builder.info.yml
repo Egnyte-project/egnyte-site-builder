@@ -1,0 +1,32 @@
+name: 'Egnyte Site Builder'
+type: module
+description: A suite of Paragraph bundles made for Egnyte.com.
+version: '8.x-1.0'
+core: '8.x'
+core_version_requirement: ^8 || ^9
+
+
+package: Egnyte Site Builder
+
+dependencies:
+  - field_group
+  - media_library
+  - media
+  - paragraphs
+  - egnyte_adr
+  - egnyte_badges
+  - egnyte_cards
+  - egnyte_carousel_cta
+  - egnyte_careers_feed
+  - egnyte_cta
+  - egnyte_four_column
+  - egnyte_hero
+  - egnyte_intro_text
+  - egnyte_platform
+  - egnyte_tabs
+  - egnyte_three_col_cta
+  - egnyte_trusted_by
+  - egnyte_two_column
+  - egnyte_profiles
+  - egnyte_testimonials
+  - egnyte_page

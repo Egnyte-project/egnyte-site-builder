@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_adr.field_egnyte_adr__resources
+    - paragraphs.paragraphs_type.egnyte_adr
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_egnyte_adr__resources:
+      children:
+        - field_egnyte_adr__resources
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Additional Resources'
+id: paragraph.egnyte_adr.default
+targetEntityType: paragraph
+bundle: egnyte_adr
+mode: default
+content:
+  field_egnyte_adr__resources:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

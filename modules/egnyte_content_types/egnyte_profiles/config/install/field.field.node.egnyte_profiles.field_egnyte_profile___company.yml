@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_egnyte_profile___company
+    - node.type.egnyte_profiles
+id: node.egnyte_profiles.field_egnyte_profile___company
+field_name: field_egnyte_profile___company
+entity_type: node
+bundle: egnyte_profiles
+label: Company
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: Egnyte
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,77 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_egnyte_page___site_blocks
+    - node.type.egnyte_page
+    - paragraphs.paragraphs_type.egnyte_adr
+    - paragraphs.paragraphs_type.egnyte_cards
+    - paragraphs.paragraphs_type.egnyte_cta
+    - paragraphs.paragraphs_type.egnyte_four_column
+    - paragraphs.paragraphs_type.egnyte_platform
+    - paragraphs.paragraphs_type.egnyte_trusted_by
+    - paragraphs.paragraphs_type.egnyte_two_column_default
+    - paragraphs.paragraphs_type.egnyte_two_column_lt
+  module:
+    - entity_reference_revisions
+id: node.egnyte_page.field_egnyte_page___site_blocks
+field_name: field_egnyte_page___site_blocks
+entity_type: node
+bundle: egnyte_page
+label: 'Site Blocks'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      egnyte_four_column: egnyte_four_column
+      egnyte_cta: egnyte_cta
+      egnyte_platform: egnyte_platform
+      egnyte_adr: egnyte_adr
+      egnyte_trusted_by: egnyte_trusted_by
+      egnyte_cards: egnyte_cards
+      egnyte_two_column_default: egnyte_two_column_default
+      egnyte_two_column_lt: egnyte_two_column_lt
+    target_bundles_drag_drop:
+      egnyte_adr:
+        enabled: true
+        weight: 8
+      egnyte_cards:
+        enabled: true
+        weight: 14
+      egnyte_cards__item:
+        weight: 15
+        enabled: false
+      egnyte_cta:
+        enabled: true
+        weight: 7
+      egnyte_four_column:
+        enabled: true
+        weight: 4
+      egnyte_hero:
+        weight: 3
+        enabled: false
+      egnyte_platform:
+        enabled: true
+        weight: 7
+      egnyte_trusted_by:
+        enabled: true
+        weight: 9
+      egnyte_two_column:
+        weight: 4
+        enabled: false
+      egnyte_two_column_default:
+        enabled: true
+        weight: 22
+      egnyte_two_column_item:
+        weight: 23
+        enabled: false
+      egnyte_two_column_lt:
+        enabled: true
+        weight: 24
+field_type: entity_reference_revisions

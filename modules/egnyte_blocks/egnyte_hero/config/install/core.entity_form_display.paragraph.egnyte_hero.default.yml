@@ -1,0 +1,159 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__eyebrow
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__hide_rd
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__image
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__link
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__margin
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__subtitle
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__theme
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__title
+    - paragraphs.paragraphs_type.egnyte_hero
+  module:
+    - field_group
+    - link
+    - media_library
+third_party_settings:
+  field_group:
+    group_egnyte_hero:
+      children: {  }
+      parent_name: ''
+      weight: 6
+      format_type: details
+      region: hidden
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Hero Block'
+    group_egnyte_hero__copy:
+      children:
+        - field_egnyte_hero__eyebrow
+        - field_egnyte_hero__title
+        - field_egnyte_hero__subtitle
+        - group_egnyte_hero__link
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Copy
+    group_egnyte_hero__image:
+      children:
+        - field_egnyte_hero__image
+        - field_egnyte_hero__margin
+      parent_name: ''
+      weight: 1
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Image
+    group_egnyte_hero__link:
+      children:
+        - field_egnyte_hero__link
+        - field_egnyte_hero__hide_rd
+      parent_name: group_egnyte_hero__copy
+      weight: 10
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Link(s)
+    group_egnyte_hero__theme:
+      children:
+        - field_egnyte_hero__theme
+      parent_name: ''
+      weight: 2
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Theme
+id: paragraph.egnyte_hero.default
+targetEntityType: paragraph
+bundle: egnyte_hero
+mode: default
+content:
+  field_egnyte_hero__eyebrow:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_hero__hide_rd:
+    weight: 5
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_egnyte_hero__image:
+    type: media_library_widget
+    weight: 11
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_egnyte_hero__link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_egnyte_hero__margin:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_egnyte_hero__subtitle:
+    weight: 9
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_egnyte_hero__theme:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_egnyte_hero__title:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

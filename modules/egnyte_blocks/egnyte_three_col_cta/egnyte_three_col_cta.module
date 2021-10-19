@@ -1,0 +1,129 @@
+<?php
+
+/**
+ * @file
+ * egnyte_three_col_cta module file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\media\Entity\Media;
+
+
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function egnyte_three_col_cta_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.egnyte_three_col_cta':
+      $text = file_get_contents(dirname(__FILE__) . "/README.md");
+      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_theme().
+ * Lets us define our paragraphs templates in this module.
+ */
+function egnyte_three_col_cta_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__egnyte_three_col_cta' => [
+      'base hook' => 'paragraph',
+    ],
+
+  ];
+}
+
+function egnyte_three_col_cta_preprocess_paragraph__egnyte_three_col_cta(&$variables) {
+  
+  $paragraph = $variables['elements']['#paragraph'];
+  
+  if ( $paragraph->get('field_egnyte_three_col_cta__them')->value) {
+      $theme =  $paragraph->get('field_egnyte_three_col_cta__them')->value;  
+  }
+
+  $variables['theme'] = $theme;
+
+  if ( $theme == "dark-cta" ){
+      $variables['theme'] = 'mt-750 industry-video';
+  }
+
+  if ( $theme == "light-cta" ) {
+      $variables['theme'] = 'mt-750 industry-foundation__item industry-foundation__item--alt';
+  }
+
+
+  if ($paragraph->hasField('field_egnyte_three_col_cta__md1')) {
+    $bkrd_image = $paragraph->get('field_egnyte_three_col_cta__md1')->getValue();
+
+    if ($bkrd_image && !empty($bkrd_image)) {
+      $entity = Media::load($bkrd_image[0]['target_id']);
+      if (isset($entity->field_media_image->entity)) {
+        $variables['image_left_col'] = file_create_url($entity->field_media_image->entity->getFileUri());
+      }
+      $variables['bundle_left_col'] = $entity->bundle();
+      $variables['video_url_left_col'] = $entity->field_media_oembed_video->value;
+
+
+    }
+
+  }
+
+ 
+
+  if ($paragraph->hasField('field_egnyte_three_col_cta__t1')) {
+    $bkrd_image_0 = $paragraph->get('field_egnyte_three_col_cta__t1')->getValue();
+
+    if ($bkrd_image_0 && !empty($bkrd_image_0)) {
+      $entity_0 = Media::load($bkrd_image_0[0]['target_id']);
+      if (isset($entity_0->field_media_image->entity)) {
+        $variables['video_thumbnail_left_col'] = file_create_url($entity_0->field_media_image->entity->getFileUri());
+     }
+     
+    }
+
+  }
+  // Right Side Column
+ 
+  if ($paragraph->hasField('field_egnyte_three_col_cta__md2')) {
+    $bkrd_image = $paragraph->get('field_egnyte_three_col_cta__md2')->getValue();
+    if ($bkrd_image && !empty($bkrd_image)) {
+      $entity = Media::load($bkrd_image[0]['target_id']);
+      if (isset($entity->field_media_image->entity)) {
+          $variables['image_right_col'] = file_create_url($entity->field_media_image->entity->getFileUri());
+      }
+      $variables['bundle_right_col'] = $entity->bundle();
+      $variables['video_url_right_col'] = $entity->field_media_oembed_video->value;
+    }
+
+  }
+
+  
+
+  if ($paragraph->hasField('field_three_col_cta__t2')) {
+    $bkrd_image1 = $paragraph->get('field_three_col_cta__t2')->getValue();
+    if ($bkrd_image1 && !empty($bkrd_image1)) {
+        $entity1 = Media::load($bkrd_image1[0]['target_id']);
+
+        if (isset($entity1->field_media_image->entity)) {
+           $variables['video_thumbnail_right_col'] = file_create_url($entity1->field_media_image->entity->getFileUri());
+          
+        }
+    }
+    
+  } 
+
+}

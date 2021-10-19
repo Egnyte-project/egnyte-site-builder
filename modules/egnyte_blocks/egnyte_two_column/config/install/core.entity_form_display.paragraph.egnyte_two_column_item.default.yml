@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_two_column_item.field_egnyte_two_column__item_im
+    - field.field.paragraph.egnyte_two_column_item.field_egnyte_two_column__item_ti
+    - field.field.paragraph.egnyte_two_column_item.field_egnyte_two_column__item_tx
+    - paragraphs.paragraphs_type.egnyte_two_column_item
+  module:
+    - field_group
+    - media_library
+third_party_settings:
+  field_group:
+    group_egnyte_two_column___item:
+      children:
+        - field_egnyte_two_column__item_ti
+        - field_egnyte_two_column__item_tx
+        - field_egnyte_two_column__item_im
+      parent_name: ''
+      weight: 0
+      format_type: tab
+      region: content
+      format_settings:
+        description: ''
+        formatter: closed
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'List Item'
+id: paragraph.egnyte_two_column_item.default
+targetEntityType: paragraph
+bundle: egnyte_two_column_item
+mode: default
+content:
+  field_egnyte_two_column__item_im:
+    type: media_library_widget
+    weight: 3
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_egnyte_two_column__item_ti:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_egnyte_two_column__item_tx:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+hidden:
+  created: true
+  status: true

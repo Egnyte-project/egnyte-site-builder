@@ -1,0 +1,79 @@
+{% if theme == 'Solution' %}
+  <div class="solution-hero">
+    <div class="grid-cont">
+      <div class="grid-row grid-row--aic">
+        <div class="grid-col grid-col--6 grid-col--md-12">
+          <h1 class="tc--white  solution-hero__title h1">{{ content.field_egnyte_hero__title[0] }}</h1>
+          <p class="mt-100 p p--xlarge solution-hero__subtitle p margin-bottom-0">{{ content.field_egnyte_hero__subtitle[0] }}</p>
+          <div class="mt-50 grid-row grid-row--aic solution-hero__actions">
+            <div class="mt-150 grid-col grid-col--auto grid-col--xs-12">
+              {%  if true in content.field_egnyte_hero__link[0] %}
+                    <a class="button" href="{{ content.field_egnyte_hero__link[0]['#url'] }}">{{ content.field_egnyte_hero__link[0]['#title'] }}</a>
+              {% endif %}
+            </div>
+            <div class="mt-150 grid-col grid-col--auto grid-col--xs-12">
+              {%  if true in content.field_egnyte_hero__link[1] %}
+                <a href="{{ content.field_egnyte_hero__link[1]['#url'] }}" class="p p--medium fw--600 solution-hero__link">{{ content.field_egnyte_hero__link[1]['#title'] }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="grid-col grid-col--6 grid-col--md-12">
+          <div class="solution-hero__figure">
+            <div class="solution-hero__picture solution-hero__picture--1">
+              <img src="{{ image }}"  width="AUTO" height="583" alt="" class="solution-hero__image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+{% if theme == 'Industry' %}
+  <div class="industry-hero" style="background-image: url( '{{ image }}' )">
+    <div class="grid-cont grid-cont--xl">
+      <div class="grid-row">
+        <div class="grid-col grid-col--6 grid-col--lg-7 grid-col--sm-12">
+          <div class="industry-hero__cont">
+            <h6 class="h6">{{ content.field_egnyte_hero__eyebrow[0] }}</h6>
+            <h1 class="h1--small h1">{{ content.field_egnyte_hero__title[0] }}</h1>
+            <p class="mt-100 p p--xlarge tc--heading">{{ content.field_egnyte_hero__subtitle[0] }}</p>
+            <div class="mt-150 mb-150 grid-row">
+              <div class="mt-150 grid-col grid-col--auto grid-col--xs-12">
+              {%  if true in content.field_egnyte_hero__link[0] %}
+                    <a class="button" href="{{ content.field_egnyte_hero__link[0]['#url'] }}">{{ content.field_egnyte_hero__link[0]['#title'] }}</a>
+              {% endif %}
+            </div>
+            <div class="mt-150 grid-col grid-col--auto grid-col--xs-12">
+              {%  if true in content.field_egnyte_hero__link[1] %}
+                <a href="{{ content.field_egnyte_hero__link[1]['#url'] }}" class="p p--medium fw--600 solution-hero__link">{{ content.field_egnyte_hero__link[1]['#title'] }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if theme == 'Platform' %}
+  <div id="platform-feature-hero" class="platform-feature-hero">
+    <div class="grid-cont grid-cont--xl">
+      <div class="grid-row grid-row--aic">
+        <div class="grid-col grid-col--5 grid-col--md-12">
+          <h6 class="h6">{{ content.field_egnyte_hero__eyebrow[0] }}</h6>
+          <h1 class="h1--small h1">{{ content.field_egnyte_hero__title[0] }}</h1>
+          
+        </div>
+        <div class="grid-col grid-col--7 grid-col--md-12">
+          <div class="platform-feature-hero__figure">
+                <img src=" {{ image }} "  width="" height="374" class="platform-feature-hero__image platform-feature-hero__image--5" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

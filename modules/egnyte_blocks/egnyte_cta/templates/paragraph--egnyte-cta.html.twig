@@ -1,0 +1,68 @@
+{%  if ( theme == 'solution-callout' ) or ( theme == 'industry-callout' ) %}
+<div class="mt-500 {{ theme }}">
+  <div class="grid-cont">
+    <h2 class="tc--white h2">{{ content.field_egnyte_cta__header[0] }}</h2>
+      <div class="mt-50 grid-row grid-row--aic grid-row--jcc"> 
+        <div class="mt-150 grid-col grid-col--auto grid-col--xs-12">
+          <a href="#" class="button free-trial">Start Free Trial</a>
+        </div>
+        <div class="mt-150 grid-col grid-col--auto grid-col--xs-12">
+          <a href="/#request-demo" class="p p--medium fw--600 tc--primary {{ content.field_egnyte_cta__theme[0] }}__link slide-form">Request Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{%  if ( theme == 'dark-cta' ) or ( theme == 'light-cta' ) %}
+<div class="grid-cont grid-cont--xl">
+  <div class="{{ theme_div_class }}">
+    <h2 class="tc--white h2">{{ content.field_egnyte_cta__header[0] }}</h2>
+    <p class="{{ theme_p_class }} {{ theme }} p margin-bottom-0">{{ content.field_egnyte_cta__text[0] }}</p>
+    <div class="grid-row grid-row--jcc">
+      <div class="grid-col grid-col--auto flex">
+        {% for key, item in content.field_egnyte_cta__link if key|first != '#' %}
+          <a class="mt-125 button" href="{{ content.field_egnyte_cta__link[key]['#url'] }}">{{ content.field_egnyte_cta__link[key]['#title'] }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{%  if  theme == 'dark-mini-cta' %}
+<div class="mt-250 mb-250">
+  <div class="grid-cont ">
+    <div id="announcements__carousel" class="announcements__carousel slick-initialized slick-slider">
+      <div class="slick-list draggable">
+        <div class="slick-track" style="opacity: 1;">
+          <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 100%; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;"><div>
+            <div class="announcements__slide" style="width: 100%; display: inline-block;">
+              <a href="{{ content.field_egnyte_cta__link[0]['#url'] }}" class="announcements__item" style="background:black" target="_BLANK" tabindex="0">
+                <div class="announcements__cont">
+                  <div class="grid-row grid-row--aic">
+                    <div class="grid-col grid-col--xs-12 grid-col--6">
+                      <div class="h4 tc--white announcements__heading">{{ content.field_egnyte_cta__header[0] }}</div>
+                    </div>
+                    <div class="grid-col grid-col--auto grid-col--xs-12">
+                      <div class="button button--small">{{ content.field_egnyte_cta__link[0]['#title'] }}<svg width="16" height="20" viewBox="0 0 16 16" class="inline-icon">
+                          <polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="announcements__figure">
+                  <figure><img src="https://www.egnyte.com/sites/default/files/2021-09/Dark_GettyImages-egnyte.png" alt="{{ image_alt }}" class="cover-image"></figure>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+{% endif %}

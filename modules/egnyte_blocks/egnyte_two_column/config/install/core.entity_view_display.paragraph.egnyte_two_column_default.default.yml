@@ -1,0 +1,102 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column__thnail
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__alig
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__ebro
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__hsiz
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__link
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__med
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__text
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__them
+    - field.field.paragraph.egnyte_two_column_default.field_egnyte_two_column_df__titl
+    - paragraphs.paragraphs_type.egnyte_two_column_default
+  module:
+    - link
+    - options
+    - text
+id: paragraph.egnyte_two_column_default.default
+targetEntityType: paragraph
+bundle: egnyte_two_column_default
+mode: default
+content:
+  field_egnyte_two_column__thnail:
+    type: entity_reference_entity_view
+    weight: 8
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_egnyte_two_column_df__alig:
+    weight: 5
+    label: hidden
+    settings:
+      format: default
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_egnyte_two_column_df__ebro:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_egnyte_two_column_df__hsiz:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_egnyte_two_column_df__link:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_egnyte_two_column_df__med:
+    type: entity_reference_entity_view
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_egnyte_two_column_df__text:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_egnyte_two_column_df__them:
+    weight: 9
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_egnyte_two_column_df__titl:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

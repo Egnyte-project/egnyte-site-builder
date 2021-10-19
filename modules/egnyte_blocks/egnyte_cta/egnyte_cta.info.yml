@@ -1,0 +1,11 @@
+name: 'Egnyte Site Builder: Call to Action Block'
+type: module
+description: Provides a paragraphs bundle for adding a Call to Action block to any Egnyte webpage.
+version: '8.x-1.0'
+core: '8.x'
+
+
+package: Egnyte Site Builder
+dependencies:
+ 
+core_version_requirement: ^8 || ^9

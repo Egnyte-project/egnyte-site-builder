@@ -1,0 +1,45 @@
+<div class="grid-cont mt-500">
+
+{%  if alignment == 0 %}
+<div class="mt-500 solution-tools">
+    <div class="grid-cont grid-cont--xl">
+        <h2 class="h2">{{ content.field_egnyte_two_column_lt__titl[0] }}</h2>
+        <p class="mt-100 tc--dark p">{{ content.field_egnyte_two_column_lt__text[0] }}</p>
+        <div class="grid-row grid-row--aic">
+            <div class="grid-col grid-col--5 grid-col--md-12">
+                {{ content.field_egnyte_two_column__item }}
+            </div>
+                            
+              <div class="grid-col grid-col--7 grid-col--md-12">
+                <div class="solution-tools__figure">
+                  <img src="img/solution-tools/dots.svg" alt="" class="solution-tools__dots">
+                  <img src="{{ image }}"  alt="{{ image_alt }}" width="100%">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{%  if alignment == 1 %}
+<div class="mt-500 solution-tools">
+    <div class="grid-cont grid-cont--xl">
+        <h2 class="h2">{{ content.field_egnyte_two_column_lt__titl[0] }}</h2>
+        <p class="mt-100 tc--dark p margin-bottom-0">{{ content.field_egnyte_two_column_lt__text[0] }}</p>
+        <div class="mt-400 grid-row grid-row--aic">
+            <div class="grid-col grid-col--7 grid-col--md-12">
+                <div class="solution-tools__figure">
+                  <img src="img/solution-tools/dots.svg" alt="" class="solution-tools__dots">
+                  <img src="{{ image }}"  alt="{{ image_alt }}"  width="100%" >
+                </div>
+            </div>
+            <div class="grid-col grid-col--5 grid-col--md-12">
+                {{ content.field_egnyte_two_column__item }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+</div>

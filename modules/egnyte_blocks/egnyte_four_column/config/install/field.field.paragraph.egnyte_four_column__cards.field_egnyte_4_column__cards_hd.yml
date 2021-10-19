@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_4_column__cards_hd
+    - paragraphs.paragraphs_type.egnyte_four_column__cards
+id: paragraph.egnyte_four_column__cards.field_egnyte_4_column__cards_hd
+field_name: field_egnyte_4_column__cards_hd
+entity_type: paragraph
+bundle: egnyte_four_column__cards
+label: Header
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

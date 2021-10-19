@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_testimonials.field_egnyte_testimonials__quote
+    - field.field.paragraph.egnyte_testimonials.field_egnyte_testimonials__theme
+    - field.field.paragraph.egnyte_testimonials.field_egnyte_testimonials__title
+    - paragraphs.paragraphs_type.egnyte_testimonials
+  module:
+    - options
+id: paragraph.egnyte_testimonials.default
+targetEntityType: paragraph
+bundle: egnyte_testimonials
+mode: default
+content:
+  field_egnyte_testimonials__quote:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_egnyte_testimonials__theme:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_egnyte_testimonials__title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

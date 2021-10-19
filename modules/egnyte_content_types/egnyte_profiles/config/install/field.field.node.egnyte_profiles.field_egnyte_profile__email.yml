@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_egnyte_profile__email
+    - node.type.egnyte_profiles
+id: node.egnyte_profiles.field_egnyte_profile__email
+field_name: field_egnyte_profile__email
+entity_type: node
+bundle: egnyte_profiles
+label: E-Mail
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

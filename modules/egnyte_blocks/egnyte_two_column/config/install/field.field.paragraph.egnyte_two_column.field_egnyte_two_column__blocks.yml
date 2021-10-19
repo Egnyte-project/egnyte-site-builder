@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_two_column__blocks
+    - paragraphs.paragraphs_type.egnyte_two_column
+    - paragraphs.paragraphs_type.egnyte_two_column_default
+    - paragraphs.paragraphs_type.egnyte_two_column_lt
+  module:
+    - entity_reference_revisions
+id: paragraph.egnyte_two_column.field_egnyte_two_column__blocks
+field_name: field_egnyte_two_column__blocks
+entity_type: paragraph
+bundle: egnyte_two_column
+label: 'Two Column Blocks'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      egnyte_two_column_default: egnyte_two_column_default
+      egnyte_two_column_lt: egnyte_two_column_lt
+    target_bundles_drag_drop:
+      egnyte_adr:
+        weight: 10
+        enabled: false
+      egnyte_cta:
+        weight: 11
+        enabled: false
+      egnyte_four_column:
+        weight: 12
+        enabled: false
+      egnyte_hero:
+        weight: 13
+        enabled: false
+      egnyte_platform:
+        weight: 14
+        enabled: false
+      egnyte_trusted_by:
+        weight: 15
+        enabled: false
+      egnyte_two_column:
+        weight: 16
+        enabled: false
+      egnyte_two_column_default:
+        enabled: true
+        weight: 9
+      egnyte_two_column_lt:
+        enabled: true
+        weight: 18
+field_type: entity_reference_revisions

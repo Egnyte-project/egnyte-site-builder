@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_two_column__item
+    - paragraphs.paragraphs_type.egnyte_two_column_item
+    - paragraphs.paragraphs_type.egnyte_two_column_lt
+  module:
+    - entity_reference_revisions
+id: paragraph.egnyte_two_column_lt.field_egnyte_two_column__item
+field_name: field_egnyte_two_column__item
+entity_type: paragraph
+bundle: egnyte_two_column_lt
+label: 'List Items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      egnyte_two_column_item: egnyte_two_column_item
+    target_bundles_drag_drop:
+      egnyte_adr:
+        weight: 12
+        enabled: false
+      egnyte_cta:
+        weight: 13
+        enabled: false
+      egnyte_four_column:
+        weight: 14
+        enabled: false
+      egnyte_hero:
+        weight: 15
+        enabled: false
+      egnyte_platform:
+        weight: 16
+        enabled: false
+      egnyte_trusted_by:
+        weight: 17
+        enabled: false
+      egnyte_two_column:
+        weight: 18
+        enabled: false
+      egnyte_two_column___item:
+        weight: 22
+        enabled: false
+      egnyte_two_column_default:
+        weight: 19
+        enabled: false
+      egnyte_two_column_item:
+        enabled: true
+        weight: 20
+      egnyte_two_column_lt:
+        weight: 21
+        enabled: false
+field_type: entity_reference_revisions

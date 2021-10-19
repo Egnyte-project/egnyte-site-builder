@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_egnyte_profile__suffix
+    - node.type.egnyte_profiles
+  module:
+    - options
+id: node.egnyte_profiles.field_egnyte_profile__suffix
+field_name: field_egnyte_profile__suffix
+entity_type: node
+bundle: egnyte_profiles
+label: Suffix
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

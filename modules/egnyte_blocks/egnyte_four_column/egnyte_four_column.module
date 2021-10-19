@@ -1,0 +1,137 @@
+<?php
+
+/**
+ * @file
+ * egnyte_four_columns module file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\media\Entity\Media;
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function egnyte_four_column_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.egnyte_four_columns':
+      $text = file_get_contents(dirname(__FILE__) . "/README.md");
+      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_theme().
+ * Lets us define our paragraphs templates in this module.
+ */
+function egnyte_four_column_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__egnyte_four_column' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__egnyte_four_column__2col' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__egnyte_four_column__cards' => [
+      'base hook' => 'paragraph',
+    ],
+
+  ];
+}
+
+
+function egnyte_four_column__theme_function() {
+  $var =  &drupal_static(__FUNCTION__);
+      if (!isset($var)) {
+        // generate contents of static variable
+        $var = 'Industry';
+      }
+    return $var;
+}
+
+function egnyte_four_column_preprocess_paragraph__egnyte_four_column(array &$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+  $variables['theme']= &drupal_static('egnyte_four_column__theme_function');
+  
+
+
+
+  
+  if ( $paragraph->field_egnyte_four_column__theme->value ) {
+      $card_theme = $paragraph->field_egnyte_four_column__theme->value;
+      $variables['theme'] =  $card_theme; 
+  }
+  
+  if ($card_theme == 'Industry'){
+      $variables['four_column_block_theme_class']= "mt-500 industry-foundation";
+  }
+
+  if ($card_theme == 'Solutions'){
+      $variables['four_column_block_theme_class']= "mt-500 solution-remote";
+  }
+
+
+}
+
+/**
+ *
+ */
+function egnyte_four_column_preprocess_paragraph__egnyte_four_column__2col(array &$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+  $variables['theme'] =  &drupal_static('egnyte_four_column__theme_function'); 
+  
+
+
+
+  if ($paragraph->hasField('field_egnyte_4_column__2col_img')) {
+      $bkrd_image = $paragraph->get('field_egnyte_4_column__2col_img')->getValue();
+      if ($bkrd_image && !empty($bkrd_image)) {
+        $entity = Media::load($bkrd_image[0]['target_id']);
+        if (isset($entity->field_media_image->entity)) {
+          $variables['image__1'] = file_create_url($entity->field_media_image->entity->getFileUri());
+        }
+      }
+  }
+
+
+}
+
+function egnyte_four_column_preprocess_paragraph__egnyte_four_column__cards(array &$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+  $variables['theme'] =  &drupal_static('egnyte_four_column__theme_function'); 
+
+
+
+  if ($paragraph->hasField('field_egnyte_4_column__cards_img')) {
+      $bkrd_image = $paragraph->get('field_egnyte_4_column__cards_img')->getValue();
+      if ($bkrd_image && !empty($bkrd_image)) {
+        $entity = Media::load($bkrd_image[0]['target_id']);
+        if (isset($entity->field_media_image->entity)) {
+          $variables['image__1'] = file_create_url($entity->field_media_image->entity->getFileUri());
+        }
+      }
+  }
+
+  if ($paragraph->hasField('field_egnyte_4_column__cards_ig2')) {
+    $bkrd_image = $paragraph->get('field_egnyte_4_column__cards_ig2')->getValue();
+    if ($bkrd_image && !empty($bkrd_image)) {
+      $entity = Media::load($bkrd_image[0]['target_id']);
+      if (isset($entity->field_media_image->entity)) {
+        $variables['image__2'] = file_create_url($entity->field_media_image->entity->getFileUri());
+      }
+    }
+  }
+
+}

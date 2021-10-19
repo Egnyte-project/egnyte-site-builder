@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_two_column_df__link
+    - paragraphs.paragraphs_type.egnyte_two_column_default
+  module:
+    - link
+id: paragraph.egnyte_two_column_default.field_egnyte_two_column_df__link
+field_name: field_egnyte_two_column_df__link
+entity_type: paragraph
+bundle: egnyte_two_column_default
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

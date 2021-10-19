@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: egnyte_2column_cont_item
+label: 'Two Column Cont Items'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

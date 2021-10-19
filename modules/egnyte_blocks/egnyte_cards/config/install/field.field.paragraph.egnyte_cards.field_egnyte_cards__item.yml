@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_cards__item
+    - paragraphs.paragraphs_type.egnyte_cards
+    - paragraphs.paragraphs_type.egnyte_cards__item
+  module:
+    - entity_reference_revisions
+id: paragraph.egnyte_cards.field_egnyte_cards__item
+field_name: field_egnyte_cards__item
+entity_type: paragraph
+bundle: egnyte_cards
+label: 'Card Items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      egnyte_cards__item: egnyte_cards__item
+    target_bundles_drag_drop:
+      egnyte_adr:
+        weight: 13
+        enabled: false
+      egnyte_cards:
+        weight: 14
+        enabled: false
+      egnyte_cards__item:
+        enabled: true
+        weight: 15
+      egnyte_cta:
+        weight: 16
+        enabled: false
+      egnyte_four_column:
+        weight: 17
+        enabled: false
+      egnyte_hero:
+        weight: 18
+        enabled: false
+      egnyte_platform:
+        weight: 19
+        enabled: false
+      egnyte_trusted_by:
+        weight: 20
+        enabled: false
+      egnyte_two_column:
+        weight: 21
+        enabled: false
+      egnyte_two_column_default:
+        weight: 22
+        enabled: false
+      egnyte_two_column_item:
+        weight: 23
+        enabled: false
+      egnyte_two_column_lt:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

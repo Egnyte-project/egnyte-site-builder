@@ -1,0 +1,57 @@
+
+{% if card_theme == 'Default'  %}
+<div class="mt-200 grid-col grid-col--4 grid-col--sm-12">
+    <div class="solution-workflows__item" {{ remove-borders }}>
+        <img src="{{ image }}" width="65" height="65" alt="" class="solution-workflows__icon">
+        <h4 class="mt-150 h4">{{ content.field_egnyte_cards__item_title[0] }}</h4>
+        <p class="mt-50 tc--dark p">{{ content.field_egnyte_cards__item_text[0] }}</p>
+    </div>
+</div>
+{% endif %}
+
+{% if card_theme == 'Default-without-borders' %}
+<div class="grid-col grid-col--sm-12">
+    <img src="{{ image }}" alt="" class="industry-things__icon">
+    <h4 class="mt-150 h4">{{ content.field_egnyte_cards__item_title[0] }}</h4>
+    <p class="mt-75 p--medium tc--dark">{{ content.field_egnyte_cards__item_text[0] }}</p>
+</div>
+{% endif %}
+
+{% if card_theme == 'Capabilities' %}
+<div class="mt-100 grid-col grid-col--3 grid-col--lg-4 grid-col--md-6 grid-col--xs-12">
+    <div class="capabilities__item">
+        <div class="capabilities__icon"><img src="{{ image }}" alt="" width="38" height="38"></div>
+        <h5 class="h5">{{ content.field_egnyte_cards__item_title[0] }}</h5>
+        <p class="mt-100 p p--small tc--dark">{{ content.field_egnyte_cards__item_text[0] }}</p>
+    </div>
+</div>
+{% endif %}
+
+{% if card_theme == 'Integrations' %}
+<div class="mt-150 grid-col grid-col--3 grid-col--lg-4 grid-col--sm-6 grid-col--xs-12">
+    <div class="featured-integrations__item">
+        <div class="featured-integrations__figure"><img src="{{ image }}"  width="83" height="81" alt=""></div>
+        <div class="featured-integrations__cont">
+            <h4 class="h4">{{ content.field_egnyte_cards__item_title[0] }}</h4>
+            <p class="mt-75 p p--small tc--dark">{{ content.field_egnyte_cards__item_text[0] }}</p>
+        </div>
+        <div class="featured-integrations__foot">
+            {% for key, item in content.field_egnyte_cards__item_link if key|first != '#' %}
+                <a href="{{ content.field_egnyte_cards__item_link[key]['#url'] }}" class="more-link more-link--large more-link--enlarged">{{ content.field_egnyte_cards__item_link[key]['#title'] }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if card_theme == 'Industry-light-blue' %}
+<div class="mt-100 grid-col grid-col--6 grid-col--md-12">
+    <div class="industry-things__item">
+        <h3 class="h3">{{ content.field_egnyte_cards__item_title[0] }}</h3>
+        <p class="mt-100 p--medium">{{ content.field_egnyte_cards__item_text[0] }}</p>
+        {% for key, item in content.field_egnyte_cards__item_link if key|first != '#' %}
+            <a href="{{ content.field_egnyte_cards__item_link[key]['#url'] }}" class="mt-150 more-link more-link--large more-link--enlarged">{{ content.field_egnyte_cards__item_link[key]['#title'] }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
