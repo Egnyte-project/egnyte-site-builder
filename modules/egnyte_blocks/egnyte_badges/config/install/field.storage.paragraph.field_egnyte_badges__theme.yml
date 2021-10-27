@@ -16,6 +16,9 @@ settings:
     -
       value: Four
       label: Four
+    -
+      value: Careers
+      label: Careers
   allowed_values_function: ''
 module: options
 locked: false

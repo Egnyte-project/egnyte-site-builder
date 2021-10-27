@@ -1,0 +1,99 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_careers_feed__widget
+    - paragraphs.paragraphs_type.egnyte_careers_feed
+    - paragraphs.paragraphs_type.egnyte_careers_feed__item
+  module:
+    - entity_reference_revisions
+id: paragraph.egnyte_careers_feed.field_careers_feed__widget
+field_name: field_careers_feed__widget
+entity_type: paragraph
+bundle: egnyte_careers_feed
+label: 'Careers Feed Block'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      egnyte_careers_feed__item: egnyte_careers_feed__item
+    target_bundles_drag_drop:
+      egnyte_2column_cont_item:
+        weight: 25
+        enabled: false
+      egnyte_adr:
+        weight: 26
+        enabled: false
+      egnyte_badges:
+        weight: 27
+        enabled: false
+      egnyte_cards:
+        weight: 28
+        enabled: false
+      egnyte_cards__item:
+        weight: 29
+        enabled: false
+      egnyte_careers_feed:
+        weight: 30
+        enabled: false
+      egnyte_careers_feed__item:
+        enabled: true
+        weight: 31
+      egnyte_cta:
+        weight: 32
+        enabled: false
+      egnyte_four_column:
+        weight: 33
+        enabled: false
+      egnyte_four_column__2col:
+        weight: 34
+        enabled: false
+      egnyte_four_column__cards:
+        weight: 35
+        enabled: false
+      egnyte_hero:
+        weight: 36
+        enabled: false
+      egnyte_platform:
+        weight: 37
+        enabled: false
+      egnyte_tabs:
+        weight: 38
+        enabled: false
+      egnyte_tabs__item:
+        weight: 39
+        enabled: false
+      egnyte_tabs__tabs:
+        weight: 40
+        enabled: false
+      egnyte_testimonials:
+        weight: 41
+        enabled: false
+      egnyte_three_col_cta:
+        weight: 42
+        enabled: false
+      egnyte_trusted_by:
+        weight: 43
+        enabled: false
+      egnyte_two_column:
+        weight: 44
+        enabled: false
+      egnyte_two_column_cont:
+        weight: 45
+        enabled: false
+      egnyte_two_column_default:
+        weight: 46
+        enabled: false
+      egnyte_two_column_item:
+        weight: 47
+        enabled: false
+      egnyte_two_column_lt:
+        weight: 48
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * egnyte_badges install file.
+ */
+
+function egnyte_badges_update_8001() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_badges');
+}

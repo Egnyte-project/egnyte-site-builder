@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_egnyte_profile__comapnyimg
+    - media.type.image
+    - node.type.egnyte_profiles
+id: node.egnyte_profiles.field_egnyte_profile__comapnyimg
+field_name: field_egnyte_profile__comapnyimg
+entity_type: node
+bundle: egnyte_profiles
+label: 'Company Logo'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

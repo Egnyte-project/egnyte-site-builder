@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.egnyte_profiles.field_egnyte_profile___company
+    - field.field.node.egnyte_profiles.field_egnyte_profile__comapnyimg
     - field.field.node.egnyte_profiles.field_egnyte_profile__email
     - field.field.node.egnyte_profiles.field_egnyte_profile__facebook
     - field.field.node.egnyte_profiles.field_egnyte_profile__fname
@@ -18,6 +19,7 @@ dependencies:
     - field.field.node.egnyte_profiles.field_egnyte_profile__theader
     - field.field.node.egnyte_profiles.field_egnyte_profile__tlink
     - field.field.node.egnyte_profiles.field_egnyte_profile__twitter
+    - field.field.node.egnyte_profiles.field_egnyte_profile__vtestimony
     - node.type.egnyte_profiles
   module:
     - user
@@ -33,6 +35,7 @@ content:
     region: content
 hidden:
   field_egnyte_profile___company: true
+  field_egnyte_profile__comapnyimg: true
   field_egnyte_profile__email: true
   field_egnyte_profile__facebook: true
   field_egnyte_profile__fname: true
@@ -47,4 +50,5 @@ hidden:
   field_egnyte_profile__theader: true
   field_egnyte_profile__tlink: true
   field_egnyte_profile__twitter: true
+  field_egnyte_profile__vtestimony: true
   search_api_excerpt: true

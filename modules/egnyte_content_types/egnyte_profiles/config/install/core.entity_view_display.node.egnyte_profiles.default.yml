@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.egnyte_profiles.field_egnyte_profile___company
+    - field.field.node.egnyte_profiles.field_egnyte_profile__comapnyimg
     - field.field.node.egnyte_profiles.field_egnyte_profile__email
     - field.field.node.egnyte_profiles.field_egnyte_profile__facebook
     - field.field.node.egnyte_profiles.field_egnyte_profile__fname
@@ -17,6 +18,7 @@ dependencies:
     - field.field.node.egnyte_profiles.field_egnyte_profile__theader
     - field.field.node.egnyte_profiles.field_egnyte_profile__tlink
     - field.field.node.egnyte_profiles.field_egnyte_profile__twitter
+    - field.field.node.egnyte_profiles.field_egnyte_profile__vtestimony
     - node.type.egnyte_profiles
   module:
     - link
@@ -34,6 +36,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_egnyte_profile__comapnyimg:
+    type: entity_reference_entity_view
+    weight: 119
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
     region: content
   field_egnyte_profile__email:
     weight: 117
@@ -148,6 +159,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_egnyte_profile__vtestimony:
+    type: entity_reference_entity_view
+    weight: 120
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
     region: content
   links:
     weight: 100

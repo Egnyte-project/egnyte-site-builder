@@ -68,3 +68,52 @@
 </div>
 {% endif %}
 
+{% if theme == 'Careers' %}  
+
+<div class="mt-500 careers-reviews">
+  <div class="grid-cont grid-cont--xl">
+    <h6 class="h6">Employee testimonials</h6>
+    <h2 class="h2">{{ content.field_egnyte_testimonials__title[0] }}</h2>
+    <a href="#" class="mt-100 more-link">Explore {{ job_totals }} Open Roles<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+  </div>
+  <div id="careers-reviews__carousel" class="mt-300 careers-reviews__carousel">
+    {% for value in testimonial_cards  %}
+      <div class="careers-reviews__slide" style="width:304px;">
+        <div class="careers-reviews__photo">
+          <img src="{{ value.image }}"  alt="{{ value.image_alt }}" />
+        </div>
+        <div class="careers-reviews__video">
+          <video controls><source src="{{ value.video_url }}" type="video/mp4"></video>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="careers-reviews__cont">
+    <div class="grid-cont grid-cont--xl">
+      <div class="careers-reviews__cont-inner">
+        <button class="careers-reviews__prev removed-sm"></button>
+        <button class="careers-reviews__next removed-sm"></button>
+        <div class="grid-row">       
+          <div class="grid-col grid-col--8 grid-col--lg-12">
+            {% for value in testimonial_cards  %}
+              <div class="careers-reviews__quote">
+                <h4 class="mt-150 h3 h3--small">{{ value.header }}</h4>
+                <p class="p p--large tc--heading">{{ value.quote }}</p>
+                <div class="mt-125 p fw--600 tc--dark">{{ value.first_name }} {{ value.last_name }}</div>
+                <div class="mt-25 p p--medium fw--500 tc--light">{{ value.job_title }}</div>
+              </div>
+            {% endfor %}      
+          </div>
+          <div class="grid-col grid-col--auto grid-col--lg-12">
+              <div class="careers-reviews__divider"></div>
+          </div>
+          <div class="grid-col grid-col--lg-12">
+            <h5 class="h5">Great People</h5>
+            <p class="mt-50 p p--medium tc--dark">We hire great people because working with great people makes all the difference.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

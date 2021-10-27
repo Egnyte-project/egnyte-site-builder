@@ -77,3 +77,32 @@
     </div>
   </div>
 {% endif %}
+
+{% if theme == 'Careers' %}
+<div class="careers-hero mb-250">
+  <div class="grid-cont grid-cont--xl">
+    <div class="grid-row grid-row--aic">
+      <div class="grid-col grid-col--4 grid-col--md-5 grid-col--sm-12">
+        <div class="careers-hero__text">
+          <div class="h6 careers-hero__overline">{{ content.field_egnyte_hero__eyebrow[0] }}</div>
+          <h1 class="h1--small tc--white">{{ content.field_egnyte_hero__title[0] }}</h1>
+          <p class="mt-100 p p--medium removed-sm margin-bottom-0">{{ content.field_egnyte_hero__subtitle[0] }}</p>
+          <a href="#" class="mt-200 button button--iblock careers-hero__button margin-left-0">View {{ job_totals }} Open Roles</a>
+          <div class="mt-125 p p--xsmall careers-hero__footnote">In 5 Locations Worldwide &amp; Remote</div>
+        </div>
+      </div>
+      <div class="grid-col grid-col--8 grid-col--md-7 grid-col--sm-12">
+        <div class="careers-hero__figure">
+          <img  src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/careers-hero.png" alt="" class="careers-hero__image removed-sm">
+          <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/careers-hero--sm.png"  alt="" class="careers-hero__image removed blocked-sm">
+          {% if bundle == 'remote_video' %}
+            <div class="careers-hero__watch">Watch Video</div>
+              <a href="{{ video_url }}" data-fancybox="" class="careers-hero__play"></a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

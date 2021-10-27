@@ -19,6 +19,9 @@ settings:
     -
       value: Solution
       label: Solution
+    -
+      value: Careers
+      label: Careers
   allowed_values_function: ''
 module: options
 locked: false

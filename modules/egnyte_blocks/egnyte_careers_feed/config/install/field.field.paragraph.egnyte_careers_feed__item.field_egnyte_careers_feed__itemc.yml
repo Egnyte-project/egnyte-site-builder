@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_careers_feed__itemc
+    - paragraphs.paragraphs_type.egnyte_careers_feed__item
+    - taxonomy.vocabulary.egnyte_careers__category
+  content:
+    - 'taxonomy_term:egnyte_careers__category:853ae1a5-c6a4-48a5-a95f-ed97234ac9c8'
+id: paragraph.egnyte_careers_feed__item.field_egnyte_careers_feed__itemc
+field_name: field_egnyte_careers_feed__itemc
+entity_type: paragraph
+bundle: egnyte_careers_feed__item
+label: 'Job Categories'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 853ae1a5-c6a4-48a5-a95f-ed97234ac9c8
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      egnyte_careers__category: egnyte_careers__category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

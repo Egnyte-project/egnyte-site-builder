@@ -8,7 +8,15 @@
   <div class="grid-cont header__grid-cont">
     <div id="platform-tabs" class="platform-tabs">
       <div class="platform-tabs__track">
-        {{ tab_title }}
+      {#   {% for key, item in content.field_egnyte_tabs__tabs_title if key|first != '#' %}
+          <a href="#platform-enables__pane-1" class="platform-tabs__item">
+            {{ item.title[key] }}
+            <img src="{{  {{ item.image[key] }} }}" alt="" class="platform-tabs__icon">
+          </a>
+        {% endfor %}
+        #}
+      {{ tab_title }} 
+
       </div>
     </div>
   </div>

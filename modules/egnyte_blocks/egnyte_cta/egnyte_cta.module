@@ -48,6 +48,8 @@ function egnyte_cta_theme($existing, $type, $theme, $path) {
 function egnyte_cta_preprocess_paragraph__egnyte_cta(&$variables) {
   
   $paragraph = $variables['elements']['#paragraph'];
+  $variables['job_count'] =  _careers_total();
+
   
   if ( $paragraph->get('field_egnyte_cta__theme')->value) {
       $theme =  $paragraph->get('field_egnyte_cta__theme')->value;  
@@ -61,9 +63,15 @@ function egnyte_cta_preprocess_paragraph__egnyte_cta(&$variables) {
   }
 
   if ( $theme == "light-cta" ) {
-    $variables['theme_div_class'] = 'mt-500 industry-watch';
-    $variables['theme_p_class'] = 'mt-50 p p--medium tc--dark';
+      $variables['theme_div_class'] = 'mt-500 industry-watch';
+      $variables['theme_p_class'] = 'mt-50 p p--medium tc--dark';  
+      $variables['background'] = 'background: url(/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_cta/templates/images/bg.png) 50% 50%/cover;';
   }
+
+  
+  
+
+  
 
 
 }

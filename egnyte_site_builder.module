@@ -51,3 +51,22 @@ function egnyte_site_builder_theme($existing, $type, $theme, $path) {
     
   ];
 }
+
+function limit_text($text, $limit) {
+  if (str_word_count($text, 0) > $limit) {
+      $words = str_word_count($text, 2);
+      $pos   = array_keys($words);
+      $text  = substr($text, 0, $pos[$limit]) . '...';
+  }
+  return $text;
+}
+
+function _careers_total(){
+  $arr = array();
+  $api = preg_replace("/\s+/", "", 'https://api.jobvite.com/api/v2/job?api=egnyte_jobfeed_api_key&sc=0def69f2df5ac3ff24e600d4c2ba00ab&jobStatus=Open&availableTo=external');
+  $json = file_get_contents($api);
+
+  $obj = json_decode($json);
+  $arr[0]= $obj->total;
+  return $arr[0];
+}

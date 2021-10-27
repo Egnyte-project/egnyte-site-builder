@@ -8,6 +8,7 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraphs;
 
 
 
@@ -73,11 +74,6 @@ function egnyte_tabs_preprocess_paragraph__egnyte_tabs__tabs(&$variables) {
 
   $variables['tab_title'] = 'cdc';
 
-
-
-
-
-
 }
 
 
@@ -98,16 +94,18 @@ function egnyte_tabs_preprocess_paragraph__egnyte_tabs__item(&$variables) {
   $variables['quote'] = $variables['tab_card'][0]['quote'][0]['value'];
   $variables['company_logo'] = $variables['tab_card'][0]['company_logo'];
 
-//  $variables['tab_links'] = $paragraph->get('field_egnyte_tabs__items_links');
+  $variables['tab_links'] = $paragraph->get('field_egnyte_tabs__items_links');
 
 
  
 }
 
 function egnyte_tabs_preprocess_paragraph__egnyte_tabs(&$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+
   
   $variables['tab_tile'] = &drupal_static('egnyte_tabs__theme_function');
-  var_dump($variables['tab_tile']);
+ 
 }
 
 

@@ -67,6 +67,12 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
           $variables['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
         }
       }
-  
+      $variables['bundle'] = $entity->bundle();
+      $variables['video_url'] = $entity->field_media_oembed_video->value;
+
   }
+
+ 
+  $variables['job_totals'] = _careers_total();
+
 }

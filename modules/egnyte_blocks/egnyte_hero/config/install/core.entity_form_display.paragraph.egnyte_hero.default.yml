@@ -59,9 +59,10 @@ third_party_settings:
         description: ''
         id: ''
         classes: ''
+        show_empty_fields: false
         open: false
         required_fields: false
-      label: Image
+      label: Media
     group_egnyte_hero__link:
       children:
         - field_egnyte_hero__link

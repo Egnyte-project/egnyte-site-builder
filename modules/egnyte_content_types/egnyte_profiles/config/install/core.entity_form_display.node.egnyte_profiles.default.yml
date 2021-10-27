@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.egnyte_profiles.field_egnyte_profile___company
+    - field.field.node.egnyte_profiles.field_egnyte_profile__comapnyimg
     - field.field.node.egnyte_profiles.field_egnyte_profile__email
     - field.field.node.egnyte_profiles.field_egnyte_profile__facebook
     - field.field.node.egnyte_profiles.field_egnyte_profile__fname
@@ -17,6 +18,7 @@ dependencies:
     - field.field.node.egnyte_profiles.field_egnyte_profile__theader
     - field.field.node.egnyte_profiles.field_egnyte_profile__tlink
     - field.field.node.egnyte_profiles.field_egnyte_profile__twitter
+    - field.field.node.egnyte_profiles.field_egnyte_profile__vtestimony
     - node.type.egnyte_profiles
   module:
     - field_group
@@ -47,6 +49,7 @@ third_party_settings:
     group_egnyte_profile__testimony:
       children:
         - field_egnyte_profile__theader
+        - field_egnyte_profile__vtestimony
         - field_egnyte_profile__testimony
         - field_egnyte_profile__tlink
       parent_name: ''
@@ -66,6 +69,7 @@ third_party_settings:
       children:
         - field_egnyte_profile__job_title
         - field_egnyte_profile___company
+        - field_egnyte_profile__comapnyimg
       parent_name: ''
       weight: 2
       format_type: details
@@ -116,6 +120,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_egnyte_profile__comapnyimg:
+    type: media_library_widget
+    weight: 14
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
     region: content
   field_egnyte_profile__email:
     weight: 29
@@ -193,7 +204,7 @@ content:
     type: options_select
     region: content
   field_egnyte_profile__testimony:
-    weight: 12
+    weight: 13
     settings:
       rows: 5
       placeholder: ''
@@ -209,7 +220,7 @@ content:
     type: string_textfield
     region: content
   field_egnyte_profile__tlink:
-    weight: 13
+    weight: 14
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -223,6 +234,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_egnyte_profile__vtestimony:
+    type: media_library_widget
+    weight: 12
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
     region: content
   path:
     type: path

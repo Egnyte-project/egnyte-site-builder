@@ -17,3 +17,7 @@ function egnyte_cta_update_8002() {
 function egnyte_cta_update_8003() {
   \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_cta');
 }
+
+function egnyte_cta_update_8004() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_cta');
+}

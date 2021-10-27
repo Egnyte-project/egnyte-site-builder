@@ -4,13 +4,14 @@ dependencies:
   config:
     - field.storage.paragraph.field_egnyte_hero__image
     - media.type.image
+    - media.type.remote_video
     - paragraphs.paragraphs_type.egnyte_hero
 id: paragraph.egnyte_hero.field_egnyte_hero__image
 field_name: field_egnyte_hero__image
 entity_type: paragraph
 bundle: egnyte_hero
-label: Image
-description: ''
+label: Media
+description: 'Video will only be displayed on the Careers Theme.'
 required: false
 translatable: false
 default_value: {  }
@@ -20,8 +21,10 @@ settings:
   handler_settings:
     target_bundles:
       image: image
+      remote_video: remote_video
     sort:
       field: _none
+      direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: image
 field_type: entity_reference

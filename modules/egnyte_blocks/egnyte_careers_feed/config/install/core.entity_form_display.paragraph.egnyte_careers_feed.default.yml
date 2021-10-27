@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_careers_feed.field_careers_feed__widget
+    - paragraphs.paragraphs_type.egnyte_careers_feed
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_egnyte_careers_feed_block:
+      children:
+        - field_careers_feed__widget
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Careers Feed Block'
+id: paragraph.egnyte_careers_feed.default
+targetEntityType: paragraph
+bundle: egnyte_careers_feed
+mode: default
+content:
+  field_careers_feed__widget:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

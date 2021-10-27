@@ -17,8 +17,8 @@
 
 {%  if ( theme == 'dark-cta' ) or ( theme == 'light-cta' ) %}
 <div class="grid-cont grid-cont--xl">
-  <div class="{{ theme_div_class }}">
-    <h2 class="tc--white h2">{{ content.field_egnyte_cta__header[0] }}</h2>
+  <div class="{{ theme_div_class }}"  style="{{ background }}">
+    <h2 class="h2 {{ ('dark-cta' in theme ) ? 'tc--white' : '' }}">{{ content.field_egnyte_cta__header[0] }}</h2>
     <p class="{{ theme_p_class }} {{ theme }} p margin-bottom-0">{{ content.field_egnyte_cta__text[0] }}</p>
     <div class="grid-row grid-row--jcc">
       <div class="grid-col grid-col--auto flex">
@@ -63,6 +63,28 @@
       </div>
     </div>
   </div>
+  </div>
+</div>
+{% endif %}
+
+{%  if  theme == 'Careers' %}
+<div class="mt-500 careers-callout">
+  <div class="grid-cont grid-cont--xl">
+    <div class="grid-row grid-row--aic">
+      <div class="grid-col grid-col--4 grid-col--md-5 grid-col--sm-12">
+        <div class="careers-callout__text">
+          <h2 class="tc--white h2">{{ content.field_egnyte_cta__header[0] }}</h2>
+          <p class="mt-100 p p--medium margin-bottom-0">{{ content.field_egnyte_cta__text[0] }}</p>
+          <a href="{{ content.field_egnyte_cta__link[0]['#url'] }}" class="mt-150 more-link more-link--large">Explore {{ job_count }} Open Roles<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+        </div>
+      </div>
+      <div class="grid-col grid-col--8 grid-col--md-7 grid-col--sm-12">
+        <div class="careers-callout__figure">
+          <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_cta/templates/images/image.png"  alt="" class="careers-callout__image removed-sm">
+          <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_cta/templates/images/image--sm.png" alt="" class="careers-callout__image removed blocked-sm">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endif %}

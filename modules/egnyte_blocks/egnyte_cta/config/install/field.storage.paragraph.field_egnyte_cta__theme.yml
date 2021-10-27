@@ -25,6 +25,9 @@ settings:
     -
       value: light-cta
       label: 'Light Theme'
+    -
+      value: Careers
+      label: Careers
   allowed_values_function: ''
 module: options
 locked: false
