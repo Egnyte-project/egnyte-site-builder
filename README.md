@@ -30,7 +30,7 @@ The following Widgets are available:
 
 - Four Column Block: Provides a paragraphs bundle for adding a Four Column Block to any Egnyte webpage.
 - Hero: Provides a paragraphs bundle for adding a Hero Block to any Egnyte webpage.
-News Block: Provides a paragraphs bundle for creating a block that displays up to 3 news cards directy on an Egnyte webpage.
+- News Block: Provides a paragraphs bundle for creating a block that displays up to 3 news cards directy on an Egnyte webpage.
 - Platform: Provides a paragraphs bundle for adding a Platform Block to any Egnyte webpage.
 - Tabs: Provides a paragraphs bundle for adding a Tabs block to any Egnyte webpage.
 - Testimonials: Provides a paragraphs bundle for crreating a block that displays card or slide testimonials.
