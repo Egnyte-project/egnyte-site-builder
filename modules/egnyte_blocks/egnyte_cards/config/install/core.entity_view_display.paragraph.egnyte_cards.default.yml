@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.egnyte_cards.field_egnyte_cards__eyebrows
     - field.field.paragraph.egnyte_cards.field_egnyte_cards__image
     - field.field.paragraph.egnyte_cards.field_egnyte_cards__item
     - field.field.paragraph.egnyte_cards.field_egnyte_cards__text
@@ -16,6 +17,14 @@ targetEntityType: paragraph
 bundle: egnyte_cards
 mode: default
 content:
+  field_egnyte_cards__eyebrows:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_egnyte_cards__image:
     type: entity_reference_entity_view
     weight: 0

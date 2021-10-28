@@ -78,8 +78,9 @@ function egnyte_careers_feed_preprocess_paragraph__egnyte_careers_feed__item(arr
 function egnyte_careers_feed_preprocess_paragraph__egnyte_careers_feed(array &$variables) {
   $paragraph = $variables['elements']['#paragraph'];
  // var_dump(_careers_taxonomy());
-
 }
+
+
 
 
 function _careers_feed($category){
@@ -118,9 +119,9 @@ function _careers_feed($category){
         $arr[$x]=$obj->requisitions[$x]->category;
         $arr = array_values(array_unique($arr));
 
-      for ($x = 0; $x < count($arr); $x++) {
-          $term = Term::create(['name' => $arr[$x], 'vid' => 'clients2',])->save(); 
-      }
+       for ($x = 0; $x < count($arr); $x++) {
+          $term = Term::create(['name' => $arr[$x], 'vid' => 'clients3',])->save(); 
+      } 
 
          
 

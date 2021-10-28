@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * egnyte_testimonials module file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
+use Drupal\media\Entity\Media;
+
+
+
+
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function egnyte_testimonials_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.egnyte_testimonials':
+      $text = file_get_contents(dirname(__FILE__) . "/README.md");
+      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_theme().
+ * Lets us define our paragraphs templates in this module.
+ */
+function egnyte_testimonials_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__egnyte_testimonials' => [
+      'base hook' => 'paragraph',
+    ],
+
+  ];
+}
+
+function egnyte_testimonials_preprocess_paragraph__egnyte_testimonials(array &$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+  $node = $paragraph->field_egnyte_testimonials__quote->getValue();
+  $variables['testimonial_cards'] = _testimonial_cards($node);
+  $variables['theme'] = $paragraph->get('field_egnyte_testimonials__theme')->value;
+  $variables['job_totals'] = _careers_total();
+}
+
+
+
+function _testimonial_cards($node){
+    $arr=[];
+    $arr1=[];
+    if (!empty($node) ){
+    foreach($node as $key => $value){
+     $arr1['target_id'][$key] = $value['target_id'];
+     $nodes = Node::loadMultiple($arr1['target_id']);
+      foreach ($nodes as $num => $value){
+        if (!empty($nodes)){
+            $arr[$num]['first_name'] = $value->get('field_egnyte_profile__fname')->value;
+            $arr[$num]['last_name'] = $value->get('field_egnyte_profile__lname')->value;
+            $arr[$num]['job_title'] = $value->get('field_egnyte_profile__job_title')->value;
+            $arr[$num]['company'] = $value->get('field_egnyte_profile___company')->value;
+            $arr[$num]['header'] = $value->get('field_egnyte_profile__theader')->value;
+            $arr[$num]['quote'] = $value->get('field_egnyte_profile__testimony')->value;
+            $arr[$num]['link'] = $value->get('field_egnyte_profile__tlink')->getValue();
+            
+            if ($value->hasField('field_egnyte_profile__headshot')) {
+                $bkrd_image = $value->get('field_egnyte_profile__headshot')->getValue();
+              
+               if ($bkrd_image && !empty($bkrd_image)) {
+                  $entity = Media::load($bkrd_image[0]['target_id']);
+                  $arr[$num]['image_alt'] = $bkrd_image[0]['alt'] ;
+                  $arr[$num]['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
+              } 
+            }
+            
+            if ($value->hasField('field_egnyte_profile__vtestimony')) {
+              $video = $value->get('field_egnyte_profile__vtestimony')->getValue();
+              if ($video && !empty($video)) {
+                $entity = Media::load($video[0]['target_id']);
+                
+                $arr[$num]['bundle'] = $entity->bundle();
+                $arr[$num]['video_url'] = file_create_url($entity->field_media_video_file->entity->getFileUri());
+              }
+          
+            }
+        }
+      }
+    }
+  }
+  return $arr;
+}

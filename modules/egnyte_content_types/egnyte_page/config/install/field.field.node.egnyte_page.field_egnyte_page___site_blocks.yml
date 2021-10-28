@@ -5,11 +5,19 @@ dependencies:
     - field.storage.node.field_egnyte_page___site_blocks
     - node.type.egnyte_page
     - paragraphs.paragraphs_type.egnyte_adr
+    - paragraphs.paragraphs_type.egnyte_badges
     - paragraphs.paragraphs_type.egnyte_cards
+    - paragraphs.paragraphs_type.egnyte_careers_feed
+    - paragraphs.paragraphs_type.egnyte_careers_map
     - paragraphs.paragraphs_type.egnyte_cta
     - paragraphs.paragraphs_type.egnyte_four_column
+    - paragraphs.paragraphs_type.egnyte_news
     - paragraphs.paragraphs_type.egnyte_platform
+    - paragraphs.paragraphs_type.egnyte_tabs
+    - paragraphs.paragraphs_type.egnyte_testimonials
+    - paragraphs.paragraphs_type.egnyte_three_col_cta
     - paragraphs.paragraphs_type.egnyte_trusted_by
+    - paragraphs.paragraphs_type.egnyte_two_column_cont
     - paragraphs.paragraphs_type.egnyte_two_column_default
     - paragraphs.paragraphs_type.egnyte_two_column_lt
   module:
@@ -35,17 +43,43 @@ settings:
       egnyte_adr: egnyte_adr
       egnyte_trusted_by: egnyte_trusted_by
       egnyte_cards: egnyte_cards
+      egnyte_badges: egnyte_badges
       egnyte_two_column_default: egnyte_two_column_default
       egnyte_two_column_lt: egnyte_two_column_lt
+      egnyte_testimonials: egnyte_testimonials
+      egnyte_three_col_cta: egnyte_three_col_cta
+      egnyte_careers_feed: egnyte_careers_feed
+      egnyte_tabs: egnyte_tabs
+      egnyte_two_column_cont: egnyte_two_column_cont
+      egnyte_careers_map: egnyte_careers_map
+      egnyte_news: egnyte_news
     target_bundles_drag_drop:
+      egnyte_2column_cont_item:
+        weight: 19
+        enabled: false
       egnyte_adr:
         enabled: true
         weight: 8
+      egnyte_badges:
+        enabled: true
+        weight: 22
       egnyte_cards:
         enabled: true
         weight: 14
       egnyte_cards__item:
         weight: 15
+        enabled: false
+      egnyte_careers_feed:
+        enabled: true
+        weight: 30
+      egnyte_careers_feed__item:
+        weight: 31
+        enabled: false
+      egnyte_careers_map:
+        enabled: true
+        weight: 34
+      egnyte_careers_map__item:
+        weight: 35
         enabled: false
       egnyte_cta:
         enabled: true
@@ -53,18 +87,45 @@ settings:
       egnyte_four_column:
         enabled: true
         weight: 4
+      egnyte_four_column__2col:
+        weight: 25
+        enabled: false
+      egnyte_four_column__cards:
+        weight: 26
+        enabled: false
       egnyte_hero:
         weight: 3
         enabled: false
+      egnyte_news:
+        enabled: true
+        weight: 42
       egnyte_platform:
         enabled: true
         weight: 7
+      egnyte_tabs:
+        enabled: true
+        weight: 33
+      egnyte_tabs__item:
+        weight: 34
+        enabled: false
+      egnyte_tabs__tabs:
+        weight: 40
+        enabled: false
+      egnyte_testimonials:
+        enabled: true
+        weight: 29
+      egnyte_three_col_cta:
+        enabled: true
+        weight: 30
       egnyte_trusted_by:
         enabled: true
         weight: 9
       egnyte_two_column:
         weight: 4
         enabled: false
+      egnyte_two_column_cont:
+        enabled: true
+        weight: 33
       egnyte_two_column_default:
         enabled: true
         weight: 22

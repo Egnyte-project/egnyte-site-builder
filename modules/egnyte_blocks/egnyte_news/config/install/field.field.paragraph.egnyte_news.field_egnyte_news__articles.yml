@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_news__articles
+    - node.type.news
+    - paragraphs.paragraphs_type.egnyte_news
+id: paragraph.egnyte_news.field_egnyte_news__articles
+field_name: field_egnyte_news__articles
+entity_type: paragraph
+bundle: egnyte_news
+label: Articles
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      news: news
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

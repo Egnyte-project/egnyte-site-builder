@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_news.field_egnyte_news__articles
+    - field.field.paragraph.egnyte_news.field_egnyte_news__title
+    - paragraphs.paragraphs_type.egnyte_news
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_egnyte_news:
+      children:
+        - field_egnyte_news__title
+        - field_egnyte_news__articles
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+        open: false
+      label: News
+id: paragraph.egnyte_news.default
+targetEntityType: paragraph
+bundle: egnyte_news
+mode: default
+content:
+  field_egnyte_news__articles:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_egnyte_news__title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

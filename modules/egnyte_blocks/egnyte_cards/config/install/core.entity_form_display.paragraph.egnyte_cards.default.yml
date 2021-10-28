@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.egnyte_cards.field_egnyte_cards__eyebrows
     - field.field.paragraph.egnyte_cards.field_egnyte_cards__image
     - field.field.paragraph.egnyte_cards.field_egnyte_cards__item
     - field.field.paragraph.egnyte_cards.field_egnyte_cards__text
@@ -15,6 +16,7 @@ third_party_settings:
   field_group:
     group_egnyte_cards:
       children:
+        - field_egnyte_cards__eyebrows
         - field_egnyte_cards__title
         - field_egnyte_cards__text
         - group_egnyte_cards__item
@@ -34,7 +36,7 @@ third_party_settings:
       children:
         - field_egnyte_cards__item
       parent_name: group_egnyte_cards
-      weight: 4
+      weight: 9
       format_type: details
       region: content
       format_settings:
@@ -49,6 +51,14 @@ targetEntityType: paragraph
 bundle: egnyte_cards
 mode: default
 content:
+  field_egnyte_cards__eyebrows:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_egnyte_cards__item:
     type: entity_reference_paragraphs
     weight: 2
@@ -62,7 +72,7 @@ content:
     third_party_settings: {  }
     region: content
   field_egnyte_cards__text:
-    weight: 3
+    weight: 8
     settings:
       rows: 5
       placeholder: ''
@@ -70,13 +80,13 @@ content:
     type: string_textarea
     region: content
   field_egnyte_cards__theme:
-    weight: 5
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_egnyte_cards__title:
-    weight: 2
+    weight: 7
     settings:
       size: 60
       placeholder: ''

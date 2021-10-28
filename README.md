@@ -6,11 +6,11 @@ These components are designed as individual sub-modules that you may enable as n
 
 ### Install Via Composer
 
-`composer install egnyte/egnyte-site-builder`
+`composer require egnyte/egnyte_site_builder`
 
 ### Update Via Composer
 
-`composer install egnyte/egnyte-site-builder`
+`composer update egnyte/egnyte_site_builder`
 
 ## Submodules
 
@@ -26,8 +26,11 @@ The following Widgets are available:
 - Cards: Provides a paragraphs bundle for adding Card Elements to site.
 - Call To Action: Provides a paragraphs bundle for adding a Call to Action block to any Egnyte webpage.
 - Carousel Call To Action: Provides a Block for adding a Carousel Call to Action block to any Egnyte webpage.
+- Careers Feed: Provides a paragraphs bundle to display Egnyte Job listings directly from the Egnyte Jobvite API.
+
 - Four Column Block: Provides a paragraphs bundle for adding a Four Column Block to any Egnyte webpage.
 - Hero: Provides a paragraphs bundle for adding a Hero Block to any Egnyte webpage.
+News Block: Provides a paragraphs bundle for creating a block that displays up to 3 news cards directy on an Egnyte webpage.
 - Platform: Provides a paragraphs bundle for adding a Platform Block to any Egnyte webpage.
 - Tabs: Provides a paragraphs bundle for adding a Tabs block to any Egnyte webpage.
 - Testimonials: Provides a paragraphs bundle for crreating a block that displays card or slide testimonials.

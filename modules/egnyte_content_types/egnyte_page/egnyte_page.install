@@ -16,3 +16,7 @@ function egnyte_page_update_8002() {
 function egnyte_page_update_8003() {
   \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_page');
 }
+
+function egnyte_page_update_8004() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_page');
+}

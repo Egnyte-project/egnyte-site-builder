@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-name: 'Egnyte Careers__category'
+name: 'Careers Category'
 vid: egnyte_careers__category
 description: ''
 weight: 0
