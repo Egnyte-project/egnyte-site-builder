@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * egnyte_profiles install file.
+ */
+
+function egnyte_profiles_update_8001() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_profile');
+}
