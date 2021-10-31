@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_careers_map__mvtitl
+    - paragraphs.paragraphs_type.egnyte_careers_map
+id: paragraph.egnyte_careers_map.field_egnyte_careers_map__mvtitl
+field_name: field_egnyte_careers_map__mvtitl
+entity_type: paragraph
+bundle: egnyte_careers_map
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_egnyte_career_profiles__de
+    - node.type.egnyte_career_profiles
+  module:
+    - text
+id: node.egnyte_career_profiles.field_egnyte_career_profiles__de
+field_name: field_egnyte_career_profiles__de
+entity_type: node
+bundle: egnyte_career_profiles
+label: Details
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: "<div class=\"grid-col grid-col--6 grid-col--lg-12\">\r\n<ul class=\"p p--small careers-map__popup-list\">\r\n\t<li>Comprehensive full health benefits for you and your family</li>\r\n\t<li>Onsite wellness program</li>\r\n\t<li>401(k) Retirement Plan (Traditional and Roth)</li>\r\n</ul>\r\n</div>\r\n\r\n<div class=\"grid-col grid-col--6 grid-col--lg-12\">\r\n<ul class=\"p p--small careers-map__popup-list\">\r\n\t<li>Gym and cell phone reimbursement</li>\r\n\t<li>Employee Assistance Programs</li>\r\n\t<li>Monthly employee events</li>\r\n</ul>\r\n</div>\r\n"
+    format: full_html
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_egnyte_career_profiles__lo
+field_name: field_egnyte_career_profiles__lo
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: mountain-view
+      label: 'Mountain View, CA'
+    -
+      value: spokane
+      label: 'Spokane, WA'
+    -
+      value: raleigh
+      label: 'Raleigh, NC'
+    -
+      value: emea
+      label: 'EMEA, UK'
+    -
+      value: poznan
+      label: 'Poznan, Poland'
+    -
+      value: remote
+      label: Remote
+    -
+      value: mumbai
+      label: 'Mumbai, India'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

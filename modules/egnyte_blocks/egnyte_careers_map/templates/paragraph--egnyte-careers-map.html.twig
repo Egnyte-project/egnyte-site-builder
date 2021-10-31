@@ -1,18 +1,34 @@
 <div class="mt-500 careers-map">
   <div class="careers-map__bg">
-    <img src="img/careers-map/bg.png" srcset="img/careers-map/bg@2x.png 2x" width="100%" height="" alt="" />
-      {{ content.field_egnyte_careers_map__items }}
+    <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_careers_map/templates/images/bg.png" width="100%" height="" alt="" />
+    {% for value in career_locations  %}
+    <button class="careers-map__pin careers-map__pin--{{ value.location }}"></button>
+    <div class="careers-map__popup careers-map__popup--{{ value.location }}">
+      <img src="{{ value.image }}" width="646" height="246" alt="" class="careers-map__popup-img">
+      <button class="careers-map__popup-close"></button>
+      <div class="careers-map__popup-cont">
+        <div class="grid-row grid-row--nog grid-row--aic">
+          <div class="grid-col">
+            <h4 class="careers-map__city h4">{{ value.city }}</h4>
+          </div>
+          <div class="grid-col grid-col--auto">
+            <a href="{{ value.link.0.uri }}" class="careers-map__view-link"><span class="removed-md">View </span>Open Roles</a>
+          </div>
+        </div>
+        <div class="mt-25 p p--xsmall fw--500 tc--light">{{ value.subtitle }}</div>
+        <div class="mt-25 grid-row">
+          {{ value.details | raw }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}   
   </div>
   <div class="grid-cont">
     <h5 class="removed-sm">{{ content.field_egnyte_careers_map__title }}</h5>
     <div class="careers-map__tabs">
-      <a href="#" class="">Mountain View, CA</a>
-      <a href="#" class="">Spokane, WA</a>
-      <a href="#" class="">Raleigh, NC</a>
-      <a href="#" class="">EMEA, UK</a>
-      <a href="#" class="">Poznań, Poland</a>
-      <a href="#" class="">Mumbai, India</a>
-      <a href="#" class="">Remote</a>
+      {% for value in career_locations  %}
+        <a href="#" class="">{{ value.city }}</a>
+      {% endfor %}
     </div>
   </div>
 </div>

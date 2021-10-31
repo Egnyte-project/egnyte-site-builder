@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_egnyte_career_profiles__lo
+    - node.type.egnyte_career_profiles
+  module:
+    - options
+id: node.egnyte_career_profiles.field_egnyte_career_profiles__lo
+field_name: field_egnyte_career_profiles__lo
+entity_type: node
+bundle: egnyte_career_profiles
+label: Locations
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Mountain View, CA'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.egnyte_career_profiles.field_egnyte_career_profile__img
+    - field.field.node.egnyte_career_profiles.field_egnyte_career_profile__sub
+    - field.field.node.egnyte_career_profiles.field_egnyte_career_profiles__de
+    - field.field.node.egnyte_career_profiles.field_egnyte_career_profiles__lo
+    - node.type.egnyte_career_profiles
+  module:
+    - user
+id: node.egnyte_career_profiles.teaser
+targetEntityType: node
+bundle: egnyte_career_profiles
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_egnyte_career_profile__img: true
+  field_egnyte_career_profile__sub: true
+  field_egnyte_career_profiles__de: true
+  field_egnyte_career_profiles__lo: true
+  search_api_excerpt: true

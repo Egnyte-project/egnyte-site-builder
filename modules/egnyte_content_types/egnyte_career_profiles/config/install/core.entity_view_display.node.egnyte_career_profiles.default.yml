@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.egnyte_career_profiles.field_egnyte_career_profile__img
+    - field.field.node.egnyte_career_profiles.field_egnyte_career_profile__sub
+    - field.field.node.egnyte_career_profiles.field_egnyte_career_profiles__de
+    - field.field.node.egnyte_career_profiles.field_egnyte_career_profiles__lo
+    - node.type.egnyte_career_profiles
+  module:
+    - options
+    - text
+    - user
+id: node.egnyte_career_profiles.default
+targetEntityType: node
+bundle: egnyte_career_profiles
+mode: default
+content:
+  field_egnyte_career_profile__img:
+    type: entity_reference_entity_view
+    weight: 105
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_egnyte_career_profile__sub:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_egnyte_career_profiles__de:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_egnyte_career_profiles__lo:
+    weight: 107
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true

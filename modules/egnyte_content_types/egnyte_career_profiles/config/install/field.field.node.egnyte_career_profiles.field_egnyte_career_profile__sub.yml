@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_egnyte_career_profile__sub
+    - node.type.egnyte_career_profiles
+id: node.egnyte_career_profiles.field_egnyte_career_profile__sub
+field_name: field_egnyte_career_profile__sub
+entity_type: node
+bundle: egnyte_career_profiles
+label: Subtitle
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Location specific benefits'
+default_value_callback: ''
+settings: {  }
+field_type: string

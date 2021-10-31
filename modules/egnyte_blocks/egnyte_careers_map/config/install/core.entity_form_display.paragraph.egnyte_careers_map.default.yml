@@ -1,0 +1,65 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_careers_map.field_egnyte_careers_map__items
+    - field.field.paragraph.egnyte_careers_map.field_egnyte_careers_map__locati
+    - field.field.paragraph.egnyte_careers_map.field_egnyte_careers_map__mvtext
+    - field.field.paragraph.egnyte_careers_map.field_egnyte_careers_map__mvtitl
+    - paragraphs.paragraphs_type.egnyte_careers_map
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_egnyte_careers_map__mv:
+      children:
+        - field_egnyte_careers_map__mvtitl
+        - field_egnyte_careers_map__mvtext
+        - field_egnyte_careers_map__locati
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+        open: false
+      label: 'Career Map Profiles'
+id: paragraph.egnyte_careers_map.default
+targetEntityType: paragraph
+bundle: egnyte_careers_map
+mode: default
+content:
+  field_egnyte_careers_map__locati:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_egnyte_careers_map__mvtext:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_egnyte_careers_map__mvtitl:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  field_egnyte_careers_map__items: true
+  status: true

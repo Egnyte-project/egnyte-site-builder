@@ -1,0 +1,9 @@
+name: 'Egnyte Site Builder: Careers Profiles'
+type: module
+description: 'Provides a node to create Careers Profiles and displays each profile on the Egnyte Careers Location Map.'
+version: 8.x-1.0
+core: 8.x
+package: 'Egnyte Site Builder'
+dependencies:
+  - menu_ui
+core_version_requirement: '^8 || ^9'

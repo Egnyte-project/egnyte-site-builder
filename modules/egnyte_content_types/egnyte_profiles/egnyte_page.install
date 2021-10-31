@@ -8,3 +8,8 @@
 function egnyte_profiles_update_8001() {
   \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_profile');
 }
+
+
+function egnyte_profiles_update_8002() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_profile');
+}

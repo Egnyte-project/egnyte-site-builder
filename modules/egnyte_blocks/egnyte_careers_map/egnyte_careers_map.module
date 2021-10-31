@@ -6,7 +6,9 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\taxonomy\Entity\Term;
+use Drupal\node\Entity\Node;
+use Drupal\media\Entity\Media;
+
 
 
 
@@ -55,18 +57,38 @@ function egnyte_careers_map_theme($existing, $type, $theme, $path) {
 
 function egnyte_careers_map_preprocess_paragraph__egnyte_careers_map(array &$variables) {
   $paragraph = $variables['elements']['#paragraph'];
-  
+  $node = $paragraph->field_egnyte_careers_map__locati->getValue();
+
+  $variables['career_locations'] = _career_locations($node);
 }
 
-function egnyte_careers_map_preprocess_paragraph__egnyte_careers_map__item(array &$variables) {
-  $paragraph = $variables['elements']['#paragraph'];
+function _career_locations($node){
+  $arr=[];
+  $arr1=[];
+ 
+  if (!empty($node) ){
+  foreach($node as $key => $value){
+   $arr1['target_id'][$key] = $value['target_id'];
+   $nodes = Node::loadMultiple($arr1['target_id']);
+    foreach ($nodes as $num => $value){
+      if (!empty($nodes)){
+          $arr[$num]['city'] = $value->get('title')->value;
+          $arr[$num] ['subtitle']= $value->get('field_egnyte_career_profile__sub')->value;
+          $arr[$num]['details']= $value->get('field_egnyte_career_profiles__de')->value;
+          $arr[$num]['location']= $value->get('field_egnyte_career_profiles__lo')->value;
 
-  if ( $paragraph->get('egnyte_careers_map__item_h')->value ) {
-      $variables['title'] = $paragraph->get('egnyte_careers_map__item_h')->value;
+          if ($value->hasField('field_egnyte_career_profile__img')) {
+            $bkrd_image = $value->get('field_egnyte_career_profile__img')->getValue();
+            if ($bkrd_image && !empty($bkrd_image)) {
+              $entity = Media::load($bkrd_image[0]['target_id']);
+              if (isset($entity->field_media_image->entity)) {
+                $arr[$num]['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
+              }
+            }
+          } 
+      }
+    }
   }
-
-  if ( $paragraph->get('egnyte_careers_map__item_t')->value ) {
-      $variables['text'] = $paragraph->get('egnyte_careers_map__item_t')->value;
-  }
-  
+}
+return $arr;
 }
