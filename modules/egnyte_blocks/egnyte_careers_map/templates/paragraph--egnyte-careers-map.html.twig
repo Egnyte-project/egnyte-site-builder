@@ -3,7 +3,7 @@
     <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_careers_map/templates/images/bg.png" width="100%" height="" alt="" />
     {% for value in career_locations  %}
     <button class="careers-map__pin careers-map__pin--{{ value.location }}"></button>
-    <div class="careers-map__popup careers-map__popup--{{ value.location }}">
+    <div class="careers-map__popup careers-map__popup--alt careers-map__popup--{{ value.location }}">
       <img src="{{ value.image }}" width="646" height="246" alt="" class="careers-map__popup-img">
       <button class="careers-map__popup-close"></button>
       <div class="careers-map__popup-cont">
@@ -24,7 +24,7 @@
     {% endfor %}   
   </div>
   <div class="grid-cont">
-    <h5 class="removed-sm">{{ content.field_egnyte_careers_map__title }}</h5>
+    <h5 class="removed-sm">{{ content.field_egnyte_careers_map__mvtitl[0] }}</h5>
     <div class="careers-map__tabs">
       {% for value in career_locations  %}
         <a href="#" class="">{{ value.city }}</a>
