@@ -103,7 +103,7 @@ function _careers_feed($category,$uuid){
     }
 
     if ($arr) {
-      \Drupal::cache()->set('career_total--' . $uuid, $arr, time() + 7200);
+      \Drupal::cache()->set('careers_feed--' . $uuid, $arr, time() + 7200);
       return $arr;
     }
     else {
