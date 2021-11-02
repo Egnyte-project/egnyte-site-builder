@@ -52,10 +52,13 @@ function egnyte_testimonials_theme($existing, $type, $theme, $path) {
 
 function egnyte_testimonials_preprocess_paragraph__egnyte_testimonials(array &$variables) {
   $paragraph = $variables['elements']['#paragraph'];
+  // UUID to pass for cache.
+  $uuid = $variables['elements']['#paragraph']->uuid->value;
+
   $node = $paragraph->field_egnyte_testimonials__quote->getValue();
   $variables['testimonial_cards'] = _testimonial_cards($node);
   $variables['theme'] = $paragraph->get('field_egnyte_testimonials__theme')->value;
-  $variables['job_totals'] = _careers_total();
+  $variables['job_totals'] = _careers_total($uuid);
 }
 
 

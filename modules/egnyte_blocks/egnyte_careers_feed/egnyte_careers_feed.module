@@ -6,9 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
-use \Drupal\file\Entity\File;
 
 
 
@@ -38,10 +36,6 @@ function egnyte_careers_feed_help($route_name, RouteMatchInterface $route_match)
   return NULL;
 }
 
-function egnyte_careers_preprocess_page(&$variables) {
-  var_dump(_careers_taxonomy());
-
-}
 
 /**
  * Implements hook_theme().
@@ -63,13 +57,15 @@ function egnyte_careers_feed_theme($existing, $type, $theme, $path) {
 
 function egnyte_careers_feed_preprocess_paragraph__egnyte_careers_feed__item(array &$variables) {
   $paragraph = $variables['elements']['#paragraph'];
+  // UUID to pass for cache.
+  $uuid = $variables['elements']['#paragraph']->uuid->value;
   
   if($paragraph->field_egnyte_careers_feed__itemc->target_id){
       $tid = $paragraph->field_egnyte_careers_feed__itemc->target_id;
       $category = Term::load($tid)->get('name')->value;
   }
   
-  $variables['careers'] = _careers_feed($category);
+  $variables['careers'] = _careers_feed($category,$uuid);
   $variables['category'] = $category;
 
 }
@@ -77,59 +73,46 @@ function egnyte_careers_feed_preprocess_paragraph__egnyte_careers_feed__item(arr
 
 function egnyte_careers_feed_preprocess_paragraph__egnyte_careers_feed(array &$variables) {
   $paragraph = $variables['elements']['#paragraph'];
- // var_dump(_careers_taxonomy());
 }
 
 
 
 
-function _careers_feed($category){
-  $arr = array();
-  $api = preg_replace("/\s+/", "%20", 'https://api.jobvite.com/api/v2/job?api=egnyte_jobfeed_api_key&sc=0def69f2df5ac3ff24e600d4c2ba00ab&jobStatus=Open&availableTo=external&category='. $category );
-  $json = file_get_contents($api);
-
-  $obj = json_decode($json);
-  $counter = $obj->total > 5 ? 5 :  $obj->total;
+function _careers_feed($category,$uuid){
   
-  for ($x = 0; $x < $counter; $x++) {
-    $arr[$x]['job_title'] = $obj->requisitions[$x]->title;
-    $arr[$x]['job_description'] = limit_text( strip_tags($obj->requisitions[$x]->description), 50);
-    $arr[$x]['job_description_link'] =  $obj->requisitions[$x]->detailLink;
-    $arr[$x]['job_apply_link'] =  $obj->requisitions[$x]->applyLink;
-    $arr[$x]['job_location'] = $obj->requisitions[$x]->location;
-    $arr[$x]['job_location_city'] = $obj->requisitions[$x]->locationCity;
-    $arr[$x]['job_location_state'] = $obj->requisitions[$x]->jobLocations[0]->state == '' ? '' : ', '. $obj->requisitions[$x]->jobLocations[0]->state ;
-
+  if ($cache = \Drupal::cache()->get('careers_feed--' . $uuid )) {
+    return $cache->data;
   }
-    return $arr;
+  else{
 
-  
-  }
-
-  function _careers_taxonomy(){
-    $arr  = array();
-    $api = preg_replace("/\s+/", "", 'https://api.jobvite.com/api/v2/job?api=egnyte_jobfeed_api_key&sc=0def69f2df5ac3ff24e600d4c2ba00ab&jobStatus=Open&availableTo=external');
+    $arr = array();
+    $api = preg_replace("/\s+/", "%20", 'https://api.jobvite.com/api/v2/job?api=egnyte_jobfeed_api_key&sc=0def69f2df5ac3ff24e600d4c2ba00ab&jobStatus=Open&availableTo=external&category='. $category );
     $json = file_get_contents($api);
-   
-    $obj = json_decode($json);
-    $counter =  $obj->total;
 
+    $obj = json_decode($json);
+    $counter = $obj->total > 5 ? 5 :  $obj->total;
     
     for ($x = 0; $x < $counter; $x++) {
-        $arr[$x]=$obj->requisitions[$x]->category;
-        $arr = array_values(array_unique($arr));
+      $arr[$x]['job_title'] = $obj->requisitions[$x]->title;
+      $arr[$x]['job_description'] = limit_text( strip_tags($obj->requisitions[$x]->description), 50);
+      $arr[$x]['job_description_link'] =  $obj->requisitions[$x]->detailLink;
+      $arr[$x]['job_apply_link'] =  $obj->requisitions[$x]->applyLink;
+      $arr[$x]['job_location'] = $obj->requisitions[$x]->location;
+      $arr[$x]['job_location_city'] = $obj->requisitions[$x]->locationCity;
+      $arr[$x]['job_location_state'] = $obj->requisitions[$x]->jobLocations[0]->state == '' ? '' : ', '. $obj->requisitions[$x]->jobLocations[0]->state ;
+    }
 
-       for ($x = 0; $x < count($arr); $x++) {
-          $term = Term::create(['name' => $arr[$x], 'vid' => 'clients3',])->save(); 
-      } 
-
-         
-
-    } 
-    //return $arr;
-
-    return $term;
+    if ($arr) {
+      \Drupal::cache()->set('career_total--' . $uuid, $arr, time() + 7200);
+      return $arr;
+    }
+    else {
+        return NULL;
+    }
+    
+  }
   
   
+
   
   }

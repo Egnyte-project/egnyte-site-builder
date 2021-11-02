@@ -53,6 +53,10 @@ function egnyte_hero_theme($existing, $type, $theme, $path) {
 function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
   
   $paragraph = $variables['elements']['#paragraph'];
+    
+  // UUID to pass for cache.
+  $uuid = $variables['elements']['#paragraph']->uuid->value;
+
 
 
   if ( $paragraph->get('field_egnyte_hero__theme')->value) {
@@ -77,6 +81,6 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
   }
 
  
-  $variables['job_totals'] = _careers_total();
+  $variables['job_totals'] = _careers_total($uuid);
 
 }
