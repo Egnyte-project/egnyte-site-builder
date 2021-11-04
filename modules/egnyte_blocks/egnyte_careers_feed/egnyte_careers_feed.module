@@ -70,14 +70,6 @@ function egnyte_careers_feed_preprocess_paragraph__egnyte_careers_feed__item(arr
 
 }
 
-
-function egnyte_careers_feed_preprocess_paragraph__egnyte_careers_feed(array &$variables) {
-  $paragraph = $variables['elements']['#paragraph'];
-}
-
-
-
-
 function _careers_feed($category,$uuid){
   
   if ($cache = \Drupal::cache()->get('careers_feed--' . $uuid )) {
@@ -90,21 +82,27 @@ function _careers_feed($category,$uuid){
     $json = file_get_contents($api);
 
     $obj = json_decode($json);
-    $counter = $obj->total > 5 ? 5 :  $obj->total;
+    $counter =  $obj->total;
     
     for ($x = 0; $x < $counter; $x++) {
-      $arr[$x]['job_title'] = $obj->requisitions[$x]->title;
-      $arr[$x]['job_description'] = limit_text( strip_tags($obj->requisitions[$x]->description), 50);
-      $arr[$x]['job_description_link'] =  $obj->requisitions[$x]->detailLink;
-      $arr[$x]['job_apply_link'] =  $obj->requisitions[$x]->applyLink;
-      $arr[$x]['job_location'] = $obj->requisitions[$x]->location;
-      $arr[$x]['job_location_city'] = $obj->requisitions[$x]->locationCity;
-      $arr[$x]['job_location_state'] = $obj->requisitions[$x]->jobLocations[0]->state == '' ? '' : ', '. $obj->requisitions[$x]->jobLocations[0]->state ;
+      if ($obj->requisitions[$x]->distribution == "true" ){
+          $arr[$x]['job_title'] = $obj->requisitions[$x]->title;
+          $arr[$x]['job_description'] = limit_text( strip_tags($obj->requisitions[$x]->description), 50 );
+          $arr[$x]['job_description_link'] =  $obj->requisitions[$x]->detailLink;
+          $arr[$x]['job_apply_link'] =  $obj->requisitions[$x]->eId;
+          $arr[$x]['job_location'] = $obj->requisitions[$x]->location;
+          $arr[$x]['job_location_city'] = $obj->requisitions[$x]->locationCity;
+          $arr[$x]['job_location_state'] = $obj->requisitions[$x]->jobLocations[0]->state == '' ? '' : ', '. $obj->requisitions[$x]->jobLocations[0]->state ;
+          $arr[$x]['count'] =  $obj->total > 5 ? 5 :  $obj->total;
+      }
     }
 
+    
+
     if ($arr) {
+      $arr = array_splice($arr,  0, 5, true);
       \Drupal::cache()->set('careers_feed--' . $uuid, $arr, time() + 7200);
-      return $arr;
+      return  $arr;
     }
     else {
         return NULL;

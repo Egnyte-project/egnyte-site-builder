@@ -51,12 +51,15 @@ function egnyte_testimonials_theme($existing, $type, $theme, $path) {
 }
 
 function egnyte_testimonials_preprocess_paragraph__egnyte_testimonials(array &$variables) {
+  $variables['#attached']['library'][] =  'egnyte/testimonial_block';
+
   $paragraph = $variables['elements']['#paragraph'];
   // UUID to pass for cache.
   $uuid = $variables['elements']['#paragraph']->uuid->value;
 
   $node = $paragraph->field_egnyte_testimonials__quote->getValue();
   $variables['testimonial_cards'] = _testimonial_cards($node);
+  var_dump(_testimonial_cards($node));
   $variables['theme'] = $paragraph->get('field_egnyte_testimonials__theme')->value;
   $variables['job_totals'] = _careers_total($uuid);
 }
@@ -95,8 +98,10 @@ function _testimonial_cards($node){
               if ($video && !empty($video)) {
                 $entity = Media::load($video[0]['target_id']);
                 
-                $arr[$num]['bundle'] = $entity->bundle();
-                $arr[$num]['video_url'] = file_create_url($entity->field_media_video_file->entity->getFileUri());
+                if (isset($entity->field_media_oembed_video->value)) {
+                  $arr[$num]['bundle'] = $entity->bundle();
+                  $arr[$num]['video_url'] = str_replace("https://vimeo.com/", "", $entity->field_media_oembed_video->value); 
+                }
               }
           
             }

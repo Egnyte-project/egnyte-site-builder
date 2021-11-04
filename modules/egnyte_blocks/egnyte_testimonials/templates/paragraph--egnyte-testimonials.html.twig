@@ -70,7 +70,7 @@
 
 {% if theme == 'Careers' %}  
 
-<div class="mt-500 careers-reviews">
+<div class="mt-1250 careers-reviews">
   <div class="grid-cont grid-cont--xl">
     <h6 class="h6">Employee testimonials</h6>
     <h2 class="h2">{{ content.field_egnyte_testimonials__title[0] }}</h2>
@@ -83,7 +83,7 @@
           <img src="{{ value.image }}"  alt="{{ value.image_alt }}" />
         </div>
         <div class="careers-reviews__video">
-          <video controls><source src="{{ value.video_url }}" type="video/mp4"></video>
+          <iframe src="https://player.vimeo.com/video/{{ value.video_url }}" width="100%" height="100%" frameborder="0"  allow="autoplay; fullscreen; accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe>
         </div>
       </div>
     {% endfor %}
@@ -107,10 +107,10 @@
           <div class="grid-col grid-col--auto grid-col--lg-12">
               <div class="careers-reviews__divider"></div>
           </div>
-          <div class="grid-col grid-col--lg-12">
-            <h5 class="h5">Great People</h5>
+          <!--<div class="grid-col grid-col--lg-12">
+             <h5 class="h5">Great People</h5>
             <p class="mt-50 p p--medium tc--dark">We hire great people because working with great people makes all the difference.</p>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
