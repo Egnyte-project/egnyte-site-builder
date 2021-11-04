@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_egnyte_profile__vtestimony
-    - media.type.video
+    - media.type.remote_video
     - node.type.egnyte_profiles
 id: node.egnyte_profiles.field_egnyte_profile__vtestimony
 field_name: field_egnyte_profile__vtestimony
@@ -19,10 +19,10 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      video: video
+      remote_video: remote_video
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: remote_video
+    auto_create_bundle: ''
 field_type: entity_reference
