@@ -59,7 +59,7 @@ function egnyte_testimonials_preprocess_paragraph__egnyte_testimonials(array &$v
 
   $node = $paragraph->field_egnyte_testimonials__quote->getValue();
   $variables['testimonial_cards'] = _testimonial_cards($node);
-  var_dump(_testimonial_cards($node));
+ // var_dump(_testimonial_cards($node));
   $variables['theme'] = $paragraph->get('field_egnyte_testimonials__theme')->value;
   $variables['job_totals'] = _careers_total($uuid);
 }

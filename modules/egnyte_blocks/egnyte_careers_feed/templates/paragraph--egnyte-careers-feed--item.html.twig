@@ -1,7 +1,7 @@
 <h4 class="h3 h3--small careers-recent__heading">{{ category }}</h4>
 {% for value in careers  %}
 <div class="careers-recent__item">
-    <a href="{{ value.job_apply_link }}" class="p careers-recent__name" target="_BLANK">{{ value.job_title }}</a>
+    <a href="https://jobs.jobvite.com/egnyte/job/{{ value.job_apply_link }}" class="p careers-recent__name" target="_BLANK">{{ value.job_title }}</a>
     <div class="careers-recent__city">{{ value.job_location_city }}{{ value.job_location_state }}</div>
 </div>
 {% endfor %}
