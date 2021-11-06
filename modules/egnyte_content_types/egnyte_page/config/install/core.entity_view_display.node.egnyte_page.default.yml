@@ -4,9 +4,11 @@ dependencies:
   config:
     - field.field.node.egnyte_page.field_egnyte_page___site_blocks
     - field.field.node.egnyte_page.field_egnyte_page__hero
+    - field.field.node.egnyte_page.field_field_egnyte_page__metatag
     - node.type.egnyte_page
   module:
     - entity_reference_revisions
+    - metatag
     - user
 id: node.egnyte_page.default
 targetEntityType: node
@@ -30,6 +32,13 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
+  field_field_egnyte_page__metatag:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
     region: content
   links:
     weight: 100

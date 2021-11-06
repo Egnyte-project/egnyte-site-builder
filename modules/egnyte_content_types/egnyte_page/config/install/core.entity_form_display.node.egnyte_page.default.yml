@@ -4,9 +4,11 @@ dependencies:
   config:
     - field.field.node.egnyte_page.field_egnyte_page___site_blocks
     - field.field.node.egnyte_page.field_egnyte_page__hero
+    - field.field.node.egnyte_page.field_field_egnyte_page__metatag
     - node.type.egnyte_page
   module:
     - field_group
+    - metatag
     - paragraphs
     - path
 third_party_settings:
@@ -73,6 +75,13 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
+    region: content
+  field_field_egnyte_page__metatag:
+    weight: 26
+    settings:
+      sidebar: true
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   path:
     type: path

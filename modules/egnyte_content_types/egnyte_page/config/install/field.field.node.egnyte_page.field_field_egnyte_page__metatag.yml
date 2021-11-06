@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_field_egnyte_page__metatag
+    - node.type.egnyte_page
+  module:
+    - metatag
+id: node.egnyte_page.field_field_egnyte_page__metatag
+field_name: field_field_egnyte_page__metatag
+entity_type: node
+bundle: egnyte_page
+label: Metatag
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag
