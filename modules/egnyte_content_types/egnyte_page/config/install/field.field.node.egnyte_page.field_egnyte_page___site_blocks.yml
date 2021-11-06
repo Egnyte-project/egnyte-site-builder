@@ -13,7 +13,6 @@ dependencies:
     - paragraphs.paragraphs_type.egnyte_four_column
     - paragraphs.paragraphs_type.egnyte_news
     - paragraphs.paragraphs_type.egnyte_platform
-    - paragraphs.paragraphs_type.egnyte_tabs
     - paragraphs.paragraphs_type.egnyte_testimonials
     - paragraphs.paragraphs_type.egnyte_three_col_cta
     - paragraphs.paragraphs_type.egnyte_trusted_by
@@ -49,7 +48,6 @@ settings:
       egnyte_testimonials: egnyte_testimonials
       egnyte_three_col_cta: egnyte_three_col_cta
       egnyte_careers_feed: egnyte_careers_feed
-      egnyte_tabs: egnyte_tabs
       egnyte_two_column_cont: egnyte_two_column_cont
       egnyte_careers_map: egnyte_careers_map
       egnyte_news: egnyte_news
@@ -102,15 +100,6 @@ settings:
       egnyte_platform:
         enabled: true
         weight: 7
-      egnyte_tabs:
-        enabled: true
-        weight: 33
-      egnyte_tabs__item:
-        weight: 34
-        enabled: false
-      egnyte_tabs__tabs:
-        weight: 40
-        enabled: false
       egnyte_testimonials:
         enabled: true
         weight: 29

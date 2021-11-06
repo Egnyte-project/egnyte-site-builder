@@ -27,6 +27,10 @@ dependencies:
   - egnyte_three_col_cta
   - egnyte_trusted_by
   - egnyte_two_column
+  - egnyte_news
   - egnyte_profiles
   - egnyte_testimonials
+  - egnyte_career_profiles
+  - egnyte_careers_map
   - egnyte_page
+  
