@@ -2,8 +2,8 @@
   <div class="careers-map__bg">
     <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_careers_map/templates/images/bg.png" width="100%" height="" alt="" />
     {% for value in career_locations  %}
-    <button class="careers-map__pin careers-map__pin--{{ value.location }}"></button>
-    <div class="careers-map__popup careers-map__popup--alt careers-map__popup--{{ value.location }}">
+    <button class="careers-map__pin {{ value.pin }}"></button>
+    <div class="careers-map__popup {{ value.popup }}">
       <img src="{{ value.image }}" width="646" height="246" alt="" class="careers-map__popup-img">
       <button class="careers-map__popup-close"></button>
       <div class="careers-map__popup-cont">
