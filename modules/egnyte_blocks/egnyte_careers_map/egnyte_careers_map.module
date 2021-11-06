@@ -55,6 +55,11 @@ function egnyte_careers_map_theme($existing, $type, $theme, $path) {
 }
 
 
+function egnyte_career_map_preprocess_page(array &$variables) {
+  $variables['#attached']['library'][] =  'egnyte/careers-map-block-js';
+} 
+
+
 function egnyte_careers_map_preprocess_paragraph__egnyte_careers_map(array &$variables) {
   $paragraph = $variables['elements']['#paragraph'];
   $node = $paragraph->field_egnyte_careers_map__locati->getValue();
@@ -70,12 +75,17 @@ function _career_locations($node){
   foreach($node as $key => $value){
    $arr1['target_id'][$key] = $value['target_id'];
    $nodes = Node::loadMultiple($arr1['target_id']);
+   $alt_locations = array("poznan", "mumbai", "remote");
     foreach ($nodes as $num => $value){
       if (!empty($nodes)){
           $arr[$num]['city'] = $value->get('title')->value;
           $arr[$num] ['subtitle']= $value->get('field_egnyte_career_profile__sub')->value;
           $arr[$num]['details']= $value->get('field_egnyte_career_profiles__de')->value;
-          $arr[$num]['location']= $value->get('field_egnyte_career_profiles__lo')->value;
+          $location = $value->get('field_egnyte_career_profiles__lo')->value;
+          $arr[$num]['popup']= in_array($location, $alt_locations) ? "careers-map__popup--alt careers-map__popup--".$location : "careers-map__popup--".$location;
+          $arr[$num]['pin']= "careers-map__pin--".$location;
+
+
 
           if ($value->hasField('field_egnyte_career_profile__img')) {
             $bkrd_image = $value->get('field_egnyte_career_profile__img')->getValue();

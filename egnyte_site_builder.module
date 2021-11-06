@@ -73,10 +73,18 @@ function _careers_total($uuid){
     $json = file_get_contents($api);
 
     $obj = json_decode($json);
-    $arr[0]= $obj->total;
-    if ($arr[0]) {
-      \Drupal::cache()->set('career_total--' . $uuid, $arr[0], time() + 7200);
-      return $arr[0];
+    $counter =  $obj->total;
+   // $arr[0]= $obj->total;
+
+    for ($x = 0; $x < $counter; $x++) {
+      if ($obj->requisitions[$x]->distribution == "true" ){
+          $arr[$x] = $obj->requisitions[$x]->title;
+      }
+    }
+    if ($arr) {
+      $count = count($arr);
+      \Drupal::cache()->set('career_total--' . $uuid, $count, time() + 7200);
+      return $count;
     }
     else {
         return NULL;

@@ -50,8 +50,11 @@ function egnyte_testimonials_theme($existing, $type, $theme, $path) {
   ];
 }
 
+function egnyte_testimonials_preprocess_page(array &$variables) {
+  $variables['#attached']['library'][] =  'egnyte/testimonials-block-js';
+}
+
 function egnyte_testimonials_preprocess_paragraph__egnyte_testimonials(array &$variables) {
-  $variables['#attached']['library'][] =  'egnyte/testimonial_block';
 
   $paragraph = $variables['elements']['#paragraph'];
   // UUID to pass for cache.
@@ -59,7 +62,6 @@ function egnyte_testimonials_preprocess_paragraph__egnyte_testimonials(array &$v
 
   $node = $paragraph->field_egnyte_testimonials__quote->getValue();
   $variables['testimonial_cards'] = _testimonial_cards($node);
- // var_dump(_testimonial_cards($node));
   $variables['theme'] = $paragraph->get('field_egnyte_testimonials__theme')->value;
   $variables['job_totals'] = _careers_total($uuid);
 }

@@ -45,6 +45,12 @@ function egnyte_cta_theme($existing, $type, $theme, $path) {
   ];
 }
 
+function egnyte_cta_preprocess_page(array &$variables) {
+  $variables['#attached']['library'][] =  'egnyte/callout-block-js';
+}
+
+
+
 function egnyte_cta_preprocess_paragraph__egnyte_cta(&$variables) {
   
   $paragraph = $variables['elements']['#paragraph'];
@@ -69,11 +75,6 @@ function egnyte_cta_preprocess_paragraph__egnyte_cta(&$variables) {
       $variables['theme_p_class'] = 'mt-50 p p--medium tc--dark';  
       $variables['background'] = 'background: url(/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_cta/templates/images/bg.png) 50% 50%/cover;';
   }
-
-  
-  
-
-  
 
 
 }
