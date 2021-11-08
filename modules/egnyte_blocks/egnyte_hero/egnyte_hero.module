@@ -48,7 +48,7 @@ function egnyte_hero_theme($existing, $type, $theme, $path) {
 }
 
 function egnyte_hero_preprocess_page(array &$variables) {
-  $variables['#attached']['library'][] =  'egnyte/hero-js';
+  $variables['#attached']['library'][] =  'egnyte/hero-block-js';
 }
 
 /**
