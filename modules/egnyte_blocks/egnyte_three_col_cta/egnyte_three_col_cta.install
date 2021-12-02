@@ -8,3 +8,13 @@
 function egnyte_three_col_cta_update_8001() {
   \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_three_col_cta');
 }
+
+function egnyte_three_col_cta_update_8002()
+{
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_three_col_cta');
+}
+
+function egnyte_three_col_cta_update_8003()
+{
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_three_col_cta');
+}

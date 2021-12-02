@@ -52,7 +52,7 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         open: false
-      label: 'Right Column Media'
+      label: 'Right Column'
     group_three_col_cta__lmedia:
       children:
         - field_three_col_cta__logo
@@ -68,7 +68,7 @@ third_party_settings:
         description: ''
         open: false
         required_fields: true
-      label: 'Left Column Media'
+      label: 'Left Column'
     group_three_col_cta_middle:
       children:
         - field_egnyte_three_col_cta__titl
@@ -85,7 +85,7 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         open: false
-      label: 'Middle Column Media'
+      label: 'Middle Column'
 id: paragraph.egnyte_three_col_cta.default
 targetEntityType: paragraph
 bundle: egnyte_three_col_cta
