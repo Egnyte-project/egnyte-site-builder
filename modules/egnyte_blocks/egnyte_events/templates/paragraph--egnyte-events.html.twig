@@ -1,0 +1,40 @@
+<div class="mt-750 upcoming-events">
+  <div class="grid-cont grid-cont--xl">
+    <div class="grid-row grid-row--aic grid-row--nog">
+      <div class="grid-col">
+        <h2 class="upcoming-events__title h2">Upcoming Events</h2>
+      </div>
+      <div class="grid-col grid-col--auto">
+        <a href="/events" class="more-link resources__more-link">See All<span class="removed-xs"> Events</span><svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+      </div>
+    </div>
+            
+    <div class="mt-50 grid-row grid-row--mdg">
+      {% for value in events_cards  %}
+    
+      <div class="mt-150 grid-col grid-col--3 grid-col--md-4 grid-col--sm-6 grid-col--xs-12">
+        {% if  value.link.0.uri is not null %}
+          <a href="{{ value.link.0.uri }}" class="upcoming-events-card" target="_BLANK">
+        {% else %}
+          <div class="upcoming-events-card">
+        {% endif %}
+
+          <div class="upcoming-events-card__figure">
+            <img src="{{ value.image }}"  alt="{{ value.image_alt }}" />
+          </div>
+          <div class="upcoming-events-card__cont">
+            <div class="tag tag--webinar">{{ value.tag }}</div>
+            <h5 class="mt-50 upcoming-events-card__title h5">{{ value.title }}</h5>
+            <div class="mt-25 upcoming-events-card__date">{{ value.date }}</div>
+          </div>
+        
+         {% if  value.link.0.uri is not null %}
+          </a>
+        {% else %}
+          </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

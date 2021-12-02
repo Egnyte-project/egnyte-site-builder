@@ -1,0 +1,41 @@
+<div class="careers-hero wow mb-250">
+  <div class="grid-cont grid-cont--xl">
+    <div class="grid-row grid-row--aic">
+      <div class="grid-col grid-col--4 grid-col--md-5 grid-col--sm-12">
+        <div class="careers-hero__text">
+          <div class="h6 careers-hero__overline">{{ content.field_egnyte_hero__eyebrow[0] }}</div>
+          <h1 class="h1--small tc--white h1">{{ content.field_egnyte_hero__title[0] }}</h1>
+          <p class="mt-100 p p--medium removed-sm margin-bottom-0">{{ content.field_egnyte_hero__subtitle[0] }}</p>
+          <a href="https://jobs.jobvite.com/egnyte/jobs" target="_BLANK" class="mt-200 button button--iblock careers-hero__button margin-left-0">View {{ job_totals }} Open Roles</a>
+          <div class="mt-125 p p--xsmall careers-hero__footnote">In 5 Locations Worldwide &amp; Remote</div>
+        </div>
+      </div>
+      <div class="grid-col grid-col--8 grid-col--md-7 grid-col--sm-12">
+        <div class="careers-hero__figure">
+          <div class="careers-hero__hex"></div>
+           <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/image--sm.png"  alt="" class="careers-hero__image removed blocked-sm">
+                  
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/image-1.png"  alt="" class="careers-hero__image-1">
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/image-2.png" width="334" height="194"  alt="" class="careers-hero__image-2">
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/image-3.png"  alt="" class="careers-hero__image-3">
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/image-4.png" alt="" class="careers-hero__image-4">
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/image-5.png" alt="" class="careers-hero__image-5">
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/image-6.png" alt="" class="careers-hero__image-6">
+                  
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/cup-1.png"  alt="" class="careers-hero__cup-1">
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/cup-2.png"  alt="" class="careers-hero__cup-2">
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/badge.png" alt="" class="careers-hero__badge">
+            <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/notebook.png"  alt="" class="careers-hero__notebook">
+
+{#           <img  src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/careers-hero.png" alt="" class="careers-hero__image removed-sm">
+          <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_hero/templates/images/careers/careers-hero--sm.png"  alt="" class="careers-hero__image removed blocked-sm"> #}
+          {% if bundle == 'remote_video' %}
+            <div class="careers-hero__watch">Watch Video</div>
+             <div class="vimeo-video"> <a href="{{ video_url }}" data-fancybox="" class="careers-hero__play"></a></div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

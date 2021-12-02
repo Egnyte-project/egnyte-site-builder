@@ -1,0 +1,9 @@
+name: 'Egnyte Site Builder: Events Block'
+type: module
+description: "Provides a paragraphs bundle  that displays Events Egnyte's Event Page."
+version: 8.x-1.0
+core: 8.x
+package: 'Egnyte Site Builder'
+dependencies:
+  - menu_ui
+core_version_requirement: '^8 || ^9'

@@ -111,13 +111,18 @@ function egnyte_two_column_preprocess_paragraph__egnyte_two_column_default(array
       $variables['theme']= $paragraph->get('field_egnyte_two_column_df__them')->value;
 
       if ($variables['theme'] =='Dark' ){
-          $variables['theme']= 'mt-500 industry-approval';
+          $variables['template_theme']= 'mt-500 industry-approval';
           $variables['theme_header']= 'tc--white';
           $variables['theme_text']= 'mt-100 p p--medium industry-approval__text';
           $variables['theme_margin'] ='';
       }
+      else if ( $variables['theme'] == 'Default' ){
+        $variables['template_theme'] = 'mt-250 industry-intro';
+        $variables['theme_text']= 'mt-100 p p--medium tc--dark ';
+        $variables['theme_margin'] ='mt-250';
+      }
       else{
-          $variables['theme'] = 'grid-cont mt-500';
+          $variables['template_theme'] = 'grid-cont mt-500';
           $variables['theme_text']= 'mt-100 p p--medium tc--dark ';
           $variables['theme_margin'] ='mt-250';
       }

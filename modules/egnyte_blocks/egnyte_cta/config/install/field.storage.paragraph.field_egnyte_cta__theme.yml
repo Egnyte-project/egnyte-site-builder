@@ -28,6 +28,9 @@ settings:
     -
       value: Careers
       label: Careers
+    -
+      value: Partners
+      label: Partners
   allowed_values_function: ''
 module: options
 locked: false

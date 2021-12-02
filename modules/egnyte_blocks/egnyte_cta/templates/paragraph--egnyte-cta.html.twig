@@ -2,7 +2,7 @@
 <div class="mt-500 {{ theme }}">
   <div class="grid-cont">
     <h2 class="tc--white h2">{{ content.field_egnyte_cta__header[0] }}</h2>
-      <div class="mt-50 grid-row grid-row--aic grid-row--jcc"> 
+      <div class="mt-50 grid-row grid-row--aic grid-row--jcc">
         <div class="mt-150 grid-col grid-col--auto grid-col--xs-12">
           <a href="#" class="button free-trial">Start Free Trial</a>
         </div>
@@ -80,7 +80,7 @@
       </div>
       <div class="grid-col grid-col--8 grid-col--md-7 grid-col--sm-12">
         <div class="careers-callout__figure">
-          <div class="careers-callout__image-1"> 
+          <div class="careers-callout__image-1">
             <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_cta/templates/images/image-1.png"  alt="" class="blocked">
             <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_cta/templates/images/badge.png"  alt="" class="careers-callout__badge">
             <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_cta/templates/images/coffie.png"  alt="" class="careers-callout__coffie">
@@ -101,3 +101,33 @@
   </div>
 </div>
 {% endif %}
+
+
+{%  if ( theme == 'Partners' ) %}
+
+<div class="mt-500 partners-callout">
+	<div class="grid-cont">
+    <h3 class="h3">{{ content.field_egnyte_cta__header[0] }}</h3>
+
+		<div class="grid-row grid-row--aic grid-row--jcc">
+			<div class="mt-150 grid-col grid-col--auto">
+<a href="{{ content.field_egnyte_cta__link[0]['#url'] }}" class="button button--xsmall">{{ content.field_egnyte_cta__link[0]['#title'] }}</a>
+
+
+
+      </div>
+{% if content.field_egnyte_cta__link[1] %}
+
+
+			<div class="mt-150 grid-col grid-col--auto">
+<a href="{{ content.field_egnyte_cta__link[1]['#url'] }}" class="button button--xsmall button--text">{{ content.field_egnyte_cta__link[1]['#title'] }}</a>
+
+
+      </div>
+      {% endif %}
+		</div>
+	</div>
+</div>
+
+{% endif %}
+

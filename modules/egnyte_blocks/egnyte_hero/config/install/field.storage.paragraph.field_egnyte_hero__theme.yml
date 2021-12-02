@@ -22,6 +22,12 @@ settings:
     -
       value: Careers
       label: Careers
+    -
+      value: Partners
+      label: Partners
+    -
+      value: 'Partners with Breadcrumb'
+      label: 'Partners with Breadcrumb'
   allowed_values_function: ''
 module: options
 locked: false

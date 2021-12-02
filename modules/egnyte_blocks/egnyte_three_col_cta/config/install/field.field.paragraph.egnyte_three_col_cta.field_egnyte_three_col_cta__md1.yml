@@ -10,7 +10,7 @@ id: paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__md1
 field_name: field_egnyte_three_col_cta__md1
 entity_type: paragraph
 bundle: egnyte_three_col_cta
-label: 'Image/Video - Left Side'
+label: Image/Video
 description: ''
 required: false
 translatable: false
@@ -24,6 +24,7 @@ settings:
       remote_video: remote_video
     sort:
       field: _none
+      direction: ASC
     auto_create: false
     auto_create_bundle: image
 field_type: entity_reference

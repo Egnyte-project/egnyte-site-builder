@@ -14,10 +14,8 @@ third_party_settings:
   field_group:
     group_egnyte_cta:
       children:
-        - field_egnyte_cta__header
-        - field_egnyte_cta__theme
-        - field_egnyte_cta__text
-        - field_egnyte_cta__link
+        - group_egnyte_cta__copy
+        - group_egnyte_cta__theme
       parent_name: ''
       weight: 0
       format_type: details
@@ -29,13 +27,45 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Call to Action Block'
+    group_egnyte_cta__copy:
+      children:
+        - field_egnyte_cta__header
+        - field_egnyte_cta__text
+        - field_egnyte_cta__link
+      parent_name: group_egnyte_cta
+      weight: 20
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Copy
+    group_egnyte_cta__theme:
+      children:
+        - field_egnyte_cta__theme
+      parent_name: group_egnyte_cta
+      weight: 21
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Theme
 id: paragraph.egnyte_cta.default
 targetEntityType: paragraph
 bundle: egnyte_cta
 mode: default
 content:
   field_egnyte_cta__header:
-    weight: 2
+    weight: 21
     settings:
       size: 60
       placeholder: ''
@@ -43,7 +73,7 @@ content:
     type: string_textfield
     region: content
   field_egnyte_cta__link:
-    weight: 5
+    weight: 23
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -51,7 +81,7 @@ content:
     type: link_default
     region: content
   field_egnyte_cta__text:
-    weight: 4
+    weight: 22
     settings:
       rows: 5
       placeholder: ''
@@ -59,7 +89,7 @@ content:
     type: string_textarea
     region: content
   field_egnyte_cta__theme:
-    weight: 3
+    weight: 22
     settings: {  }
     third_party_settings: {  }
     type: options_select

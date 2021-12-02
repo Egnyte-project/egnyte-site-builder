@@ -2,7 +2,7 @@
 {%  if alignment == 0 %}
 <div class="mt-500 industry-features__item">
   <div class="grid-row grid-row--aic">
-    <div class="grid-col grid-col--6 grid-col--sm-12 ta--center">
+    <div class="grid-col grid-col--6 grid-col--sm-12 ta--center ">
       <div class="industry-features__figure">
         <div class="industry-features__image-wrap industry-features__image-wrap--5">
           <img src="{{ image }}"  alt="" class="industry-features__image">
@@ -20,18 +20,20 @@
 
 {%  if alignment == 1 %}
 <div class="mt-500 industry-features__item">
-  <div class="grid-row grid-row--aic">
-  <div class="grid-col grid-col--6 grid-col--sm-12">
-      <h3 class="h3">{{ content.field_egnyte_2column_cont_it__he[0] }}</h3>
-      <div class="mt-100 p--medium tc--dark">{{ content.field_egnyte_2column_cont_it__tx[0] }}</div>
-    </div>
-    <div class="grid-col grid-col--6 grid-col--sm-12 ta--center">
-      <div class="industry-features__figure">
-        <div class="industry-features__image-wrap industry-features__image-wrap--5">
-          <img src="{{ image }}"  alt="" class="industry-features__image">
+    <div class="grid-row grid-row--aic">
+      <div class="grid-col grid-col--6 grid-col--sm-12">
+        <div class="industry-features__cont">
+          <h3 class="h3">{{ content.field_egnyte_2column_cont_it__he[0] }}</h3>
+          <div class="mt-100 p--medium tc--dark">{{ content.field_egnyte_2column_cont_it__tx[0] }}</div>
         </div>
       </div>
-    </div>    
-  </div>
+      <div class="grid-col grid-col--6 grid-col--sm-12 ta--center grid-col--order-sm-0">
+        <div class="industry-features__figure">
+          <div class="industry-features__image-wrap industry-features__image-wrap--5">
+            <img src="{{ image }}"  alt="" class="industry-features__image">
+          </div>
+        </div>
+      </div>    
+    </div>
 </div>
 {% endif %}

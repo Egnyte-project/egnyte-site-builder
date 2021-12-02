@@ -1,8 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
-id: egnyte_cta
-label: 'Call to Action Block'
+id: egnyte_events
+label: 'Egnyte Events'
 icon_uuid: null
 icon_default: null
 description: ''

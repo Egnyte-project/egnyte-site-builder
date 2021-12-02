@@ -9,6 +9,8 @@ dependencies:
     - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__text
     - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__them
     - field.field.paragraph.egnyte_three_col_cta.field_egnyte_three_col_cta__titl
+    - field.field.paragraph.egnyte_three_col_cta.field_three_col_cta__logo
+    - field.field.paragraph.egnyte_three_col_cta.field_three_col_cta__logo_2
     - field.field.paragraph.egnyte_three_col_cta.field_three_col_cta__t2
     - paragraphs.paragraphs_type.egnyte_three_col_cta
   module:
@@ -19,10 +21,8 @@ third_party_settings:
   field_group:
     group_egnyte_three_col_cta:
       children:
-        - field_egnyte_three_col_cta__titl
-        - field_egnyte_three_col_cta__text
-        - field_egnyte_three_col_cta__link
         - group_three_col_cta__lmedia
+        - group_three_col_cta_middle
         - group_three_col_cta__rmedia
         - field_egnyte_three_col_cta__them
       parent_name: ''
@@ -42,7 +42,7 @@ third_party_settings:
         - field_egnyte_three_col_cta__md2
         - field_three_col_cta__t2
       parent_name: group_egnyte_three_col_cta
-      weight: 6
+      weight: 26
       format_type: details
       region: content
       format_settings:
@@ -55,10 +55,10 @@ third_party_settings:
       label: 'Right Column Media'
     group_three_col_cta__lmedia:
       children:
-        - field_egnyte_three_col_cta__md1
-        - field_egnyte_three_col_cta__t1
+        - field_three_col_cta__logo
+        - field_three_col_cta__logo_2
       parent_name: group_egnyte_three_col_cta
-      weight: 5
+      weight: 24
       format_type: details
       region: content
       format_settings:
@@ -69,25 +69,35 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Left Column Media'
+    group_three_col_cta_middle:
+      children:
+        - field_egnyte_three_col_cta__titl
+        - field_egnyte_three_col_cta__text
+        - field_egnyte_three_col_cta__link
+      parent_name: group_egnyte_three_col_cta
+      weight: 25
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+        open: false
+      label: 'Middle Column Media'
 id: paragraph.egnyte_three_col_cta.default
 targetEntityType: paragraph
 bundle: egnyte_three_col_cta
 mode: default
 content:
   field_egnyte_three_col_cta__link:
-    weight: 3
+    weight: 23
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
-    region: content
-  field_egnyte_three_col_cta__md1:
-    type: media_library_widget
-    weight: 11
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
     region: content
   field_egnyte_three_col_cta__md2:
     type: media_library_widget
@@ -96,15 +106,8 @@ content:
       media_types: {  }
     third_party_settings: {  }
     region: content
-  field_egnyte_three_col_cta__t1:
-    type: media_library_widget
-    weight: 12
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-    region: content
   field_egnyte_three_col_cta__text:
-    weight: 2
+    weight: 22
     settings:
       rows: 5
       placeholder: ''
@@ -112,18 +115,32 @@ content:
     type: string_textarea
     region: content
   field_egnyte_three_col_cta__them:
-    weight: 7
+    weight: 27
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_egnyte_three_col_cta__titl:
-    weight: 1
+    weight: 21
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_three_col_cta__logo:
+    type: media_library_widget
+    weight: 28
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_three_col_cta__logo_2:
+    type: media_library_widget
+    weight: 29
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
     region: content
   field_three_col_cta__t2:
     type: media_library_widget
@@ -134,4 +151,6 @@ content:
     region: content
 hidden:
   created: true
+  field_egnyte_three_col_cta__md1: true
+  field_egnyte_three_col_cta__t1: true
   status: true

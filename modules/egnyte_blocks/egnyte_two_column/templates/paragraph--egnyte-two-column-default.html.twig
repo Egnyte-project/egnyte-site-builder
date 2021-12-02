@@ -1,5 +1,5 @@
-<div class=" {{ theme }}">
-  <div class="grid-cont grid-cont--xl">
+<div class=" {{ template_theme }}">
+  <div class="grid-cont">
   {%  if alignment == 0 %}
     <div class="grid-row grid-row--aic">
         <div class="{{ theme_margin }} grid-col grid-col--md-12">
@@ -29,7 +29,7 @@
                 </a>
             </div>   
             {% else %}
-                <img src="{{ image }}"  alt="" class="{{ theme }}__image" width="100%">
+                <img src="{{ image }}"  alt="" class="{{ theme == 'Default' ? 'industry-intro__image' : '' }}" width="100%" style="max-width:510px">
             {% endif %}
         </div>
     </div>
@@ -45,7 +45,7 @@
                       </a>
                   </div>   
                 {% else %}
-                    <img src="{{ image }}"  alt="" class="{{ theme }}__image" width="100%">
+                    <img src="{{ image }}"  alt="" class="{{ theme == 'Default' ? 'industry-intro__image' : '' }}" width="100%" style="max-width:510px">
                 {% endif %}
               </div>
               <div class="{{ theme_margin }} grid-col grid-col--md-12">
@@ -61,7 +61,7 @@
                 <h3 class="h3 {{ theme_header }}">{{ content.field_egnyte_two_column_df__titl[0] }}</h3>
                 {% endif %}
 
-                <div class="{{ theme_text}}">{{ content.field_egnyte_two_column_df__text[0] }}</div>
+                <div class="{{ theme_text }}">{{ content.field_egnyte_two_column_df__text[0] }}</div>
                     
 
 

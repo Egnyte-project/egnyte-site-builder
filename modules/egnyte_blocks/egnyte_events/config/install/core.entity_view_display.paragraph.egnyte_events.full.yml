@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.full
+    - paragraphs.paragraphs_type.egnyte_events
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.egnyte_events.full
+targetEntityType: paragraph
+bundle: egnyte_events
+mode: full
+content: {  }
+hidden:
+  search_api_excerpt: true

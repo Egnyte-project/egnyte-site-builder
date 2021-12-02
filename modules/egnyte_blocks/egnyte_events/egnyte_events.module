@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * @file
+ * egnyte_events module file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\media\Entity\Media;
+use Drupal\Core\Datetime\DrupalDateTime;
+
+
+
+
+
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function egnyte_events_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.egnyte_events':
+      $text = file_get_contents(dirname(__FILE__) . "/README.md");
+      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_theme().
+ * Lets us define our paragraphs templates in this module.
+ */
+function egnyte_events_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__egnyte_events' => [
+      'base hook' => 'paragraph',
+    ],
+
+  ];
+}
+
+function egnyte_events_preprocess_paragraph__egnyte_events(array &$variables) {
+ // $paragraph = $variables['elements']['#paragraph'];
+
+  $now = new DrupalDateTime('now');
+  $now = $now->format(\Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+
+  $node = \Drupal::entityQuery('node')
+  ->condition('status', 1)
+  ->condition('type', 'events_cards')
+  ->condition('field_event_start_date', $now,'>=')
+  ->sort('field_event_start_date', 'ASC')
+  ->range(0, 4);
+  
+  
+  $variables['events_cards'] = _events_cards($node);
+}
+      
+
+
+function _events_cards($node){
+    $arr=[]; 
+    $nids = $node->execute();
+    $node = Node::loadMultiple($nids);
+
+    if (!empty($node) ){
+    
+
+      foreach ($node as $num => $value){
+   
+              $arr[$num]['title'] = $value->get('title')->value;
+              $arr[$num]['link']= $value->get('field_event_url')->getValue();
+              $arr[$num]['date']= date('M d, Y', strtotime($value->get('field_event_start_date')->value) );
+         
+        
+            if ($value->hasField('field_event_image')) {
+              $bkrd_image = $value->get('field_event_image')->getValue();
+              if ($bkrd_image && !empty($bkrd_image)) {
+                $entity = Media::load($bkrd_image[0]['target_id']);
+                if (isset($entity->field_media_image->entity)) {
+                  $arr[$num]['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
+                } 
+              }
+            } 
+
+            if ($value->hasField('field_event_category')) {
+                $resource_cat = $value->get('field_event_category')->getValue();
+              
+               if ($resource_cat && !empty($resource_cat)) {
+                  $entity = Term::load($resource_cat[0]['target_id']);
+                  $arr[$num]['tag'] = $entity->get('name')->value;
+              } 
+            }
+        }
+      }
+    
+  
+  return $arr;
+}
