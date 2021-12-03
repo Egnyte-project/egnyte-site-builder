@@ -15,8 +15,15 @@
          <h3 class="fw--500 tc--white h3">{{ content.field_egnyte_three_col_cta__titl[0] }}</h3>
           <p class="fw--500 p margin-bottom-0">{{ content.field_egnyte_three_col_cta__text[0] }}</p>
           {% if  true in content.field_egnyte_three_col_cta__link[0] %}
-          <a href="{{ content.field_egnyte_three_col_cta__link[0]['#url'] }}" class="mt-100 more-link more-link--large">{{ content.field_egnyte_three_col_cta__link[0]['#title'] }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+            {% if  vimeo_video ==  true %}
+              <div class="vimeo-video">
+            {% endif %}
+                 <a href="{{ content.field_egnyte_three_col_cta__link[0]['#url'] }}" class="mt-100 more-link more-link--large">{{ content.field_egnyte_three_col_cta__link[0]['#title'] }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+            {% if  vimeo_video ==  true %}
+               </div>
+            {% endif %}
           {% endif %}
+
       </div>
       <div class="grid-col grid-col--auto removed-lg"></div>
       <div class="grid-col grid-col--auto grid-col--xs-12">
@@ -25,7 +32,7 @@
             <a class="industry-video__figure" href="{{ video }}">
               <img src="{{ video_thumbnail }}" class="industry-video__image" width="308" />
             </a>
-          </div>   
+          </div>
         {% else %}
           <img src="{{ image }}"   width="308" height="" alt="" />
         {% endif %}
