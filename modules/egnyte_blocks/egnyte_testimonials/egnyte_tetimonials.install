@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * egnyte_four install file.
+ */
+
+function egnyte_testimonials_update_8001() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_testimonials');
+}

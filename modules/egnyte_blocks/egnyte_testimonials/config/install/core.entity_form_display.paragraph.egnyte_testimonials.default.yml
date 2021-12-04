@@ -12,9 +12,8 @@ third_party_settings:
   field_group:
     group_egnyte_testimonials:
       children:
-        - field_egnyte_testimonials__title
-        - field_egnyte_testimonials__theme
-        - field_egnyte_testimonials__quote
+        - group_egnyte_testimonials__copy
+        - group_egnyte_testimonials__theme
       parent_name: ''
       weight: 0
       format_type: details
@@ -27,13 +26,44 @@ third_party_settings:
         open: false
         required_fields: true
       label: Testimonials
+    group_egnyte_testimonials__copy:
+      children:
+        - field_egnyte_testimonials__title
+        - field_egnyte_testimonials__quote
+      parent_name: group_egnyte_testimonials
+      weight: 20
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Copy
+    group_egnyte_testimonials__theme:
+      children:
+        - field_egnyte_testimonials__theme
+      parent_name: group_egnyte_testimonials
+      weight: 21
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Theme
 id: paragraph.egnyte_testimonials.default
 targetEntityType: paragraph
 bundle: egnyte_testimonials
 mode: default
 content:
   field_egnyte_testimonials__quote:
-    weight: 3
+    weight: 22
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -43,13 +73,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_egnyte_testimonials__theme:
-    weight: 2
+    weight: 22
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_egnyte_testimonials__title:
-    weight: 1
+    weight: 21
     settings:
       size: 60
       placeholder: ''
