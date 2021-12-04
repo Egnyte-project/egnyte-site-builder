@@ -1,31 +1,38 @@
-
 {% if theme == 'Cards' %}
 <div class="mt-750 testimonials">
   <div class="testimonials__bg testimonials__bg--left"></div>
   <div class="testimonials__bg testimonials__bg--right"></div>
-    <div class="grid-cont grid-cont--small">
-      <h2 class="testimonials__title h2">{{ content.field_egnyte_testimonials__title[0] }}</h2>
-      <div class="mt-200 grid-row grid-row--smg grid-row--jcc">
-        {% for value in testimonial_cards  %}
-          <div class="mt-100 grid-col grid-col--4 grid-col--md-6 grid-col--sm-12">
-            <a href="{{ value.link.0.uri }}" class="testimonials__item">
-              <h5 class="mt-100 tc--secondary h5">{{ value.header }}</h5>
-              <p class="mt-50 p p--small testimonials__text p">{{ value.quote }}</p>
-              <div class="testimonials__foot">
-                <div class="grid-row grid-row--smg  grid-row--aic">
-                  <div class="grid-col grid-col--auto">
-                    <img src="{{ value.image }}" width="48" height="48" alt="{{ value.image_alt }}" class="testimonial__photo">
-                  </div>
-                  <div class="grid-col">
-                    <div class="testimonials__name">{{ value.first_name }} {{ value.last_name }}</div>
-                    <div class="testimonials__position">{{ value.job_title }} , {{ value.company }}  </div>
-                  </div>
-                </div>
+  <div class="grid-cont grid-cont--small">
+    <h2 class="testimonials__title h2">
+      {{ content.field_egnyte_testimonials__title[0] }}</h2>
+    <div class="mt-200 grid-row grid-row--smg grid-row--jcc">
+      {% for value in testimonial_cards  %}
+      <div class="mt-100 grid-col grid-col--4 grid-col--md-6 grid-col--sm-12">
+        <a href="{{ value.link.0.uri }}" class="testimonials__item">
+          <h5 class="mt-100 tc--secondary h5">{{ value.header }}</h5>
+          <p class="mt-50 p p--small testimonials__text p">{{ value.quote }}</p>
+          <div class="testimonials__foot">
+            <div class="grid-row grid-row--smg  grid-row--aic">
+              <div class="grid-col grid-col--auto">
+                <img src="{{ value.image }}" width="48" height="48"
+                  alt="{{ value.image_alt }}" class="testimonial__photo">
               </div>
-              <div class="more-link testimonials__read">{{ value.link.0.title }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></div>
-            </a>
+              <div class="grid-col">
+                <div class="testimonials__name">{{ value.first_name }}
+                  {{ value.last_name }}</div>
+                <div class="testimonials__position">{{ value.job_title }} ,
+                  {{ value.company }} </div>
+              </div>
+            </div>
           </div>
-        {% endfor %}
+          <div class="more-link testimonials__read">{{ value.link.0.title }}<svg
+              viewBox="0 0 16 16">
+              <polygon fill="currentColor"
+                points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon>
+            </svg></div>
+        </a>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -35,74 +42,98 @@
 <div class="solution-reviews">
   <div class="grid-cont grid-cont--xl">
     <h2 class="h2">{{ content.field_egnyte_testimonials__title[0] }}</h2>
-      <div id="solution-reviews__carousel" class="mt-200 solution-reviews__carousel">
-        {% for value in testimonial_cards  %}
-        <div class="solution-reviews__slide">
+    <div id="solution-reviews__carousel"
+      class="mt-200 solution-reviews__carousel">
+      {% for value in testimonial_cards  %}
+      <div class="solution-reviews__slide">
 
-          <div class="solution-reviews__item">
-            <img src="/sites/default/files/2020-12/quotes%20%281%29.svg" alt="" class="solution-reviews__quotes">
-            <h4 class="mt-150 h3 h3--small">{{ value.header }}</h4>
-            <p class="mt-75 p p--large tc--dark">{{ value.quote }}</p>
-            <div class="mt-200 grid-row grid-row--smg grid-row--aic">
-              <div class="grid-col grid-col--auto">
-                <img src="{{ value.image }}"  alt="{{ value.image_alt }}" class="solution-reviews__photo" width="70" height="70" />
-              </div>
-              <div class="grid-col">
-                <div class="p fw--600 tc--dark">{{ value.first_name }} {{ value.last_name }}</div>
-                <div class="mt-25 p p--medium fw--500 tc--light">{{ value.job_title }}<br> {{ value.company }}</div>
-              </div>
-              <div class="grid-col grid-col--auto removed-sm">
-                <a href="{{ value.link.0.uri }}" class="more-link more-link--large more-link--enlarged" tabindex="-1">{{ value.link.0.title }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
-              </div>
+        <div class="solution-reviews__item">
+          <img src="/sites/default/files/2020-12/quotes%20%281%29.svg" alt=""
+            class="solution-reviews__quotes">
+          <h4 class="mt-150 h3 h3--small">{{ value.header }}</h4>
+          <p class="mt-75 p p--large tc--dark">{{ value.quote }}</p>
+          <div class="mt-200 grid-row grid-row--smg grid-row--aic">
+            <div class="grid-col grid-col--auto">
+              <img src="{{ value.image }}" alt="{{ value.image_alt }}"
+                class="solution-reviews__photo" width="70" height="70" />
             </div>
-            <div class="removed blocked-sm solution-reviews__foot">
-              <a href="{{ value.link.0.uri }}" class="more-link more-link--large more-link--enlarged" tabindex="-1">{{ value.link.0.title }}<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+            <div class="grid-col">
+              <div class="p fw--600 tc--dark">{{ value.first_name }}
+                {{ value.last_name }}</div>
+              <div class="mt-25 p p--medium fw--500 tc--light">
+                {{ value.job_title }}<br> {{ value.company }}</div>
+            </div>
+            <div class="grid-col grid-col--auto removed-sm">
+              <a href="{{ value.link.0.uri }}"
+                class="more-link more-link--large more-link--enlarged"
+                tabindex="-1">{{ value.link.0.title }}<svg viewBox="0 0 16 16">
+                  <polygon fill="currentColor"
+                    points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon>
+                </svg></a>
             </div>
           </div>
+          <div class="removed blocked-sm solution-reviews__foot">
+            <a href="{{ value.link.0.uri }}"
+              class="more-link more-link--large more-link--enlarged"
+              tabindex="-1">{{ value.link.0.title }}<svg viewBox="0 0 16 16">
+                <polygon fill="currentColor"
+                  points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon>
+              </svg></a>
+          </div>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
     </div>
   </div>
-  </div>
+</div>
+</div>
 </div>
 {% endif %}
 
-{% if theme == 'Careers' %}  
+{% if theme == 'Careers' %}
 
 <div class="mt-500 careers-reviews">
   <div class="grid-cont grid-cont--xl">
     <h6 class="h6">Employee testimonials</h6>
     <h2 class="h2">{{ content.field_egnyte_testimonials__title[0] }}</h2>
-    <a href="https://jobs.jobvite.com/egnyte/jobs" target="_BLANK" class="mt-100 more-link">Explore {{ job_totals }} Open Roles<svg viewBox="0 0 16 16"><polygon fill="currentColor" points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+    <a href="https://jobs.jobvite.com/egnyte/jobs" target="_BLANK"
+      class="mt-100 more-link">Explore {{ job_totals }} Open Roles<svg
+        viewBox="0 0 16 16">
+        <polygon fill="currentColor"
+          points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon>
+      </svg></a>
   </div>
   <div id="careers-reviews__carousel" class="mt-300 careers-reviews__carousel">
     {% for value in testimonial_cards  %}
-      <div class="careers-reviews__slide" style="width:304px;">
-        <div class="careers-reviews__photo">
-          <img src="{{ value.image }}"  alt="{{ value.image_alt }}" />
-        </div>
-        <div class="careers-reviews__video">
-          <iframe src="https://player.vimeo.com/video/{{ value.video_url }}" width="100%" height="100%" frameborder="0"  allow="autoplay; fullscreen; accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </div>
+    <div class="careers-reviews__slide" style="width:304px;">
+      <div class="careers-reviews__photo">
+        <img src="{{ value.image }}" alt="{{ value.image_alt }}" />
       </div>
+      <div class="careers-reviews__video">
+        <iframe src="https://player.vimeo.com/video/{{ value.video_url }}"
+          width="100%" height="100%" frameborder="0"
+          allow="autoplay; fullscreen; accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div>
     {% endfor %}
   </div>
   <div class="careers-reviews__cont">
     <div class="grid-cont grid-cont--xl">
       <div class="careers-reviews__cont-inner">
         <button class="careers-reviews__prev removed-sm"></button>
-        <button class="careers-reviews__next removed-sm"></button> 
-        <div class="grid-row">       
+        <button class="careers-reviews__next removed-sm"></button>
+        <div class="grid-row">
           <div class="grid-col grid-col--8 grid-col--lg-12">
             {% for value in testimonial_cards  %}
-              <div class="careers-reviews__quote">
-                <h4 class="mt-150 h3 h3--small">{{ value.header }}</h4>
-                <p class="p p--large tc--heading">"{{ value.quote }}"</p>
-                <div class="mt-125 p fw--600 tc--dark">{{ value.first_name }} {{ value.last_name }}</div>
-                <div class="mt-25 p p--medium fw--500 tc--light">{{ value.job_title }}</div>
-              </div>
-            {% endfor %}      
+            <div class="careers-reviews__quote">
+              <h4 class="mt-150 h3 h3--small">{{ value.header }}</h4>
+              <p class="p p--large tc--heading">"{{ value.quote }}"</p>
+              <div class="mt-125 p fw--600 tc--dark">{{ value.first_name }}
+                {{ value.last_name }}</div>
+              <div class="mt-25 p p--medium fw--500 tc--light">
+                {{ value.job_title }}</div>
+            </div>
+            {% endfor %}
           </div>
           <!--  <div class="grid-col grid-col--auto grid-col--lg-12">
               <div class="careers-reviews__divider"></div>
@@ -112,6 +143,39 @@
             <p class="mt-50 p p--medium tc--dark">We hire great people because working with great people makes all the difference.</p>
           </div>-->
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if theme == 'Partners' %}
+<div class="mt-750 head-reviews partners-testimonials">
+  <div class="grid-cont grid-cont--xl">
+    <h2 class="mb-300 ta--center h2">{{ content.field_egnyte_testimonials__title[0] }}</h2>
+  </div>
+  <div class="partners-testimonials__bg">
+    <div class="grid-cont grid-cont--xl">
+      <div id="head-reviews__carousel" class="head-reviews__carousel">
+        {% for value in testimonial_cards  %}
+        <div class="head-reviews__slide" data-slick-index="-1" id="" aria-hidden="true" tabindex="-1" style="width: 1160px;">
+          <div class="grid-row grid-row--aic">
+            <div class="grid-col grid-col--6 grid-col--xs-12">
+              <img src="/modules/contrib/egnyte_site_builder/modules/egnyte_blocks/egnyte_testimonials/images/partners/quotes.svg" width="38" height="30" alt="" class="head-reviews__qoutes">
+              <p class="mt-150 p p--xlarge head-reviews__text">{{ value.quote }}</p>
+              <div class="mt-150 p head-reviews__name">{{ value.first_name }} {{ value.last_name }}</div>
+              <div class="p p--small head-reviews__position">{{ value.job_title }}</div>
+            </div>
+            <div class="grid-col grid-col--6 grid-col--xs-12 grid-col--order-xs-0">
+              <div class="vimeo-video">
+                <a href="https://vimeo.com/{{ value.video_url }}" data-fancybox="" class="head-reviews__video" tabindex="-1" >
+                  <img src="{{ value.image }}" alt="{{ value.image_alt }}" width="100%" height="380"  style="object-fit: cover;max-width:544px" class="head-reviews__photo">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
