@@ -84,28 +84,28 @@ function _testimonial_cards($node){
             $arr[$num]['header'] = $value->get('field_egnyte_profile__theader')->value;
             $arr[$num]['quote'] = $value->get('field_egnyte_profile__testimony')->value;
             $arr[$num]['link'] = $value->get('field_egnyte_profile__tlink')->getValue();
-            
+
             if ($value->hasField('field_egnyte_profile__headshot')) {
                 $bkrd_image = $value->get('field_egnyte_profile__headshot')->getValue();
-              
+
                if ($bkrd_image && !empty($bkrd_image)) {
                   $entity = Media::load($bkrd_image[0]['target_id']);
-                  $arr[$num]['image_alt'] = $bkrd_image[0]['alt'] ;
+                  $arr[$num]['image_alt'] = !empty($bkrd_image[0]['alt']) ? $bkrd_image[0]['alt'] : '' ;
                   $arr[$num]['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
-              } 
+              }
             }
-            
+
             if ($value->hasField('field_egnyte_profile__vtestimony')) {
               $video = $value->get('field_egnyte_profile__vtestimony')->getValue();
               if ($video && !empty($video)) {
                 $entity = Media::load($video[0]['target_id']);
-                
+
                 if (isset($entity->field_media_oembed_video->value)) {
                   $arr[$num]['bundle'] = $entity->bundle();
-                  $arr[$num]['video_url'] = str_replace("https://vimeo.com/", "", $entity->field_media_oembed_video->value); 
+                  $arr[$num]['video_url'] = str_replace("https://vimeo.com/", "", $entity->field_media_oembed_video->value);
                 }
               }
-          
+
             }
         }
       }

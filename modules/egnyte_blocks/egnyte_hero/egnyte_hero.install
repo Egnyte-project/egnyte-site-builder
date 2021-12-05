@@ -8,3 +8,7 @@
 function egnyte_hero_update_8001() {
   \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_hero');
 }
+
+function egnyte_hero_update_8002() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_hero');
+}
