@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_pr__title
+    - paragraphs.paragraphs_type.egnyte_press_release
+id: paragraph.egnyte_press_release.field_egnyte_pr__title
+field_name: field_egnyte_pr__title
+entity_type: paragraph
+bundle: egnyte_press_release
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

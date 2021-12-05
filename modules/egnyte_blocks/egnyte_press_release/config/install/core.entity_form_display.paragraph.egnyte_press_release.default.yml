@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_press_release.field_egnyte_pr__title
+    - paragraphs.paragraphs_type.egnyte_press_release
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_egnyte_pr__copy:
+      children:
+        - field_egnyte_pr__title
+      parent_name: group_egnyte_press_release
+      weight: 1
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+        open: false
+      label: Copy
+    group_egnyte_press_release:
+      children:
+        - group_egnyte_pr__copy
+      parent_name: ''
+      weight: 0
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Press Release Block'
+id: paragraph.egnyte_press_release.default
+targetEntityType: paragraph
+bundle: egnyte_press_release
+mode: default
+content:
+  field_egnyte_pr__title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

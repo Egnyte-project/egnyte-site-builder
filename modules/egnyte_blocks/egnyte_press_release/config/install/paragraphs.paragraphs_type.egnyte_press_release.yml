@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: egnyte_press_release
+label: 'Press Release Block'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

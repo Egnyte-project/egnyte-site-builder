@@ -1,0 +1,21 @@
+<div class="mt-750 partners-news">
+  <div class="grid-cont">
+    <div class="partners-news__cont">
+      <h2 class="mb-400 ta--center h2">{{ content.field_egnyte_pr__title[0] }}</h2>
+      {% for value in press_release_cards  %}
+      <a href="{{ value.link }}" class="partners-news__item">
+        <div class="grid-row grid-row--aic">
+          <div class="grid-col grid-col--sm-12">
+            <div class="p p--xsmall tc--light partners-news__date">{{ value.date }}</div>
+            <div class="mt-50 p p--large tc--dark partners-news__heading">{{ value.title }}</div>
+          </div>
+          <div class="grid-col grid-col--auto grid-col--sm-12">
+            <div class="more-link more-link--small partners-news__more-link">Read Press Release<svg viewBox="0 0 16 16"><polygon points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></div>
+          </div>
+        </div>
+      </a>
+      <div class="partners-news__hr"></div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

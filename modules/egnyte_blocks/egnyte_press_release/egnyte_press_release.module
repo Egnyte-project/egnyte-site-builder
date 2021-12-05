@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * egnyte_press_release module file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
+use Drupal\media\Entity\Media;
+use Drupal\Core\Datetime\DrupalDateTime;
+
+
+
+
+
+
+/**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function egnyte_press_release_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.egnyte_press_release':
+      $text = file_get_contents(dirname(__FILE__) . "/README.md");
+      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
+        return '<pre>' . $text . '</pre>';
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_theme().
+ * Lets us define our paragraphs templates in this module.
+ */
+function egnyte_press_release_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__egnyte_press_release' => [
+      'base hook' => 'paragraph',
+    ],
+
+  ];
+}
+
+function egnyte_press_release_preprocess_paragraph__egnyte_press_release(array &$variables) {
+  $paragraph = $variables['elements']['#paragraph'];
+
+
+  $node = \Drupal::entityQuery('node')
+  ->condition('status', 1)
+  ->condition('type', 'press_releases')
+  ->sort('created', 'DESC')
+  ->range(0, 4);
+
+  $variables['press_release_cards'] = _press_release_cards($node);
+}
+
+
+function _press_release_cards($node){
+  $arr = [];
+  $nids = $node->execute();
+  $node = Node::loadMultiple($nids);
+
+  if (!empty($node) ){
+    $options = ['absolute' => TRUE];
+
+    foreach($node as $key => $value){
+          $arr[$key]['title'] = $value->get('title')->value;
+          $arr[$key]['date']= date('F d, Y', $value->getCreatedTime());
+          $arr[$key]['link']= \Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $value->id()], $options)->toString();
+    }
+  }
+  return $arr;
+}
