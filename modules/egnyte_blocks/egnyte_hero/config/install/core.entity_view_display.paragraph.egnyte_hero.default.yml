@@ -2,6 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__cta_link
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__cta_text
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__eyebrow
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__hide_rd
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__image
@@ -9,45 +11,69 @@ dependencies:
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__margin
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__subtitle
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__theme
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__themes
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__title
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__trusted_logos
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__vid_thumbnail
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__video
     - paragraphs.paragraphs_type.egnyte_hero
   module:
     - link
     - options
+    - text
 id: paragraph.egnyte_hero.default
 targetEntityType: paragraph
 bundle: egnyte_hero
 mode: default
 content:
+  field_egnyte_hero__cta_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_egnyte_hero__cta_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
   field_egnyte_hero__eyebrow:
-    weight: 5
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 5
     region: content
   field_egnyte_hero__hide_rd:
     type: boolean
-    weight: 3
-    region: content
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
+    weight: 3
+    region: content
   field_egnyte_hero__image:
     type: entity_reference_entity_view
-    weight: 6
     label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 6
     region: content
   field_egnyte_hero__link:
-    weight: 2
+    type: link
     label: hidden
     settings:
       trim_length: 80
@@ -56,29 +82,63 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 2
     region: content
   field_egnyte_hero__subtitle:
-    weight: 1
+    type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 1
     region: content
   field_egnyte_hero__theme:
-    weight: 4
+    type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 4
+    region: content
+  field_egnyte_hero__themes:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_egnyte_hero__title:
-    weight: 0
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 0
+    region: content
+  field_egnyte_hero__trusted_logos:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_egnyte_hero__vid_thumbnail:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_egnyte_hero__video:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 7
     region: content
 hidden:
   field_egnyte_hero__margin: true

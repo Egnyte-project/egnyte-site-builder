@@ -2,15 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
+    - media
     - paragraphs
-id: paragraph.field_egnyte_hero__eyebrow
-field_name: field_egnyte_hero__eyebrow
+id: paragraph.field_egnyte_hero__video
+field_name: field_egnyte_hero__video
 entity_type: paragraph
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  target_type: media
 module: core
 locked: false
 cardinality: 1

@@ -26,6 +26,9 @@ settings:
       value: Partners
       label: Partners
     -
+      value: partners-breadcrumb
+      label: 'Partners Breadcrumb'
+    -
       value: 'Partners with Breadcrumb'
       label: 'Partners with Breadcrumb'
   allowed_values_function: ''

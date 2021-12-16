@@ -2,16 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
+    - link
     - paragraphs
-id: paragraph.field_egnyte_hero__eyebrow
-field_name: field_egnyte_hero__eyebrow
+id: paragraph.field_egnyte_hero__cta_link
+field_name: field_egnyte_hero__cta_link
 entity_type: paragraph
-type: string
-settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+type: link
+settings: {  }
+module: link
 locked: false
 cardinality: 1
 translatable: true

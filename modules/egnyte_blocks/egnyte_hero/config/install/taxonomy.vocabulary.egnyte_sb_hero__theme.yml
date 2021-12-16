@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Egnyte Site Builder Theme -- Hero Block'
+vid: egnyte_sb_hero__theme
+description: ''
+weight: 0

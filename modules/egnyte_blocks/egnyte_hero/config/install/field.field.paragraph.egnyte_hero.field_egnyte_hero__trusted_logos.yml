@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_hero__trusted_logos
+    - paragraphs.paragraphs_type.egnyte_hero
+    - taxonomy.vocabulary.egnyte_site_builder_theme_truste
+id: paragraph.egnyte_hero.field_egnyte_hero__trusted_logos
+field_name: field_egnyte_hero__trusted_logos
+entity_type: paragraph
+bundle: egnyte_hero
+label: 'Trusted Logos'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      egnyte_site_builder_theme_truste: egnyte_site_builder_theme_truste
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

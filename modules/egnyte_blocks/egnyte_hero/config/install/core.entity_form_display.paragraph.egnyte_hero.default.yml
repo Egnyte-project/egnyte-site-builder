@@ -2,6 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__cta_link
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__cta_text
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__eyebrow
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__hide_rd
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__image
@@ -9,152 +11,246 @@ dependencies:
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__margin
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__subtitle
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__theme
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__themes
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__title
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__trusted_logos
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__vid_thumbnail
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__video
     - paragraphs.paragraphs_type.egnyte_hero
   module:
     - field_group
     - link
     - media_library
+    - text
 third_party_settings:
   field_group:
     group_egnyte_hero:
       children: {  }
-      parent_name: ''
-      weight: 6
-      format_type: details
-      region: hidden
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        open: false
-        required_fields: true
       label: 'Hero Block'
+      region: hidden
+      parent_name: ''
+      weight: 8
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
     group_egnyte_hero__copy:
       children:
         - field_egnyte_hero__eyebrow
         - field_egnyte_hero__title
         - field_egnyte_hero__subtitle
         - group_egnyte_hero__link
-      parent_name: ''
-      weight: 0
-      format_type: details
-      region: content
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        open: false
-        required_fields: true
+        - group_egnyte_hero__cta
       label: Copy
-    group_egnyte_hero__image:
-      children:
-        - field_egnyte_hero__image
-        - field_egnyte_hero__margin
+      region: content
       parent_name: ''
       weight: 1
       format_type: details
-      region: content
       format_settings:
-        description: ''
-        id: ''
         classes: ''
-        show_empty_fields: false
-        open: false
-        required_fields: false
-      label: Media
-    group_egnyte_hero__link:
-      children:
-        - field_egnyte_hero__link
-        - field_egnyte_hero__hide_rd
-      parent_name: group_egnyte_hero__copy
-      weight: 10
-      format_type: details
-      region: content
-      format_settings:
         id: ''
-        classes: ''
-        description: ''
         open: false
+        description: ''
         required_fields: true
-      label: Link(s)
-    group_egnyte_hero__theme:
+    group_egnyte_hero__image:
       children:
-        - field_egnyte_hero__theme
+        - group_egnyte_hero__images
+        - group_egnyte_hero__video
+      label: Media
+      region: content
       parent_name: ''
       weight: 2
       format_type: details
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        show_empty_fields: false
+        id: ''
         open: false
+        description: ''
+        required_fields: false
+    group_egnyte_hero__link:
+      children:
+        - field_egnyte_hero__link
+      label: Link(s)
+      region: content
+      parent_name: group_egnyte_hero__copy
+      weight: 10
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
         required_fields: true
+    group_egnyte_hero__theme:
+      children:
+        - field_egnyte_hero__themes
+        - group_display_trusted_logo
       label: Theme
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_egnyte_hero__video:
+      children:
+        - field_egnyte_hero__vid_thumbnail
+        - field_egnyte_hero__video
+      label: Video
+      region: content
+      parent_name: group_egnyte_hero__image
+      weight: 22
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_egnyte_hero__images:
+      children:
+        - field_egnyte_hero__image
+      label: Images
+      region: content
+      parent_name: group_egnyte_hero__image
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_egnyte_hero__cta:
+      children:
+        - field_egnyte_hero__cta_text
+        - field_egnyte_hero__cta_link
+      label: 'Call to Action'
+      region: content
+      parent_name: group_egnyte_hero__copy
+      weight: 11
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_display_trusted_logo:
+      children:
+        - field_egnyte_hero__trusted_logos
+      label: 'Display Trusted Logo'
+      region: content
+      parent_name: group_egnyte_hero__theme
+      weight: 24
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
 id: paragraph.egnyte_hero.default
 targetEntityType: paragraph
 bundle: egnyte_hero
 mode: default
 content:
-  field_egnyte_hero__eyebrow:
-    weight: 7
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
+  field_egnyte_hero__cta_link:
+    type: link_default
+    weight: 27
     region: content
-  field_egnyte_hero__hide_rd:
-    weight: 5
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
-  field_egnyte_hero__image:
-    type: media_library_widget
-    weight: 11
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-    region: content
-  field_egnyte_hero__link:
-    weight: 4
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
+  field_egnyte_hero__cta_text:
+    type: text_textarea
+    weight: 26
     region: content
-  field_egnyte_hero__margin:
-    weight: 12
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_egnyte_hero__subtitle:
-    weight: 9
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
+  field_egnyte_hero__eyebrow:
+    type: string_textfield
+    weight: 7
     region: content
-  field_egnyte_hero__theme:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_egnyte_hero__title:
-    weight: 8
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+  field_egnyte_hero__image:
+    type: media_library_widget
+    weight: 21
     region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_egnyte_hero__link:
+    type: link_default
+    weight: 4
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_egnyte_hero__subtitle:
+    type: string_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_egnyte_hero__themes:
+    type: options_select
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_egnyte_hero__title:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_egnyte_hero__trusted_logos:
+    type: options_select
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_egnyte_hero__vid_thumbnail:
+    type: media_library_widget
+    weight: 24
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_egnyte_hero__video:
+    type: media_library_widget
+    weight: 25
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
 hidden:
   created: true
+  field_egnyte_hero__hide_rd: true
+  field_egnyte_hero__margin: true
+  field_egnyte_hero__theme: true
   status: true

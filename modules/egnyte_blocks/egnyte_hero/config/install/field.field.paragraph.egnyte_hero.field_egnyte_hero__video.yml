@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_egnyte_hero__image
-    - media.type.image
+    - field.storage.paragraph.field_egnyte_hero__video
+    - media.type.remote_video
     - paragraphs.paragraphs_type.egnyte_hero
-id: paragraph.egnyte_hero.field_egnyte_hero__image
-field_name: field_egnyte_hero__image
+id: paragraph.egnyte_hero.field_egnyte_hero__video
+field_name: field_egnyte_hero__video
 entity_type: paragraph
 bundle: egnyte_hero
-label: Image
+label: Video
 description: ''
 required: false
 translatable: false
@@ -19,10 +19,10 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
+      remote_video: remote_video
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: image
+    auto_create_bundle: ''
 field_type: entity_reference

@@ -7,6 +7,8 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\media\Entity\Media;
+use Drupal\taxonomy\Entity\Term;
+
 
 
 
@@ -43,13 +45,23 @@ function egnyte_hero_theme($existing, $type, $theme, $path) {
     'paragraph__egnyte_hero' => [
       'base hook' => 'paragraph',
     ],
-
+    'engineering' => [
+      'base hook' => 'egnyte_hero',
+    ],
+    'lifesciences' => [
+      'base hook' => 'egnyte_hero',
+    ],
+    'microsoft' => [
+      'base hook' => 'egnyte_hero',
+    ],
   ];
 }
 
 function egnyte_hero_preprocess_page(array &$variables) {
   $variables['#attached']['library'][] =  'egnyte/hero-block-js';
 }
+
+
 
 /**
  *
@@ -66,25 +78,66 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
       $variables['page_title'] = $node->getTitle();
   }  
 
+ 
 
-  if ( $paragraph->get('field_egnyte_hero__theme')->value) {
-      $variables['theme'] = $paragraph->get('field_egnyte_hero__theme')->value;
-  }
+  
 
-  if ($paragraph->hasField('field_egnyte_hero__image')) {
-      $bkrd_image = $paragraph->get('field_egnyte_hero__image')->getValue();
+
+  // Hero Theme
+    if ( $paragraph->get('field_egnyte_hero__themes')->target_id) {
+        $tid = $paragraph->get('field_egnyte_hero__themes')->target_id;
+        $name = Term::load($tid)->get('name')->value;
+        $variables['theme'] = $name;
+    }
+
+    // Trusted Logos 
+    if ( $paragraph->get('field_egnyte_hero__trusted_logos')->target_id) {
+      $tid = $paragraph->get('field_egnyte_hero__trusted_logos')->target_id;
+      $trusted_logos = Term::load($tid)->get('name')->value;
+      $variables['trusted_logos'] = $trusted_logos ;
+    }
+
+    $variables['module_path'] = drupal_get_path('module', 'egnyte_hero');
+
+    //Hero Image/ Background Image
+    if ($paragraph->hasField('field_egnyte_hero__image')) {
+        $bkrd_image = $paragraph->get('field_egnyte_hero__image')->getValue();
+        if ($bkrd_image && !empty($bkrd_image)) {
+          $entity = Media::load($bkrd_image[0]['target_id']);
+          if (isset($entity->field_media_image->entity)) {
+            $variables['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
+          }
+        }
+    }
+
+
+    //Hero video
+      if ($paragraph->hasField('field_egnyte_hero__video')) {
+        $bkrd_image = $paragraph->get('field_egnyte_hero__video')->getValue();
+        if ($bkrd_image && !empty($bkrd_image)) {
+          $entity = Media::load($bkrd_image[0]['target_id']);
+        
+          if (isset($entity->field_media_oembed_video->value)) {
+            $variables['bundle'] = $entity->bundle();
+            $variables['video_url'] = $entity->field_media_oembed_video->value;
+          }
+        
+        }
+    }
+
+  //Video Thumbnail
+    if ($paragraph->hasField('field_egnyte_hero__vid_thumbnail')) {
+      $bkrd_image = $paragraph->get('field_egnyte_hero__vid_thumbnail')->getValue();
       if ($bkrd_image && !empty($bkrd_image)) {
         $entity = Media::load($bkrd_image[0]['target_id']);
+      
         if (isset($entity->field_media_image->entity)) {
-          $variables['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
+          $variables['video_thumbnail'] = file_create_url($entity->field_media_image->entity->getFileUri());
         }
-        if (isset($entity->field_media_oembed_video->value)) {
-          $variables['bundle'] = $entity->bundle();
-          $variables['video_url'] = $entity->field_media_oembed_video->value;
-        }
-       
+      
       }
-  }
+    }
+
 
  
   $variables['job_totals'] = _careers_total($uuid);
