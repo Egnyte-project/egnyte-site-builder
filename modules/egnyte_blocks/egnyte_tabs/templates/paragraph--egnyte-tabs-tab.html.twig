@@ -1,0 +1,15 @@
+<div id="" class="ms-features__pane">
+    <div class="grid-row grid-row--lgg grid-row--aic grid-row--jcc">
+        <div class="mt-300 grid-col grid-col--sm-12">
+            <h3 class="h3 mb-75">{{ content.field_egnyte_tabs_tab__title[0] }}</h3>
+            {{  content.field_egnyte_tabs_tab__text[0] }}
+            {%  if true in content.field_egnyte_tabs_tab__link[0] %}
+            <a href="{{ content.field_egnyte_tabs_tab__link[0]['#url'] }}" class="mt-150 more-link more-link--large">{{ content.field_egnyte_tabs_tab__link[0]['#title'] }}<svg viewBox="0 0 16 16"><polygon points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+            {% endif %}
+        </div>
+        <div class="grid-col grid-col--auto"></div>
+        <div class="mt-300 grid-col grid-col--6 grid-col--sm-8 grid-col--order-sm-0 grid-col--xs-12">
+            {{ content.field_egnyte_tabs_tab__widget }}            
+        </div>
+    </div>
+</div>

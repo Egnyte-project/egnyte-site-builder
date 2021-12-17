@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_tabs.field_egnyte_tabs__items
+    - field.field.paragraph.egnyte_tabs.field_egnyte_tabs__title
+    - paragraphs.paragraphs_type.egnyte_tabs
+  module:
+    - entity_reference_revisions
+id: paragraph.egnyte_tabs.default
+targetEntityType: paragraph
+bundle: egnyte_tabs
+mode: default
+content:
+  field_egnyte_tabs__items:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_egnyte_tabs__title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

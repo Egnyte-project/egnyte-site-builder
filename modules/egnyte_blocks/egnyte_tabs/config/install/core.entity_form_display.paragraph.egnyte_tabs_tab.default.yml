@@ -1,0 +1,158 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_tabs_tab.field_egnyte_tabs_tab___tab_titl
+    - field.field.paragraph.egnyte_tabs_tab.field_egnyte_tabs_tab__icon
+    - field.field.paragraph.egnyte_tabs_tab.field_egnyte_tabs_tab__link
+    - field.field.paragraph.egnyte_tabs_tab.field_egnyte_tabs_tab__text
+    - field.field.paragraph.egnyte_tabs_tab.field_egnyte_tabs_tab__title
+    - field.field.paragraph.egnyte_tabs_tab.field_egnyte_tabs_tab__widget
+    - paragraphs.paragraphs_type.egnyte_tabs_tab
+  module:
+    - field_group
+    - link
+    - media_library
+    - paragraphs
+    - text
+third_party_settings:
+  field_group:
+    group_egnyte_tabs_tab__copy:
+      children:
+        - field_egnyte_tabs_tab__title
+        - field_egnyte_tabs_tab__text
+        - field_egnyte_tabs_tab__link
+      label: Copy
+      region: content
+      parent_name: group_egnyte_tabs_tab__lcol
+      weight: 6
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_egnyte_tabs_tab__header:
+      children:
+        - field_egnyte_tabs_tab___tab_titl
+        - field_egnyte_tabs_tab__icon
+      label: Tab
+      region: content
+      parent_name: group_egnyte_tabs_tab
+      weight: 5
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_egnyte_tabs_tab:
+      children:
+        - group_egnyte_tabs_tab__header
+        - group_egnyte_tabs_tab__lcol
+        - group_egnyte_tabs_tab__rcol
+      label: 'Tab Item'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_egnyte_tabs_tab__rcol:
+      children:
+        - field_egnyte_tabs_tab__widget
+      label: 'Right Column'
+      region: content
+      parent_name: group_egnyte_tabs_tab
+      weight: 7
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_egnyte_tabs_tab__lcol:
+      children:
+        - group_egnyte_tabs_tab__copy
+      label: 'Left Column'
+      region: content
+      parent_name: group_egnyte_tabs_tab
+      weight: 6
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.egnyte_tabs_tab.default
+targetEntityType: paragraph
+bundle: egnyte_tabs_tab
+mode: default
+content:
+  field_egnyte_tabs_tab___tab_titl:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_egnyte_tabs_tab__icon:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_egnyte_tabs_tab__link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_egnyte_tabs_tab__text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_egnyte_tabs_tab__title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_egnyte_tabs_tab__widget:
+    type: entity_reference_paragraphs
+    weight: 2
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

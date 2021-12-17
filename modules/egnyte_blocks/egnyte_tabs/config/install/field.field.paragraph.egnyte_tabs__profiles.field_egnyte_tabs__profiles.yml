@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_tabs__profiles
+    - node.type.egnyte_profiles
+    - paragraphs.paragraphs_type.egnyte_tabs__profiles
+id: paragraph.egnyte_tabs__profiles.field_egnyte_tabs__profiles
+field_name: field_egnyte_tabs__profiles
+entity_type: paragraph
+bundle: egnyte_tabs__profiles
+label: Profile
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      egnyte_profiles: egnyte_profiles
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

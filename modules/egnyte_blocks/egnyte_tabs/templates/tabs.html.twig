@@ -1,0 +1,3 @@
+{% for value in tab_header  %}
+      <a href="#ms-features__tab-{{ value.count }}" class="tabs__link ms-features__tab"><img src="{{ value.icon }}" width="36" height="36" alt="" class="tabs__icon"><span class="ta--left">{{ value.title }}</span></a>
+{% endfor %}

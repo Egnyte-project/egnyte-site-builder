@@ -1,0 +1,137 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_egnyte_tabs_tab__widget
+    - paragraphs.paragraphs_type.egnyte_tabs__media
+    - paragraphs.paragraphs_type.egnyte_tabs__profiles
+    - paragraphs.paragraphs_type.egnyte_tabs_tab
+  module:
+    - entity_reference_revisions
+id: paragraph.egnyte_tabs_tab.field_egnyte_tabs_tab__widget
+field_name: field_egnyte_tabs_tab__widget
+entity_type: paragraph
+bundle: egnyte_tabs_tab
+label: Widgets
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      egnyte_tabs__media: egnyte_tabs__media
+      egnyte_tabs__profiles: egnyte_tabs__profiles
+    negate: 0
+    target_bundles_drag_drop:
+      editor:
+        weight: 37
+        enabled: false
+      egnyte_2column_cont_item:
+        weight: 38
+        enabled: false
+      egnyte_adr:
+        weight: 39
+        enabled: false
+      egnyte_badges:
+        weight: 40
+        enabled: false
+      egnyte_card_images:
+        weight: 44
+        enabled: false
+      egnyte_cards:
+        weight: 41
+        enabled: false
+      egnyte_cards__item:
+        weight: 43
+        enabled: false
+      egnyte_cards_item_editor:
+        weight: 42
+        enabled: false
+      egnyte_careers_feed:
+        weight: 45
+        enabled: false
+      egnyte_careers_feed__item:
+        weight: 46
+        enabled: false
+      egnyte_careers_map:
+        weight: 47
+        enabled: false
+      egnyte_cta:
+        weight: 48
+        enabled: false
+      egnyte_events:
+        weight: 49
+        enabled: false
+      egnyte_faq:
+        weight: 50
+        enabled: false
+      egnyte_faq_list:
+        weight: 51
+        enabled: false
+      egnyte_four_column:
+        weight: 52
+        enabled: false
+      egnyte_four_column__2col:
+        weight: 53
+        enabled: false
+      egnyte_four_column__cards:
+        weight: 54
+        enabled: false
+      egnyte_hero:
+        weight: 55
+        enabled: false
+      egnyte_news:
+        weight: 56
+        enabled: false
+      egnyte_platform:
+        weight: 57
+        enabled: false
+      egnyte_press_release:
+        weight: 58
+        enabled: false
+      egnyte_tabs:
+        weight: 59
+        enabled: false
+      egnyte_tabs__media:
+        weight: 61
+        enabled: true
+      egnyte_tabs__profiles:
+        weight: 62
+        enabled: true
+      egnyte_tabs_tab:
+        weight: 60
+        enabled: false
+      egnyte_testimonials:
+        weight: 63
+        enabled: false
+      egnyte_three_col_cta:
+        weight: 64
+        enabled: false
+      egnyte_three_col_list_item:
+        weight: 65
+        enabled: false
+      egnyte_trusted_by:
+        weight: 66
+        enabled: false
+      egnyte_two_column:
+        weight: 67
+        enabled: false
+      egnyte_two_column__lcp:
+        weight: 72
+        enabled: false
+      egnyte_two_column_cont:
+        weight: 68
+        enabled: false
+      egnyte_two_column_default:
+        weight: 69
+        enabled: false
+      egnyte_two_column_item:
+        weight: 70
+        enabled: false
+      egnyte_two_column_lt:
+        weight: 71
+        enabled: false
+field_type: entity_reference_revisions

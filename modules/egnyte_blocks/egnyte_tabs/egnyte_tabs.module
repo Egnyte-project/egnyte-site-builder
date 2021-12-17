@@ -8,7 +8,7 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
-use Drupal\paragraphs\Entity\Paragraphs;
+use Drupal\paragraphs\Entity\Paragraph;
 
 
 
@@ -37,6 +37,7 @@ function egnyte_tabs_help($route_name, RouteMatchInterface $route_match) {
   return NULL;
 }
 
+
 /**
  * Implements hook_theme().
  * Lets us define our paragraphs templates in this module.
@@ -46,18 +47,23 @@ function egnyte_tabs_theme($existing, $type, $theme, $path) {
     'paragraph__egnyte_tabs' => [
       'base hook' => 'paragraph',
     ],
-
-    'paragraph__egnyte_tabs__item' => [
+    'paragraph__egnyte_tabs_tab' => [
       'base hook' => 'paragraph',
     ],
-    'paragraph__egnyte_tabs__tabs' => [
+    'paragraph__egnyte_tabs__profiles' => [
       'base hook' => 'paragraph',
+    ],
+
+    'tabs' => [
+      'base hook' => 'tabs',
     ],
 
   ];
 }
 
-function egnyte_tabs__theme_function() {
+
+
+function egnyte_tabs_tab_header_function() {
   $var =  &drupal_static(__FUNCTION__);
       if (!isset($var)) {
         // generate contents of static variable
@@ -67,52 +73,86 @@ function egnyte_tabs__theme_function() {
 }
 
 
-function egnyte_tabs_preprocess_paragraph__egnyte_tabs__tabs(&$variables) {
-  $paragraph = $variables['elements']['#paragraph'];
-  $arr = array();
-  $variables['tab_title'] = &drupal_static('egnyte_tabs__theme_function');
 
-  $variables['tab_title'] = 'cdc';
+function egnyte_tabs_preprocess_node__egnyte_page(&$variables) {
+
+
+  //set this var to Global
+  $arr = &drupal_static('egnyte_tabs_tab_header_function');
+  $arr = array();
+
+  //Load All content on Egnyte Webpage
+  $node = $variables['elements']['#node'];
+
+  //Store Target Id of Egnyte Page Widgets Field
+  $target_id = $node->field_egnyte_page___site_blocks->target_id;
+
+  //Load all Paragraph entities
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+     
+  //Load all Paragraphs bundles found on current Egnyte Page
+  $bundle = $paragraph_storage->load($target_id);
+
+
+  //Retrieve target_id and target_revision_id of all instances of field_egnyte_tabs__items used on the current page
+  $fields = $bundle->field_egnyte_tabs__items;
+
+  foreach($fields as $num => $value){
+    $arr[$num]['target_id'] = $value->target_id;
+    $arr[$num]['title'] = $value->entity->field_egnyte_tabs_tab___tab_titl->value;
+    $arr[$num]['icon'] = $value->entity->field_egnyte_tabs_tab__icon->target_id;
+    $arr[$num]['count'] = $num + 1;
+
+      if (!empty($value->entity->field_egnyte_tabs_tab__icon->target_id)) {
+          
+        $bkrd_image = $arr[$num]['icon'] ;
+        
+        if ($bkrd_image && !empty($bkrd_image)) {
+            $entity = Media::load($bkrd_image);
+            $arr[$num]['icon'] = file_create_url($entity->field_media_image->entity->getFileUri()); 
+        }
+      }
+  }
+
+} 
+
+function egnyte_tabs_preprocess_paragraph__egnyte_tabs(&$variables) {
+ //Only load tabs.js when paragraph bundle is used
+  $variables['#attached']['library'][] =  'egnyte/tabs-block-js';
+
+  $variables['tabs_module_path'] = drupal_get_path('module', 'egnyte_tabs');
+  $tabs_tab = &drupal_static('egnyte_tabs_tab_header_function');
+  $variables['tab_header'] =  $tabs_tab ;
+
 
 }
 
 
-
-function egnyte_tabs_preprocess_paragraph__egnyte_tabs__item(&$variables) {
+/* 
+ */
+function egnyte_tabs_preprocess_paragraph__egnyte_tabs__profiles(&$variables) {
   
   $paragraph = $variables['elements']['#paragraph'];
-  $node = $paragraph->field_egnyte_tabs__items_profile->getValue();
- // $variables['tab_links']= &drupal_static('egnyte_tabs__theme_function');
+  $node = $paragraph->field_egnyte_tabs__profiles->getValue();
 
-
-
-  $variables['tab_card'][0] = _tab_cards($node);
+  $variables['tab_card'][0] = _tab_profiles($node);
   $variables['job_title'] = $variables['tab_card'][0]['job_title'][0]['value'];
   $variables[ 'company'] = $variables['tab_card'][0]['company'][0]['value'];
   $variables['first_name'] = $variables['tab_card'][0]['first_name'][0]['value'];
   $variables['last_name'] = $variables['tab_card'][0]['last_name'][0]['value'];
   $variables['quote'] = $variables['tab_card'][0]['quote'][0]['value'];
   $variables['company_logo'] = $variables['tab_card'][0]['company_logo'];
+  $variables['link'] = $variables['tab_card'][0]['link'];
 
-  $variables['tab_links'] = $paragraph->get('field_egnyte_tabs__items_links');
+}
+
+ 
 
 
  
-}
-
-function egnyte_tabs_preprocess_paragraph__egnyte_tabs(&$variables) {
-  $paragraph = $variables['elements']['#paragraph'];
-
-  
-  $variables['tab_tile'] = &drupal_static('egnyte_tabs__theme_function');
- 
-}
 
 
-
-
-
-function _tab_cards($node){
+function _tab_profiles($node){
 
   $arr= array();
   
@@ -126,6 +166,8 @@ function _tab_cards($node){
       $arr['last_name'] = $nodes->get('field_egnyte_profile__lname')->getValue();
       $arr['quote'] = $nodes->get('field_egnyte_profile__testimony')->getValue();
       $arr['company'] = $nodes->get('field_egnyte_profile___company')->getValue();
+      $arr['link'] = $nodes->get('field_egnyte_profile__tlink')->getValue();
+
 
       
 

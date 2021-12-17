@@ -1,30 +1,11 @@
-<div class="platform-enables construction-tab" id="platform-enables">
-  <div class="platform-tabs-place" id="platform-tabs-place">
-    <h2 class="has-text-align-center h2 mb-150">{{ content.field_egnyte_tabs__title[0]}}</h2>
-  </div>
-</div> 
-
-<div id="platform-tabs-wrap" class="platform-tabs-wrap">
-  <div class="grid-cont header__grid-cont">
-    <div id="platform-tabs" class="platform-tabs">
-      <div class="platform-tabs__track">
-      {#   {% for key, item in content.field_egnyte_tabs__tabs_title if key|first != '#' %}
-          <a href="#platform-enables__pane-1" class="platform-tabs__item">
-            {{ item.title[key] }}
-            <img src="{{  {{ item.image[key] }} }}" alt="" class="platform-tabs__icon">
-          </a>
-        {% endfor %}
-        #}
-      {{ tab_title }} 
-
-      </div>
+<div class="mt-500 ms-features">
+  <div class="grid-cont grid-cont--xl">
+    <h2 class="ta--center h2">{{ content.field_egnyte_tabs__title[0] }}</h2>
+    <div class="mt-200 tabs tabs--large">
+       {% include tabs_module_path ~ '/templates/tabs.html.twig' %}   
+    </div> 
+    <div>
+      {{ content.field_egnyte_tabs__items }} 
     </div>
-  </div>
+  </div>       
 </div>
-
-<div class="grid-cont header__grid-cont">
-  <div class="mt-400 grid-cont--xl">
-     {{ content.field_egnyte_tabs__items }}   
-  </div>
-</div>
-          

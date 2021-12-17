@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_tabs__profiles.field_egnyte_tabs__profiles
+    - paragraphs.paragraphs_type.egnyte_tabs__profiles
+id: paragraph.egnyte_tabs__profiles.default
+targetEntityType: paragraph
+bundle: egnyte_tabs__profiles
+mode: default
+content:
+  field_egnyte_tabs__profiles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

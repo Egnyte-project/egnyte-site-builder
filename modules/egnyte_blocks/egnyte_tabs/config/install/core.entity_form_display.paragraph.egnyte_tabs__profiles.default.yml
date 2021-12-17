@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_tabs__profiles.field_egnyte_tabs__profiles
+    - paragraphs.paragraphs_type.egnyte_tabs__profiles
+id: paragraph.egnyte_tabs__profiles.default
+targetEntityType: paragraph
+bundle: egnyte_tabs__profiles
+mode: default
+content:
+  field_egnyte_tabs__profiles:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

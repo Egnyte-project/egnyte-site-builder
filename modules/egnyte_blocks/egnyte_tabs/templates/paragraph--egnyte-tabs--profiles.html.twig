@@ -1,0 +1,17 @@
+<div class="ms-features__review">
+    <div class="ms-features__review-logo">
+        <img src="{{ company_logo }}" alt="" />
+    </div>
+    <div class="ms-features__review-cont">
+        <p class="p">"{{ quote }}"</p>
+        <div class="grid-row grid-row--aic">
+            <div class="mt-125 grid-col grid-col--md-12">
+                <div class="p fw--600 tc--dark">{{ first_name }} {{ last_name }}</div>
+                <div class="mt-25 p p--small fw--500 tc--light">{{ job_title }}, {{ company }}</div>
+            </div>
+            <div class="mt-125 grid-col grid-col--auto grid-col--md-12">
+                <a href="{{ link.0.url }}" class="more-link more-link--enlarged">{{ link.0.title }}<svg viewBox="0 0 16 16"><polygon points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+            </div>
+        </div>
+    </div>
+</div>

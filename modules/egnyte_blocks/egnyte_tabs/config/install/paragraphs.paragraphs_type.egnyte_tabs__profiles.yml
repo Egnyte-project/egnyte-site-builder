@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: egnyte_tabs__profiles
+label: 'Tabs Profiles'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

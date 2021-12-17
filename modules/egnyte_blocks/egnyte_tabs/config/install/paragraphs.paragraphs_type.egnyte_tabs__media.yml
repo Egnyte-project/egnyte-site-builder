@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: egnyte_tabs__media
+label: 'Tab Image'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

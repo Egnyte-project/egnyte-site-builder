@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.egnyte_tabs.field_egnyte_tabs__items
+    - field.field.paragraph.egnyte_tabs.field_egnyte_tabs__title
+    - paragraphs.paragraphs_type.egnyte_tabs
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_egnyte_tabs:
+      children:
+        - field_egnyte_tabs__title
+        - field_egnyte_tabs__items
+        - field_egnyte_tabs__widget
+        - group_egnyte_tab__right_col
+      label: 'Tab Block'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.egnyte_tabs.default
+targetEntityType: paragraph
+bundle: egnyte_tabs
+mode: default
+content:
+  field_egnyte_tabs__items:
+    type: entity_reference_paragraphs
+    weight: 2
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_egnyte_tabs__title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
