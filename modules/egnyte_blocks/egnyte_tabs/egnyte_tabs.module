@@ -79,59 +79,39 @@ function egnyte_tabs_preprocess_node__egnyte_page(&$variables) {
 
   //set this var to Global
   $arr = &drupal_static('egnyte_tabs_tab_header_function');
-  $arr = array();
 
   //Load All content on Egnyte Webpage
   $node = $variables['elements']['#node'];
-
+  //dump($node);
   //Store Target Id of Egnyte Page Widgets Field
-  $target_id = $node->field_egnyte_page___site_blocks->target_id;
-
-  //Load all Paragraph entities
-  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
-     
-  //Load all Paragraphs bundles found on current Egnyte Page
-  $bundle = $paragraph_storage->load($target_id);
 
 
-  //Retrieve target_id and target_revision_id of all instances of field_egnyte_tabs__items used on the current page
-  $fields = $bundle->field_egnyte_tabs__items;
-
-  foreach($fields as $num => $value){
-    $arr[$num]['target_id'] = $value->target_id;
-    $arr[$num]['title'] = $value->entity->field_egnyte_tabs_tab___tab_titl->value;
-    $arr[$num]['icon'] = $value->entity->field_egnyte_tabs_tab__icon->target_id;
-    $arr[$num]['count'] = $num + 1;
-
-      if (!empty($value->entity->field_egnyte_tabs_tab__icon->target_id)) {
-          
-        $bkrd_image = $arr[$num]['icon'] ;
-        
-        if ($bkrd_image && !empty($bkrd_image)) {
-            $entity = Media::load($bkrd_image);
-            $arr[$num]['icon'] = file_create_url($entity->field_media_image->entity->getFileUri()); 
-        }
-      }
-  }
-
-} 
+}
 
 function egnyte_tabs_preprocess_paragraph__egnyte_tabs(&$variables) {
  //Only load tabs.js when paragraph bundle is used
   $variables['#attached']['library'][] =  'egnyte/tabs-block-js';
+  $paragraph = $variables['elements']['#paragraph'];
 
   $variables['tabs_module_path'] = drupal_get_path('module', 'egnyte_tabs');
   $tabs_tab = &drupal_static('egnyte_tabs_tab_header_function');
   $variables['tab_header'] =  $tabs_tab ;
 
+  $arr = _tab_item($paragraph);
+  //dump($arr);
+  //dump($paragraph->type[0]->target_id);
+
+
+
+
 
 }
 
 
-/* 
+/*
  */
 function egnyte_tabs_preprocess_paragraph__egnyte_tabs__profiles(&$variables) {
-  
+
   $paragraph = $variables['elements']['#paragraph'];
   $node = $paragraph->field_egnyte_tabs__profiles->getValue();
 
@@ -141,25 +121,25 @@ function egnyte_tabs_preprocess_paragraph__egnyte_tabs__profiles(&$variables) {
   $variables['first_name'] = $variables['tab_card'][0]['first_name'][0]['value'];
   $variables['last_name'] = $variables['tab_card'][0]['last_name'][0]['value'];
   $variables['quote'] = $variables['tab_card'][0]['quote'][0]['value'];
-  $variables['company_logo'] = $variables['tab_card'][0]['company_logo'];
+  $variables['company_logo'] = !empty($variables['tab_card'][0]['company_logo']) ? $variables['tab_card'][0]['company_logo'] : '';
   $variables['link'] = $variables['tab_card'][0]['link'];
 
 }
 
- 
 
 
- 
+
+
 
 
 function _tab_profiles($node){
 
   $arr= array();
-  
+
   if (!empty($node) ){
-  
+
    $nodes = Node::load($node[0]["target_id"]);
-   
+
    if (!empty($nodes)){
       $arr['job_title'] = $nodes->get('field_egnyte_profile__job_title')->getValue();
       $arr['first_name'] = $nodes->get('field_egnyte_profile__fname')->getValue();
@@ -167,21 +147,90 @@ function _tab_profiles($node){
       $arr['quote'] = $nodes->get('field_egnyte_profile__testimony')->getValue();
       $arr['company'] = $nodes->get('field_egnyte_profile___company')->getValue();
       $arr['link'] = $nodes->get('field_egnyte_profile__tlink')->getValue();
+     // dump($arr['link']);
 
 
-      
 
       if ($nodes->hasField('field_egnyte_profile__comapnyimg')) {
-        
+
           $bkrd_image = $nodes->get('field_egnyte_profile__comapnyimg')->getValue();
-          
+
           if ($bkrd_image && !empty($bkrd_image)) {
               $entity = Media::load($bkrd_image[0]['target_id']);
-              $arr['company_logo_alt'] = $bkrd_image[0]['alt'] ;
-              $arr['company_logo'] = file_create_url($entity->field_media_image->entity->getFileUri()); 
+              $arr['company_logo_alt'] = !empty($bkrd_image[0]['alt']) ? $bkrd_image[0]['alt'] : '';
+              $arr['company_logo'] = file_create_url($entity->field_media_image->entity->getFileUri());
           }
       }
     }
   }
     return $arr;
+}
+
+function _tab_item($paragraphs){
+
+  $target_id_arr = array();
+  $arr = array();
+
+
+
+  /*if (is_array($node->field_egnyte_page___site_blocks) || is_object($node->field_egnyte_page___site_blocks)) {
+    foreach ($node->field_egnyte_page___site_blocks as $num => $value) {
+      $target_id_arr['target_id'][$num] = $value->target_id;
+    }
+  }*/
+
+  //Load all Paragraph entities
+  //$paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  //$paragraphs = $paragraph_storage->loadMultiple($target_id_arr['target_id']);
+
+
+  //Retrieve target_id and target_revision_id of all instances of field_egnyte_tabs__items used on the current page
+  //$bundle = $bundle->field_egnyte_tabs__items;
+
+  // dump($target_id_arr);
+  // dump($paragraphs);
+  // dump($paragraphs['1002']->field_egnyte_tabs__items);
+
+
+  //dump($paragraphs[1002]->type->target_id);
+  //dump($paragraphs[1002]->type->[0]->value);
+
+  // dump($node->field_egnyte_page___site_blocks);
+
+
+
+  if (is_array($paragraphs) || is_object($paragraphs)) {
+    foreach ($paragraphs as $num => $value) {
+      if ($value->target_id == "egnyte_tabs") {
+        $tab_items = array();
+        dump($value);
+        /*foreach ($paragraphs[$num]->field_egnyte_tabs__items as $key => $value) {
+          $tab_items['target_id'][$key] = $value->target_id;
+        }*/
+
+        $tab_items = $paragraphs->loadMultiple($value->target_id);
+        $count = 0;
+        foreach ($tab_items  as $key => $value) {
+          $count++;
+          $arr[$key]['title'] = $value->field_egnyte_tabs_tab___tab_titl->value;
+          $arr[$key]['count'] = $count;
+
+          $icon = $value->field_egnyte_tabs_tab__icon->target_id;
+
+          if ($icon && !empty($icon)) {
+            $entity = Media::load($icon);
+            $arr[$key]['icon'] = file_create_url($entity->field_media_image->entity->getFileUri());
+          }
+        }
+
+
+        //dump($arr);
+
+        /* $arr[$num]['icon'] = $value->entity->field_egnyte_tabs_tab__icon->target_id;
+          $arr[$num]['count'] = $num + 1;*/
+      }
+      /**/
+    }
+  }
+  return $arr;
 }

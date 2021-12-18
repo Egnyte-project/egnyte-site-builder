@@ -6,6 +6,8 @@ dependencies:
     - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_link
     - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_text
     - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_title
+    - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_video
+    - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_vthumb
     - paragraphs.paragraphs_type.egnyte_cards__item
   module:
     - link
@@ -16,15 +18,15 @@ mode: default
 content:
   field_egnyte_cards__item_image:
     type: entity_reference_entity_view
-    weight: 0
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 0
     region: content
   field_egnyte_cards__item_link:
-    weight: 3
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -33,22 +35,40 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 3
     region: content
   field_egnyte_cards__item_text:
-    weight: 2
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 2
     region: content
   field_egnyte_cards__item_title:
-    weight: 1
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 1
+    region: content
+  field_egnyte_cards__item_video:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_egnyte_cards__item_vthumb:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 5
     region: content
 hidden:
   search_api_excerpt: true

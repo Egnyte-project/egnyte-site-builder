@@ -55,3 +55,16 @@
     </div>
 </div>
 {% endif %}
+
+{% if card_theme == 'Partners' %}
+<div class="mt-200 grid-col grid-col--4 grid-col--sm-6 grid-col--xs-12">
+    <div class="vimeo-video"> 
+        <a href="{{ video_url }}" class="popular-use-cases__item">
+            <div class="popular-use-cases__video">
+                <img src="{{ video_thumbnail }}"  width="400" height="240" alt="" class="responsive-image">
+            </div>
+            <h4 class="mt-125 popular-use-cases__heading h4">{{ content.field_egnyte_cards__item_title[0] }}</h4>
+        </a>
+    </div>
+</div>
+{% endif %}

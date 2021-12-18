@@ -6,6 +6,8 @@ dependencies:
     - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_link
     - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_text
     - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_title
+    - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_video
+    - field.field.paragraph.egnyte_cards__item.field_egnyte_cards__item_vthumb
     - paragraphs.paragraphs_type.egnyte_cards__item
   module:
     - field_group
@@ -15,22 +17,69 @@ third_party_settings:
   field_group:
     group_field_egnyte_cards__item:
       children:
-        - field_egnyte_cards__item_image
+        - group_egnyte_cards__item_media
         - field_egnyte_cards__item_title
         - field_egnyte_cards__item_text
         - field_egnyte_cards__item_link
+      label: 'Cards Item'
+      region: content
       parent_name: ''
       weight: 0
       format_type: details
-      region: content
       format_settings:
+        classes: ''
         show_empty_fields: false
         id: ''
-        classes: ''
-        description: ''
         open: false
+        description: ''
         required_fields: true
-      label: 'Cards Item'
+    group_egnyte_cards__item_media:
+      children:
+        - group_egnyte_cards__item_image
+        - group_egnyte_cards__item_video
+      label: Media
+      region: content
+      parent_name: group_field_egnyte_cards__item
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_egnyte_cards__item_image:
+      children:
+        - field_egnyte_cards__item_image
+      label: Icon
+      region: content
+      parent_name: group_egnyte_cards__item_media
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_egnyte_cards__item_video:
+      children:
+        - field_egnyte_cards__item_vthumb
+        - field_egnyte_cards__item_video
+      label: Video
+      region: content
+      parent_name: group_egnyte_cards__item_media
+      weight: 21
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
 id: paragraph.egnyte_cards__item.default
 targetEntityType: paragraph
 bundle: egnyte_cards__item
@@ -38,35 +87,49 @@ mode: default
 content:
   field_egnyte_cards__item_image:
     type: media_library_widget
-    weight: 1
+    weight: 21
+    region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
   field_egnyte_cards__item_link:
-    weight: 4
+    type: link_default
+    weight: 25
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   field_egnyte_cards__item_text:
-    weight: 3
+    type: string_textarea
+    weight: 24
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
-    region: content
   field_egnyte_cards__item_title:
-    weight: 2
+    type: string_textfield
+    weight: 23
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+  field_egnyte_cards__item_video:
+    type: media_library_widget
+    weight: 24
     region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_egnyte_cards__item_vthumb:
+    type: media_library_widget
+    weight: 23
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   status: true
