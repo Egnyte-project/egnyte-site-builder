@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * egnyte_cta install file.
+ */
+
+function egnyte_cards_update_8001() {
+  \Drupal::service('config.installer')->installDefaultConfig('module', 'egnyte_cards');
+}
