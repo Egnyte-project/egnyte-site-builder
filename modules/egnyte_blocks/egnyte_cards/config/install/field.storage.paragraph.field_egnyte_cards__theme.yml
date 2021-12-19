@@ -26,8 +26,8 @@ settings:
       value: Industry-light-blue
       label: 'Industry Light Blue'
     -
-      value: Partners
-      label: 'Partners'
+      value: Mega Solutions
+      label: 'Mega Solutions'
   allowed_values_function: ''
 module: options
 locked: false
