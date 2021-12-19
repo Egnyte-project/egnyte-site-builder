@@ -5,10 +5,15 @@
  * egnyte_tabs module file.
  */
 
+use \Drupal\file\Entity\File;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Url;
+
+
+
 
 
 
@@ -82,56 +87,48 @@ function egnyte_tabs_preprocess_paragraph__egnyte_tabs__profiles(&$variables) {
   $paragraph = $variables['elements']['#paragraph'];
   $node = $paragraph->field_egnyte_tabs__profiles->getValue();
 
-  $variables['tab_card'][0] = _tab_profiles($node);
+  $variables['tab_card'] = _tab_profiles($node);
   $variables['job_title'] = $variables['tab_card'][0]['job_title'][0]['value'];
   $variables[ 'company'] = $variables['tab_card'][0]['company'][0]['value'];
   $variables['first_name'] = $variables['tab_card'][0]['first_name'][0]['value'];
   $variables['last_name'] = $variables['tab_card'][0]['last_name'][0]['value'];
   $variables['quote'] = $variables['tab_card'][0]['quote'][0]['value'];
   $variables['company_logo'] = !empty($variables['tab_card'][0]['company_logo']) ? $variables['tab_card'][0]['company_logo'] : '';
-  $variables['link'] = $variables['tab_card'][0]['link'];
+  $variables['link'] = $variables['tab_card'][0]['link_url'];
+  $variables['link_title'] = $variables['tab_card'][0]['link_title'];
 
 }
 
 
 
 
+function _tab_profiles($nodes){
 
+    $arr = array();
 
+    if (is_array($nodes) || is_object($nodes)) {
 
-function _tab_profiles($node){
+      $nodes = Node::load($nodes[0]['target_id']);
+      $arr[0]['job_title'] = $nodes->get('field_egnyte_profile__job_title')->getValue();
+      $arr[0]['first_name'] = $nodes->get('field_egnyte_profile__fname')->getValue();
+      $arr[0]['last_name'] = $nodes->get('field_egnyte_profile__lname')->getValue();
+      $arr[0]['quote'] = $nodes->get('field_egnyte_profile__testimony')->getValue();
+      $arr[0]['company'] = $nodes->get('field_egnyte_profile___company')->getValue();
+      $arr[0]['link_title'] = isset( $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['title'] ) ? $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['title'] : '';
 
-  $arr= array();
+      $nid = isset($nodes->field_egnyte_profile__tlink->getValue()[0]['uri']) ? str_replace('entity:node/','', $nodes->field_egnyte_profile__tlink->getValue()[0]['uri']): '';
+      $arr[0]['link_url'] = \Drupal::service('path_alias.manager')->getAliasByPath('/node/'.$nid);
 
-  if (!empty($node) ){
-
-   $nodes = Node::load($node[0]["target_id"]);
-
-   if (!empty($nodes)){
-      $arr['job_title'] = $nodes->get('field_egnyte_profile__job_title')->getValue();
-      $arr['first_name'] = $nodes->get('field_egnyte_profile__fname')->getValue();
-      $arr['last_name'] = $nodes->get('field_egnyte_profile__lname')->getValue();
-      $arr['quote'] = $nodes->get('field_egnyte_profile__testimony')->getValue();
-      $arr['company'] = $nodes->get('field_egnyte_profile___company')->getValue();
-      $arr['link'] = $nodes->get('field_egnyte_profile__tlink')->getValue();
-     // dump($arr['link']);
-
-
-
-      if ($nodes->hasField('field_egnyte_profile__comapnyimg')) {
-
-          $bkrd_image = $nodes->get('field_egnyte_profile__comapnyimg')->getValue();
-
-          if ($bkrd_image && !empty($bkrd_image)) {
-              $entity = Media::load($bkrd_image[0]['target_id']);
-              $arr['company_logo_alt'] = !empty($bkrd_image[0]['alt']) ? $bkrd_image[0]['alt'] : '';
-              $arr['company_logo'] = file_create_url($entity->field_media_image->entity->getFileUri());
-          }
-      }
     }
-  }
+
+
     return $arr;
-}
+
+  }
+
+
+
+
 
 function _tab_item($paragraphs){
 
