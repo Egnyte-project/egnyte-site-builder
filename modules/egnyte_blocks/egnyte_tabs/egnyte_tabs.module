@@ -63,31 +63,6 @@ function egnyte_tabs_theme($existing, $type, $theme, $path) {
 
 
 
-function egnyte_tabs_tab_header_function() {
-  $var =  &drupal_static(__FUNCTION__);
-      if (!isset($var)) {
-        // generate contents of static variable
-        $var = 'Default';
-      }
-    return $var;
-}
-
-
-
-function egnyte_tabs_preprocess_node__egnyte_page(&$variables) {
-
-
-  //set this var to Global
-  $arr = &drupal_static('egnyte_tabs_tab_header_function');
-
-  //Load All content on Egnyte Webpage
-  $node = $variables['elements']['#node'];
-  //dump($node);
-  //Store Target Id of Egnyte Page Widgets Field
-
-
-}
-
 function egnyte_tabs_preprocess_paragraph__egnyte_tabs(&$variables) {
  //Only load tabs.js when paragraph bundle is used
   $variables['#attached']['library'][] =  'egnyte/tabs-block-js';
@@ -95,15 +70,7 @@ function egnyte_tabs_preprocess_paragraph__egnyte_tabs(&$variables) {
 
   $variables['tabs_module_path'] = drupal_get_path('module', 'egnyte_tabs');
   $tabs_tab = &drupal_static('egnyte_tabs_tab_header_function');
-  $variables['tab_header'] =  $tabs_tab ;
-
-  $arr = _tab_item($paragraph);
-  //dump($arr);
-  //dump($paragraph->type[0]->target_id);
-
-
-
-
+  $variables['tab_header'] =_tab_item($paragraph);
 
 }
 
@@ -168,69 +135,27 @@ function _tab_profiles($node){
 
 function _tab_item($paragraphs){
 
-  $target_id_arr = array();
   $arr = array();
 
-
-
-  /*if (is_array($node->field_egnyte_page___site_blocks) || is_object($node->field_egnyte_page___site_blocks)) {
-    foreach ($node->field_egnyte_page___site_blocks as $num => $value) {
-      $target_id_arr['target_id'][$num] = $value->target_id;
-    }
-  }*/
-
-  //Load all Paragraph entities
-  //$paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
-  //$paragraphs = $paragraph_storage->loadMultiple($target_id_arr['target_id']);
-
-
-  //Retrieve target_id and target_revision_id of all instances of field_egnyte_tabs__items used on the current page
-  //$bundle = $bundle->field_egnyte_tabs__items;
-
-  // dump($target_id_arr);
-  // dump($paragraphs);
-  // dump($paragraphs['1002']->field_egnyte_tabs__items);
-
-
-  //dump($paragraphs[1002]->type->target_id);
-  //dump($paragraphs[1002]->type->[0]->value);
-
-  // dump($node->field_egnyte_page___site_blocks);
-
-
-
   if (is_array($paragraphs) || is_object($paragraphs)) {
-    foreach ($paragraphs as $num => $value) {
-      if ($value->target_id == "egnyte_tabs") {
-        $tab_items = array();
-        dump($value);
-        /*foreach ($paragraphs[$num]->field_egnyte_tabs__items as $key => $value) {
-          $tab_items['target_id'][$key] = $value->target_id;
-        }*/
 
-        $tab_items = $paragraphs->loadMultiple($value->target_id);
-        $count = 0;
-        foreach ($tab_items  as $key => $value) {
-          $count++;
-          $arr[$key]['title'] = $value->field_egnyte_tabs_tab___tab_titl->value;
-          $arr[$key]['count'] = $count;
+    if ($paragraphs->getType() == "egnyte_tabs") {
+      $entity = $paragraphs->field_egnyte_tabs__items->referencedEntities();
+      foreach ( $entity as $key => $value ) {
+        $arr[$key]['title']= $value->field_egnyte_tabs_tab___tab_titl->value;
+        $arr[$key]['count'] = $key+1;
 
-          $icon = $value->field_egnyte_tabs_tab__icon->target_id;
-
-          if ($icon && !empty($icon)) {
-            $entity = Media::load($icon);
+        if (!empty($value->field_egnyte_tabs_tab__icon->target_id)) {
+            $entity = Media::load($value->field_egnyte_tabs_tab__icon->target_id);
             $arr[$key]['icon'] = file_create_url($entity->field_media_image->entity->getFileUri());
-          }
         }
 
-
-        //dump($arr);
-
-        /* $arr[$num]['icon'] = $value->entity->field_egnyte_tabs_tab__icon->target_id;
-          $arr[$num]['count'] = $num + 1;*/
       }
-      /**/
+     // dump($paragraphs);
+     /// dump($arr);
     }
+
   }
+
   return $arr;
 }
