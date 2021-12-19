@@ -109,7 +109,7 @@ function egnyte_cards_preprocess_paragraph__egnyte_cards(array &$variables) {
 
   }
 
-  if ( $variables['card_theme']== 'Partners'  ){
+  if ( $variables['card_theme']== 'Mega Solutions'  ){
       $variables['card_theme_class']= "mt-750 popular-use-cases";
       $variables['card_theme_grid']= "grid-cont grid-cont--xl";
       $variables['card_theme_grid_row']= "mt-100 grid-row grid-row--lgg";
