@@ -2,7 +2,7 @@
 
 /**
  * @file
- * egnyte_cta install file.
+ * egnyte_cards install file.
  */
 
 function egnyte_cards_update_8001() {
