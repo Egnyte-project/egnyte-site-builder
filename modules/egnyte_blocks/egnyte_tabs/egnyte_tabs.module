@@ -114,10 +114,29 @@ function _tab_profiles($nodes){
       $arr[0]['last_name'] = $nodes->get('field_egnyte_profile__lname')->getValue();
       $arr[0]['quote'] = $nodes->get('field_egnyte_profile__testimony')->getValue();
       $arr[0]['company'] = $nodes->get('field_egnyte_profile___company')->getValue();
+      $arr[0]['company_logo'] = $nodes->get('field_egnyte_profile__comapnyimg')->getValue();
+
       $arr[0]['link_title'] = isset( $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['title'] ) ? $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['title'] : '';
 
-      $nid = isset($nodes->field_egnyte_profile__tlink->getValue()[0]['uri']) ? str_replace('entity:node/','', $nodes->field_egnyte_profile__tlink->getValue()[0]['uri']): '';
-      $arr[0]['link_url'] = \Drupal::service('path_alias.manager')->getAliasByPath('/node/'.$nid);
+
+      if(stripos($nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri'], '/entity/node', 0) != false ){
+        $nid = isset($nodes->field_egnyte_profile__tlink->getValue()[0]['uri']) ? str_replace('entity:node/', '', $nodes->field_egnyte_profile__tlink->getValue()[0]['uri']) : '';
+        $arr[0]['link_url'] = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $nid);
+      }
+      else{
+        $arr[0]['link_url'] = isset($nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri']) ? $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri'] : '';
+      }
+
+      if ($nodes->hasField('field_egnyte_profile__comapnyimg')) {
+
+        $bkrd_image = $nodes->get('field_egnyte_profile__comapnyimg')->getValue();
+
+        if ($bkrd_image && !empty($bkrd_image)) {
+          $entity = Media::load($bkrd_image[0]['target_id']);
+         // $arr[0]['company_logo_alt'] = $bkrd_image[0]['alt'];
+          $arr[0]['company_logo'] = file_create_url($entity->field_media_image->entity->getFileUri());
+      }
+    }
 
     }
 
