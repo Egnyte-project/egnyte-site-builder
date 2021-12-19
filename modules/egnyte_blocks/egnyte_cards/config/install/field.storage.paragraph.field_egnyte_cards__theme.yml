@@ -25,6 +25,9 @@ settings:
     -
       value: Industry-light-blue
       label: 'Industry Light Blue'
+    -
+      value: Partners
+      label: 'Partners'
   allowed_values_function: ''
 module: options
 locked: false

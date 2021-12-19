@@ -1,166 +1,18 @@
-<?php
+<div class="{{ card_theme_class }} cards" data-id="{{ card_theme_class }}">
+  <div class="{{ card_theme_grid }}">
 
-/**
- * @file
- * egnyte_cards module file.
- */
+    {%  if true in content.field_egnyte_cards__eyebrows[0] %}
+    <h6 class="h6">{{ content.field_egnyte_cards__eyebrows[0] }}</h6>
+    {% endif %}
 
-use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\media\Entity\Media;
+    <h2 class="{{ card_theme_header }}">{{ content.field_egnyte_cards__title[0] }}</h2>
 
+    {%  if true in content.field_egnyte_cards__eyebrows[0] %}
+    <p class="mt-100 tc--dark p"> {{ content.field_egnyte_cards__text[0] }}</p>
+    {% endif %}
 
-/**
- * Implements hook_help().
- *
- * @inheritdoc
- */
-function egnyte_cards_help($route_name, RouteMatchInterface $route_match) {
-  switch ($route_name) {
-    case 'help.page.egnyte_cards':
-      $text = file_get_contents(dirname(__FILE__) . "/README.md");
-      if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
-        return '<pre>' . $text . '</pre>';
-      }
-      else {
-        // Use the Markdown filter to render the README.
-        $filter_manager = \Drupal::service('plugin.manager.filter');
-        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
-        $config = ['settings' => $settings];
-        $filter = $filter_manager->createInstance('markdown', $config);
-        return $filter->process($text, 'en');
-      }
-  }
-  return NULL;
-}
-
-/**
- * Implements hook_theme(). Lets us define our paragraphs templates in this module.
- */
-function egnyte_cards_theme($existing, $type, $theme, $path) {
-  return [
-    'paragraph__egnyte_cards' => [
-      'base hook' => 'paragraph',
-    ],
-    'paragraph__egnyte_cards__item' => [
-      'base hook' => 'paragraph',
-    ],
-
-  ];
-}
-
-function egnyte_cards__theme_function() {
-  $var =  &drupal_static(__FUNCTION__);
-      if (!isset($var)) {
-        // generate contents of static variable
-        $var = 'Default';
-      }
-    return $var;
-}
-
-function egnyte_cards_preprocess_paragraph__egnyte_cards(array &$variables) {
-  $paragraph = $variables['elements']['#paragraph'];
-  $variables['card_theme']= &drupal_static('egnyte_cards__theme_function');
-  
-
-
-
-  
-  if ( $paragraph->field_egnyte_cards__theme->value ) {
-      $card_theme = $paragraph->field_egnyte_cards__theme->value;
-      $variables['card_theme'] =  $card_theme; 
-  }
-
-  if ( $variables['card_theme']== 'Default'){
-        $variables['card_theme_class']= "mt-300 solution-workflows";
-        $variables['card_theme_grid']= "grid-cont grid-cont--xl";
-        $variables['card_theme_grid_row']= "grid-row";        
-        $variables['card_theme_header']= 'h2';
-
-  }
-
-  if (  $variables['card_theme']  == 'Default-without-borders' ){
-        $variables['card_theme_class']= "mt-500 industry-things";
-        $variables['card_theme_header']= 'h2 ta--center';
-        $variables['card_theme_grid']= "grid-cont grid-cont--small";
-        $variables['card_theme_grid_row']= "grid-row";
-  }
-
-  if ( $variables['card_theme'] == 'Capabilities' ){
-      $variables['card_theme_class']= "mt-750 capabilities";
-      $variables['card_theme_grid']= "grid-cont grid-cont--xl";
-      $variables['card_theme_grid_row']= "mt-150 grid-row grid-row--smg";
-      $variables['card_theme_header']= 'h2';
-
-  }
-
-  if ( $variables['card_theme']== 'Integrations'  ){
-      $variables['card_theme_class']= "mt-500 mb-500 featured-integrations";
-      $variables['card_theme_grid']= "grid-cont grid-cont--xl";
-      $variables['card_theme_grid_row']= "grid-row grid-row--mdg";
-      $variables['card_theme_header']= 'h2';
-
-  }
-
-  if ( $variables['card_theme']== 'Industry-light-blue'  ){
-        $variables['card_theme_class']= "mt-400 industry-things";
-        $variables['card_theme_grid']= "grid-cont grid-cont--xl";
-        $variables['card_theme_grid_row']= "grid-row";
-        $variables['card_theme_header']= 'h2';
-
-  }
-
-  if ( $variables['card_theme']== 'Partners'  ){
-    $variables['card_theme_class']= "mt-750 popular-use-cases";
-    $variables['card_theme_grid']= "grid-cont grid-cont--xl";
-    $variables['card_theme_grid_row']= "mt-100 grid-row grid-row--lgg";
-    $variables['card_theme_header']= 'h4';
-
-}
-
-}
-
-function egnyte_cards_preprocess_paragraph__egnyte_cards__item(array &$variables) {
-  $paragraph = $variables['elements']['#paragraph'];
-
-  $variables['card_theme'] =  &drupal_static('egnyte_cards__theme_function'); 
-
-
-  if ($paragraph->hasField('field_egnyte_cards__item_image')) {
-    $bkrd_image = $paragraph->get('field_egnyte_cards__item_image')->getValue();
-    if ($bkrd_image && !empty($bkrd_image)) {
-      $entity = Media::load($bkrd_image[0]['target_id']);
-      if (isset($entity->field_media_image->entity)) {
-        $variables['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
-      }
-    }
-  }
-
-
-  //Video Thumbnail
-  if ($paragraph->hasField('field_egnyte_cards__item_vthumb')) {
-    $bkrd_image = $paragraph->get('field_egnyte_cards__item_vthumb')->getValue();
-    if ($bkrd_image && !empty($bkrd_image)) {
-      $entity = Media::load($bkrd_image[0]['target_id']);
-    
-      if (isset($entity->field_media_image->entity)) {
-        $variables['video_thumbnail'] = file_create_url($entity->field_media_image->entity->getFileUri());
-      }
-    
-    }
-  }
-
-  //Hero video
-  if ($paragraph->hasField('field_egnyte_cards__item_video')) {
-    $bkrd_image = $paragraph->get('field_egnyte_cards__item_video')->getValue();
-    if ($bkrd_image && !empty($bkrd_image)) {
-      $entity = Media::load($bkrd_image[0]['target_id']);
-    
-      if (isset($entity->field_media_oembed_video->value)) {
-        $variables['bundle'] = $entity->bundle();
-        $variables['video_url'] = $entity->field_media_oembed_video->value;
-      }
-    
-    }
-  }
-
-}
+    <div class="{{ card_theme_grid_row }}">
+        {{ content.field_egnyte_cards__item }}
+    </div>
+  </div>
+</div>
