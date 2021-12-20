@@ -5,8 +5,6 @@ dependencies:
     - field.storage.paragraph.field_egnyte_hero__themes
     - paragraphs.paragraphs_type.egnyte_hero
     - taxonomy.vocabulary.egnyte_sb_hero__theme
-  content:
-    - 'taxonomy_term:egnyte_sb_hero__theme:30986399-d43e-4caa-8d90-76cdeb7c39fa'
 id: paragraph.egnyte_hero.field_egnyte_hero__themes
 field_name: field_egnyte_hero__themes
 entity_type: paragraph

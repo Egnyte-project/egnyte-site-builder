@@ -13,6 +13,7 @@ dependencies:
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__theme
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__themes
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__title
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__tlogos_title
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__trusted_logos
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__vid_thumbnail
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__video
@@ -113,6 +114,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_egnyte_hero__tlogos_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 13
     region: content
   field_egnyte_hero__trusted_logos:
     type: entity_reference_label
