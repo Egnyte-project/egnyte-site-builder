@@ -88,10 +88,10 @@ function egnyte_tabs_preprocess_paragraph__egnyte_tabs__profiles(&$variables) {
   $node = $paragraph->field_egnyte_tabs__profiles->getValue();
 
   $variables['tab_card'] = _tab_profiles($node);
-  $variables['job_title'] = $variables['tab_card'][0]['job_title'][0]['value'];
-  $variables[ 'company'] = $variables['tab_card'][0]['company'][0]['value'];
-  $variables['first_name'] = $variables['tab_card'][0]['first_name'][0]['value'];
-  $variables['last_name'] = $variables['tab_card'][0]['last_name'][0]['value'];
+  $variables['job_title'] = !empty( $variables['tab_card'][0]['job_title'][0]['value'] ) ? $variables['tab_card'][0]['job_title'][0]['value'] : "" ;
+  $variables[ 'company'] =  !empty( $variables['tab_card'][0]['company'][0]['value'] ) ? $variables['tab_card'][0]['company'][0]['value'] : "" ;
+  $variables['first_name'] = !empty( $variables['tab_card'][0]['first_name'][0]['value'] ) ? $variables['tab_card'][0]['first_name'][0]['value'] : "" ;
+  $variables['last_name'] = !empty(  $variables['tab_card'][0]['last_name'][0]['value'] ) ? $variables['tab_card'][0]['last_name'][0]['value'] : "";
   $variables['quote'] = $variables['tab_card'][0]['quote'][0]['value'];
   $variables['company_logo'] = !empty($variables['tab_card'][0]['company_logo']) ? $variables['tab_card'][0]['company_logo'] : '';
   $variables['link'] = $variables['tab_card'][0]['link_url'];
