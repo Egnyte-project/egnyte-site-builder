@@ -8,6 +8,7 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\media\Entity\Media;
 use Drupal\taxonomy\Entity\Term;
+use \Drupal\Core\Url;
 
 
 
@@ -67,20 +68,20 @@ function egnyte_hero_preprocess_page(array &$variables) {
  *
  */
 function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
-  
+
   $paragraph = $variables['elements']['#paragraph'];
   $node = \Drupal::routeMatch()->getParameter('node');
-  
+
   // UUID to pass for cache.
   $uuid = $variables['elements']['#paragraph']->uuid->value;
 
   if (!empty($node)) {
       $variables['page_title'] = $node->getTitle();
-  }  
+  }
 
- 
 
-  
+
+
 
 
   // Hero Theme
@@ -90,7 +91,7 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
         $variables['theme'] = $name;
     }
 
-    // Trusted Logos 
+    // Trusted Logos
     if ( $paragraph->get('field_egnyte_hero__trusted_logos')->target_id) {
       $tid = $paragraph->get('field_egnyte_hero__trusted_logos')->target_id;
       $trusted_logos = Term::load($tid)->get('name')->value;
@@ -110,18 +111,17 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
         }
     }
 
-
     //Hero video
       if ($paragraph->hasField('field_egnyte_hero__video')) {
         $bkrd_image = $paragraph->get('field_egnyte_hero__video')->getValue();
         if ($bkrd_image && !empty($bkrd_image)) {
           $entity = Media::load($bkrd_image[0]['target_id']);
-        
+
           if (isset($entity->field_media_oembed_video->value)) {
             $variables['bundle'] = $entity->bundle();
             $variables['video_url'] = $entity->field_media_oembed_video->value;
           }
-        
+
         }
     }
 
@@ -130,19 +130,23 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
       $bkrd_image = $paragraph->get('field_egnyte_hero__vid_thumbnail')->getValue();
       if ($bkrd_image && !empty($bkrd_image)) {
         $entity = Media::load($bkrd_image[0]['target_id']);
-      
+
         if (isset($entity->field_media_image->entity)) {
           $variables['video_thumbnail'] = file_create_url($entity->field_media_image->entity->getFileUri());
         }
-      
+
       }
     }
 
+  //Hero CTA Link - External URL Information
+    $uri = $paragraph->field_egnyte_hero__cta_link->getValue()[0]['uri'];
+    $is_external_url = \Drupal\Core\Url::fromUri($uri)->isExternal();
+    $variables['target_blank'] = $is_external_url ? ' target="_blank" ' : '';
 
- 
-  $variables['job_totals'] = _careers_total($uuid);
+    //Job totals for Careers Page hero
+    $variables['job_totals'] = _careers_total($uuid);
 
-  
-  
+
+
 
 }
