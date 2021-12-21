@@ -79,11 +79,13 @@
         {% endif %}
 
             {%  if video_thumbnail is defined and video_thumbnail is not null   %}
-            <img src="{{ video_thumbnail }}"  alt="" {{ video_url is defined and video_url is not null  ? '' : 'style="position: relative;"' }}/>
+            <img src="{{ video_thumbnail }}"  alt="" {{ video_url is defined and video_url is not null  ? '' : 'style="position: relative;width:100%"' }}/>
             {% endif %}
 
         {%  if video_url is defined and video_url is not null   %}
-            <span>Watch Video</span>
+            {%  if true in content.field_egnyte_hero__vtitle[0]  %}
+            <span> {{ content.field_egnyte_hero__vtitle[0] }} </span>
+            {% endif %}
           </a>
         </div>
         {% endif %}
