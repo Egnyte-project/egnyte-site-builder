@@ -23,7 +23,6 @@ dependencies:
   - egnyte_hero
   - egnyte_intro_text
   - egnyte_platform
-  - egnyte_tabs
   - egnyte_three_col_cta
   - egnyte_trusted_by
   - egnyte_two_column
