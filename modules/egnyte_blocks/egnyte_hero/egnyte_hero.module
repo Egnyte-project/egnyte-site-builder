@@ -138,19 +138,26 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
       }
     }
 
-  //Hero CTA Link - External URL Information
+    //Hero CTA uri
     $uri = !empty($paragraph->field_egnyte_hero__cta_link->getValue()[0]['uri']) ? $paragraph->field_egnyte_hero__cta_link->getValue()[0]['uri'] : '';
+    
+    //Hero  Link uri
+    $hero_uri = !empty($paragraph->field_egnyte_hero__link->getValue()[0]['uri']) ? $paragraph->field_egnyte_hero__link->getValue()[0]['uri'] : '';
 
-    if (!empty($uri)){
-      $is_external_url = \Drupal\Core\Url::fromUri($uri)->isExternal();
-      $variables['target_blank'] = $is_external_url ? ' target="_blank" ' : "" ;
-    }
 
+    $variables['target_blank_hero_cta'] = !empty($uri) ?_is_external($uri): '';
+    $variables['target_blank_hero'] = !empty($hero_uri) ? _is_external($hero_uri) : '';
 
     //Job totals for Careers Page hero
     $variables['job_totals'] = _careers_total($uuid);
 
+}
 
-
-
+// Link External URL Information
+function _is_external($uri){
+  if (!empty($uri)) {
+    $is_external_url = \Drupal\Core\Url::fromUri($uri)->isExternal();
+    $target_blank = $is_external_url ? ' target="_blank" ' : "";
+  }
+  return $target_blank;
 }

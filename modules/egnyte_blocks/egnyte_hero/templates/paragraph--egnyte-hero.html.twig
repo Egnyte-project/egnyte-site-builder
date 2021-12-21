@@ -44,7 +44,7 @@
           <h1 class=" h1 h1--small tc--white">{{ content.field_egnyte_hero__title[0] }}</h1>
           <p class="mt-125 p p--xlarge margin-bottom-0">{{ content.field_egnyte_hero__subtitle[0] }}</p>
           {%  if true in content.field_egnyte_hero__link[0] %}
-            <a class="mt-200 button button--iblock ms-hero__button margin-left-0" href="{{ content.field_egnyte_hero__link[0]['#url'] }}">{{ content.field_egnyte_hero__link[0]['#title'] }}</a>
+            <a class="mt-200 button button--iblock ms-hero__button margin-left-0" href="{{ content.field_egnyte_hero__link[0]['#url'] }}" {{ target_blank_hero }}>{{ content.field_egnyte_hero__link[0]['#title'] }}</a>
           {% endif %}
         </div>
         {%  if trusted_logos is defined and trusted_logos is not null   %}
@@ -79,7 +79,7 @@
         {% endif %}
 
             {%  if video_thumbnail is defined and video_thumbnail is not null   %}
-            <img src="{{ video_thumbnail }}"  alt="" />
+            <img src="{{ video_thumbnail }}"  alt="" {{ video_url is defined and video_url is not null  ? '' : 'style="position: relative;"' }}/>
             {% endif %}
 
         {%  if video_url is defined and video_url is not null   %}
@@ -104,7 +104,7 @@
       <div class="mt-100 grid-col grid-col--auto grid-col--md-12"></div>
       <div class="grid-col grid-col--auto grid-col--md-12">
        {%  if true in content.field_egnyte_hero__cta_link[0] %}
-          <a href="{{ content.field_egnyte_hero__cta_link[0]['#url'] }}" class="more-link more-link--enlarged" {{ target_blank }} >{{ content.field_egnyte_hero__cta_link[0]['#title'] }}<svg viewBox="0 0 16 16"><polygon points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+          <a href="{{ content.field_egnyte_hero__cta_link[0]['#url'] }}" class="more-link more-link--enlarged" {{ target_blank_hero_cta }} >{{ content.field_egnyte_hero__cta_link[0]['#title'] }}<svg viewBox="0 0 16 16"><polygon points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
         {% endif %}
       </div>
     </div>
