@@ -54,26 +54,22 @@ function egnyte_cards__theme_function() {
         // generate contents of static variable
         $var = 'Default';
       }
-    return $var;
+  return $var;
 }
 
 function egnyte_cards_preprocess_paragraph__egnyte_cards(array &$variables) {
   $paragraph = $variables['elements']['#paragraph'];
   $variables['card_theme']= &drupal_static('egnyte_cards__theme_function');
-  
 
-
-
-  
-  if ( $paragraph->field_egnyte_cards__theme->value ) {
+  if ( $paragraph->field_egnyte_cards__theme ) {
       $card_theme = $paragraph->field_egnyte_cards__theme->value;
-      $variables['card_theme'] =  $card_theme; 
+      $variables['card_theme'] =  $card_theme;
   }
 
   if ( $variables['card_theme']== 'Default'){
         $variables['card_theme_class']= "mt-300 solution-workflows";
         $variables['card_theme_grid']= "grid-cont grid-cont--xl";
-        $variables['card_theme_grid_row']= "grid-row";        
+        $variables['card_theme_grid_row']= "grid-row";
         $variables['card_theme_header']= 'h2';
 
   }
@@ -114,15 +110,14 @@ function egnyte_cards_preprocess_paragraph__egnyte_cards(array &$variables) {
       $variables['card_theme_grid']= "grid-cont grid-cont--xl";
       $variables['card_theme_grid_row']= "mt-100 grid-row grid-row--lgg";
       $variables['card_theme_header']= 'h2 ta--center';
-
-}
+  }
 
 }
 
 function egnyte_cards_preprocess_paragraph__egnyte_cards__item(array &$variables) {
   $paragraph = $variables['elements']['#paragraph'];
 
-  $variables['card_theme'] =  &drupal_static('egnyte_cards__theme_function'); 
+  $variables['card_theme'] =  &drupal_static('egnyte_cards__theme_function');
 
 
   if ($paragraph->hasField('field_egnyte_cards__item_image')) {
@@ -141,11 +136,11 @@ function egnyte_cards_preprocess_paragraph__egnyte_cards__item(array &$variables
     $bkrd_image = $paragraph->get('field_egnyte_cards__item_vthumb')->getValue();
     if ($bkrd_image && !empty($bkrd_image)) {
       $entity = Media::load($bkrd_image[0]['target_id']);
-    
+
       if (isset($entity->field_media_image->entity)) {
         $variables['video_thumbnail'] = file_create_url($entity->field_media_image->entity->getFileUri());
       }
-    
+
     }
   }
 
@@ -154,13 +149,25 @@ function egnyte_cards_preprocess_paragraph__egnyte_cards__item(array &$variables
     $bkrd_image = $paragraph->get('field_egnyte_cards__item_video')->getValue();
     if ($bkrd_image && !empty($bkrd_image)) {
       $entity = Media::load($bkrd_image[0]['target_id']);
-    
+
       if (isset($entity->field_media_oembed_video->value)) {
         $variables['bundle'] = $entity->bundle();
         $variables['video_url'] = $entity->field_media_oembed_video->value;
       }
-    
+
     }
   }
 
+   //Card Item Link - External URL Information
+    $uri = !empty($paragraph->field_egnyte_cards__item_link->getValue()[0]['uri']) ? $paragraph->field_egnyte_cards__item_link->getValue()[0]['uri'] : '';
+
+    if (!empty($uri)){
+      $is_external_url = \Drupal\Core\Url::fromUri($uri)->isExternal();
+      $variables['target_blank'] = $is_external_url ? ' target="_blank" ' : "" ;
+    }
 }
+
+
+
+
+

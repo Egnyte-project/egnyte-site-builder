@@ -68,7 +68,7 @@
         </a>
       </div>
     {% else %}
-      <a href="{{ content.field_egnyte_cards__item_link[0]['#url'] }}" class="popular-use-cases__item popular-use-cases__item__no_vid">
+      <a href="{{ content.field_egnyte_cards__item_link[0]['#url'] }}" class="popular-use-cases__item popular-use-cases__item__no_vid" {{ target_blank }} >
         <div class="popular-use-cases__video">
           <img src="{{ image }}"  width="400" height="240" alt="" class="responsive-image">
         </div>

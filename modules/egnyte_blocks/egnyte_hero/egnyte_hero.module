@@ -139,9 +139,13 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
     }
 
   //Hero CTA Link - External URL Information
-    $uri = $paragraph->field_egnyte_hero__cta_link->getValue()[0]['uri'];
-    $is_external_url = \Drupal\Core\Url::fromUri($uri)->isExternal();
-    $variables['target_blank'] = $is_external_url ? ' target="_blank" ' : '';
+    $uri = !empty($paragraph->field_egnyte_hero__cta_link->getValue()[0]['uri']) ? $paragraph->field_egnyte_hero__cta_link->getValue()[0]['uri'] : '';
+
+    if (!empty($uri)){
+      $is_external_url = \Drupal\Core\Url::fromUri($uri)->isExternal();
+      $variables['target_blank'] = $is_external_url ? ' target="_blank" ' : "" ;
+    }
+
 
     //Job totals for Careers Page hero
     $variables['job_totals'] = _careers_total($uuid);
