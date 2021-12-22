@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.egnyte_tabs__profiles.field_egnyte_tabs__profiles
+    - field.field.paragraph.egnyte_tabs__profiles.field_egnyte_tabs__profiles_img
     - paragraphs.paragraphs_type.egnyte_tabs__profiles
 id: paragraph.egnyte_tabs__profiles.default
 targetEntityType: paragraph
@@ -18,6 +19,13 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_egnyte_tabs__profiles_img:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
 hidden:
   created: true

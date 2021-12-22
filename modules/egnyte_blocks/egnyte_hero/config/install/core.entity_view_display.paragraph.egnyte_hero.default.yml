@@ -17,6 +17,7 @@ dependencies:
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__trusted_logos
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__vid_thumbnail
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__video
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__vtitle
     - paragraphs.paragraphs_type.egnyte_hero
   module:
     - link
@@ -148,6 +149,14 @@ content:
       link: false
     third_party_settings: {  }
     weight: 7
+    region: content
+  field_egnyte_hero__vtitle:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 14
     region: content
 hidden:
   field_egnyte_hero__margin: true

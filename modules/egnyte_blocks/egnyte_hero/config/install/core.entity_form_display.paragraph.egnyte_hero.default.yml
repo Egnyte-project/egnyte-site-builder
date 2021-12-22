@@ -17,6 +17,7 @@ dependencies:
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__trusted_logos
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__vid_thumbnail
     - field.field.paragraph.egnyte_hero.field_egnyte_hero__video
+    - field.field.paragraph.egnyte_hero.field_egnyte_hero__vtitle
     - paragraphs.paragraphs_type.egnyte_hero
   module:
     - field_group
@@ -105,6 +106,7 @@ third_party_settings:
       children:
         - field_egnyte_hero__vid_thumbnail
         - field_egnyte_hero__video
+        - field_egnyte_hero__vtitle
       label: Video
       region: content
       parent_name: group_egnyte_hero__image
@@ -257,6 +259,14 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_egnyte_hero__vtitle:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
