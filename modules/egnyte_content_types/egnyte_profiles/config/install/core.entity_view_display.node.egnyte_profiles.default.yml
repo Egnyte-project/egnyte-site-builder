@@ -18,6 +18,8 @@ dependencies:
     - field.field.node.egnyte_profiles.field_egnyte_profile__theader
     - field.field.node.egnyte_profiles.field_egnyte_profile__tlink
     - field.field.node.egnyte_profiles.field_egnyte_profile__twitter
+    - field.field.node.egnyte_profiles.field_egnyte_profile__vid_title
+    - field.field.node.egnyte_profiles.field_egnyte_profile__vtestimg
     - field.field.node.egnyte_profiles.field_egnyte_profile__vtestimony
     - node.type.egnyte_profiles
   module:
@@ -30,118 +32,118 @@ bundle: egnyte_profiles
 mode: default
 content:
   field_egnyte_profile___company:
-    weight: 110
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 110
     region: content
   field_egnyte_profile__comapnyimg:
     type: entity_reference_entity_view
-    weight: 119
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 120
     region: content
   field_egnyte_profile__email:
-    weight: 117
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 117
     region: content
   field_egnyte_profile__facebook:
-    weight: 113
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 113
     region: content
   field_egnyte_profile__fname:
-    weight: 104
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 104
     region: content
   field_egnyte_profile__headshot:
     type: entity_reference_entity_view
-    weight: 112
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 112
     region: content
   field_egnyte_profile__job_title:
-    weight: 109
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 109
     region: content
   field_egnyte_profile__linkedin:
-    weight: 118
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 118
     region: content
   field_egnyte_profile__lname:
-    weight: 105
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 105
     region: content
   field_egnyte_profile__phone:
-    weight: 115
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 115
     region: content
   field_egnyte_profile__prefix:
-    weight: 102
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 102
     region: content
   field_egnyte_profile__suffix:
-    weight: 103
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 103
     region: content
   field_egnyte_profile__testimony:
-    weight: 107
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 107
     region: content
   field_egnyte_profile__theader:
-    weight: 106
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 106
     region: content
   field_egnyte_profile__tlink:
-    weight: 108
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -150,29 +152,46 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 108
     region: content
   field_egnyte_profile__twitter:
-    weight: 114
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 114
     region: content
-  field_egnyte_profile__vtestimony:
+  field_egnyte_profile__vid_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 121
+    region: content
+  field_egnyte_profile__vtestimg:
     type: entity_reference_entity_view
-    weight: 120
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 122
+    region: content
+  field_egnyte_profile__vtestimony:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 119
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   search_api_excerpt: true

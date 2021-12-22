@@ -2,15 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
+    - media
     - node
-id: node.field_egnyte_profile__linkedin
-field_name: field_egnyte_profile__linkedin
+id: node.field_egnyte_profile__vtestimg
+field_name: field_egnyte_profile__vtestimg
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  target_type: media
 module: core
 locked: false
 cardinality: 1

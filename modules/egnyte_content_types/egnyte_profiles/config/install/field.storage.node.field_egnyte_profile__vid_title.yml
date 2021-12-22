@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_egnyte_profile__linkedin
-field_name: field_egnyte_profile__linkedin
+id: node.field_egnyte_profile__vid_title
+field_name: field_egnyte_profile__vid_title
 entity_type: node
 type: string
 settings:

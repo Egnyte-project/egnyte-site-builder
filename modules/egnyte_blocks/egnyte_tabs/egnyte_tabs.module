@@ -158,7 +158,7 @@ function _tab_profiles($nodes){
           }
        }
 
-      //load company logo
+      //load Profile Video Testimony Thumbnail
       if ($nodes->hasField('field_egnyte_profile__vtestimg')) {
         $bkrd_image = $nodes->get('field_egnyte_profile__vtestimg')->getValue();
         if ($bkrd_image && !empty($bkrd_image)) {

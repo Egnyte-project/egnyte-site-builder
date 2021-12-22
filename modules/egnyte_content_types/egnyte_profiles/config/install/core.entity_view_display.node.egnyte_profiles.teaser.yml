@@ -19,6 +19,8 @@ dependencies:
     - field.field.node.egnyte_profiles.field_egnyte_profile__theader
     - field.field.node.egnyte_profiles.field_egnyte_profile__tlink
     - field.field.node.egnyte_profiles.field_egnyte_profile__twitter
+    - field.field.node.egnyte_profiles.field_egnyte_profile__vid_title
+    - field.field.node.egnyte_profiles.field_egnyte_profile__vtestimg
     - field.field.node.egnyte_profiles.field_egnyte_profile__vtestimony
     - node.type.egnyte_profiles
   module:
@@ -29,9 +31,9 @@ bundle: egnyte_profiles
 mode: teaser
 content:
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   field_egnyte_profile___company: true
@@ -50,5 +52,7 @@ hidden:
   field_egnyte_profile__theader: true
   field_egnyte_profile__tlink: true
   field_egnyte_profile__twitter: true
+  field_egnyte_profile__vid_title: true
+  field_egnyte_profile__vtestimg: true
   field_egnyte_profile__vtestimony: true
   search_api_excerpt: true
