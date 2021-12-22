@@ -38,7 +38,7 @@
       </div>
       {%  if link is not empty   %}
       <div class="mt-125 grid-col grid-col--auto grid-col--md-12">
-        <a href="{{ link }}" class="more-link more-link--enlarged">{{ link_title }}<svg viewBox="0 0 16 16"><polygon points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+        <a href="{{ link }}" class="more-link more-link--enlarged" {{ is_external }} {{ video_url is not empty ? 'style="position:relative;"' : "" }}>{{ link_title }}<svg viewBox="0 0 16 16"><polygon points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
       </div>
       {% endif %}
     </div>

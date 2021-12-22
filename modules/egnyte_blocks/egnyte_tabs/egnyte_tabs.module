@@ -104,6 +104,7 @@ function egnyte_tabs_preprocess_paragraph__egnyte_tabs__profiles(&$variables) {
   $variables['link_title'] = !empty( $variables['tab_card'][0]['link_title'] ) ?  $variables['tab_card'][0]['link_title'] : "";
   $variables['video_url'] = !empty( $variables['tab_card'][0]['video_url'] ) ?  $variables['tab_card'][0]['video_url'] : "";
   $variables['video_thumbnail'] = !empty($variables['tab_card'][0]['video_thumbnail']) ?  $variables['tab_card'][0]['video_thumbnail'] : "";
+  $variables['is_external'] = !empty($variables['tab_card'][0]['is_external']) ?  $variables['tab_card'][0]['is_external'] : "";
 
 }
 
@@ -136,6 +137,8 @@ function _tab_profiles($nodes){
           $arr[0]['link_url'] = isset($nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri']) ? $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri'] : '';
         }
       }
+      $uri = !empty($nodes->field_egnyte_profile__tlink->getValue()[0]['uri']) ? $nodes->field_egnyte_profile__tlink->getValue()[0]['uri'] : '';
+      $arr[0]['is_external'] = !empty($uri) ? _is_external__tabs($uri): "" ;
 
       //load company logo
       if ($nodes->hasField('field_egnyte_profile__comapnyimg')) {
@@ -204,3 +207,14 @@ function _tab_item($paragraphs){
 
   return $arr;
 }
+
+
+// Link External URL Information
+function _is_external__tabs($uri){
+  if (!empty($uri)) {
+    $is_external_url = \Drupal\Core\Url::fromUri($uri)->isExternal();
+    $target_blank = $is_external_url ? ' target="_blank" ' : "";
+  }
+  return $target_blank;
+}
+
