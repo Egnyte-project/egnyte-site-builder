@@ -85,17 +85,25 @@ function egnyte_tabs_preprocess_paragraph__egnyte_tabs(&$variables) {
 function egnyte_tabs_preprocess_paragraph__egnyte_tabs__profiles(&$variables) {
 
   $paragraph = $variables['elements']['#paragraph'];
-  $node = $paragraph->field_egnyte_tabs__profiles->getValue();
 
-  $variables['tab_card'] = _tab_profiles($node);
+  if ( !empty($paragraph->get('field_egnyte_tabs__profiles_img')->value)) {
+      $variables['show_video'] = $paragraph->get('field_egnyte_tabs__profiles_img')->value;
+  }
+
+  $node = !empty( $paragraph->field_egnyte_tabs__profiles->getValue() ) ? $paragraph->field_egnyte_tabs__profiles->getValue() : "" ;
+
+  $variables['tab_card'] = !empty($node) ?_tab_profiles($node) : '';
   $variables['job_title'] = !empty( $variables['tab_card'][0]['job_title'][0]['value'] ) ? $variables['tab_card'][0]['job_title'][0]['value'] : "" ;
   $variables[ 'company'] =  !empty( $variables['tab_card'][0]['company'][0]['value'] ) ? $variables['tab_card'][0]['company'][0]['value'] : "" ;
   $variables['first_name'] = !empty( $variables['tab_card'][0]['first_name'][0]['value'] ) ? $variables['tab_card'][0]['first_name'][0]['value'] : "" ;
   $variables['last_name'] = !empty(  $variables['tab_card'][0]['last_name'][0]['value'] ) ? $variables['tab_card'][0]['last_name'][0]['value'] : "";
-  $variables['quote'] = $variables['tab_card'][0]['quote'][0]['value'];
+  $variables['quote'] = !empty( $variables['tab_card'][0]['quote'][0]['value'] ) ?  $variables['tab_card'][0]['quote'][0]['value'] : "";
+  $variables['play_button_title'] = !empty($variables['tab_card'][0]['play_button_title'][0]['value']) ?  $variables['tab_card'][0]['play_button_title'][0]['value'] : "";
   $variables['company_logo'] = !empty($variables['tab_card'][0]['company_logo']) ? $variables['tab_card'][0]['company_logo'] : '';
-  $variables['link'] = $variables['tab_card'][0]['link_url'];
-  $variables['link_title'] = $variables['tab_card'][0]['link_title'];
+  $variables['link'] = !empty( $variables['tab_card'][0]['link_url'] ) ?  $variables['tab_card'][0]['link_url'] : "";
+  $variables['link_title'] = !empty( $variables['tab_card'][0]['link_title'] ) ?  $variables['tab_card'][0]['link_title'] : "";
+  $variables['video_url'] = !empty( $variables['tab_card'][0]['video_url'] ) ?  $variables['tab_card'][0]['video_url'] : "";
+  $variables['video_thumbnail'] = !empty($variables['tab_card'][0]['video_thumbnail']) ?  $variables['tab_card'][0]['video_thumbnail'] : "";
 
 }
 
@@ -112,37 +120,58 @@ function _tab_profiles($nodes){
       $arr[0]['job_title'] = $nodes->get('field_egnyte_profile__job_title')->getValue();
       $arr[0]['first_name'] = $nodes->get('field_egnyte_profile__fname')->getValue();
       $arr[0]['last_name'] = $nodes->get('field_egnyte_profile__lname')->getValue();
+      $arr[0]['play_button_title'] = $nodes->get('field_egnyte_profile__vid_title')->getValue();
       $arr[0]['quote'] = $nodes->get('field_egnyte_profile__testimony')->getValue();
       $arr[0]['company'] = $nodes->get('field_egnyte_profile___company')->getValue();
       $arr[0]['company_logo'] = $nodes->get('field_egnyte_profile__comapnyimg')->getValue();
 
+
       $arr[0]['link_title'] = isset( $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['title'] ) ? $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['title'] : '';
 
-
-      if(stripos($nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri'], '/entity/node', 0) != false ){
-        $nid = isset($nodes->field_egnyte_profile__tlink->getValue()[0]['uri']) ? str_replace('entity:node/', '', $nodes->field_egnyte_profile__tlink->getValue()[0]['uri']) : '';
-        $arr[0]['link_url'] = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $nid);
+      if ( !empty($nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri']) ){
+        if (stripos($nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri'], '/entity/node', 0) != false) {
+          $nid = isset($nodes->field_egnyte_profile__tlink->getValue()[0]['uri']) ? str_replace('entity:node/', '', $nodes->field_egnyte_profile__tlink->getValue()[0]['uri']) : '';
+          $arr[0]['link_url'] = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $nid);
+        } else {
+          $arr[0]['link_url'] = isset($nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri']) ? $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri'] : '';
+        }
       }
-      else{
-        $arr[0]['link_url'] = isset($nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri']) ? $nodes->get('field_egnyte_profile__tlink')->getValue()[0]['uri'] : '';
-      }
 
+      //load company logo
       if ($nodes->hasField('field_egnyte_profile__comapnyimg')) {
+          $bkrd_image = $nodes->get('field_egnyte_profile__comapnyimg')->getValue();
+          if ($bkrd_image && !empty($bkrd_image)) {
+            $entity = Media::load($bkrd_image[0]['target_id']);
+            // $arr[0]['company_logo_alt'] = $bkrd_image[0]['alt'];
+            $arr[0]['company_logo'] = file_create_url($entity->field_media_image->entity->getFileUri());
+          }
+      }
+      // load Profile Video Testimony
+      if ($nodes->hasField('field_egnyte_profile__vtestimony')) {
+          $video = !empty($nodes->get('field_egnyte_profile__vtestimony')->getValue()) ? $nodes->get('field_egnyte_profile__vtestimony')->getValue() : "";
+          if ($video && !empty($video)) {
+            $entity = Media::load($video[0]['target_id']);
+            if (isset($entity->field_media_oembed_video->value)) {
+              $arr[0]['bundle'] = $entity->bundle();
+              $arr[0]['video_url'] = $entity->field_media_oembed_video->value;
+            }
+          }
+       }
 
-        $bkrd_image = $nodes->get('field_egnyte_profile__comapnyimg')->getValue();
-
+      //load company logo
+      if ($nodes->hasField('field_egnyte_profile__vtestimg')) {
+        $bkrd_image = $nodes->get('field_egnyte_profile__vtestimg')->getValue();
         if ($bkrd_image && !empty($bkrd_image)) {
           $entity = Media::load($bkrd_image[0]['target_id']);
-         // $arr[0]['company_logo_alt'] = $bkrd_image[0]['alt'];
-          $arr[0]['company_logo'] = file_create_url($entity->field_media_image->entity->getFileUri());
+          // $arr[0]['company_logo_alt'] = $bkrd_image[0]['alt'];
+          $arr[0]['video_thumbnail'] = file_create_url($entity->field_media_image->entity->getFileUri());
+        }
       }
-    }
 
     }
 
 
     return $arr;
-
   }
 
 

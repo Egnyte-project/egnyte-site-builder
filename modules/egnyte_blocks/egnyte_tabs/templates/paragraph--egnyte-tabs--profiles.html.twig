@@ -1,28 +1,47 @@
 <div class="ms-features__review">
+  {%  if show_video == 0  %}
     {%  if company_logo is not empty   %}
     <div class="ms-features__review-logo">
         <img src="{{ company_logo }}" alt="" />
     </div>
     {% endif %}
+  {% endif %}
 
-    <div class="ms-features__review-cont">
-        {%  if quote is defined and quote is not null   %}
-        <p class="p">{{ quote }}</p>
-        {% endif %}
-
-        <div class="grid-row grid-row--aic">
-            <div class="mt-125 grid-col grid-col--md-12">
-                <div class="p fw--600 tc--dark">{{ first_name }} {{ last_name }}</div>
-                <div class="mt-25 p p--small fw--500 tc--light">
-                {{ job_title }} {{ ( job_title is not empty ) and ( company is not empty ) ? ',' : ""  }} {{ company }}
-                </div>
-            </div>
-            {%  if link is not empty   %}
-            <div class="mt-125 grid-col grid-col--auto grid-col--md-12">
-                <a href="{{ link }}" class="more-link more-link--enlarged">{{ link_title }}<svg viewBox="0 0 16 16"><polygon points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
-            </div>
+  {%  if show_video == 1  %}
+   {%  if video_url is not empty  %}
+    <div class="ms-features__review-video">
+      <div class="vimeo-video">
+        <a href="{{ video_url }}" data-fancybox="" class="ms-hero__video ">
+          <img src="{{ video_thumbnail }}"  width="100%" alt="" class="responsive-image" />
+          <div class="ms-features__review-video-over">
+            {%  if play_button_title is not empty   %}
+            <span class="p">{{ play_button_title }}</span>
             {% endif %}
-
-        </div>
+          </div>
+        </a>
+      </div>
     </div>
+    {% endif %}
+  {% endif %}
+
+  <div class="ms-features__review-cont">
+    {%  if quote is defined and quote is not null   %}
+      <p class="p">{{ quote }}</p>
+    {% endif %}
+
+    <div class="grid-row grid-row--aic">
+      <div class="mt-125 grid-col grid-col--md-12">
+        <div class="p fw--600 tc--dark">{{ first_name }} {{ last_name }}</div>
+        <div class="mt-25 p p--small fw--500 tc--light">
+            {{ job_title }} {{ ( job_title is not empty ) and ( company is not empty ) ? ',' : ""  }} {{ company }}
+        </div>
+      </div>
+      {%  if link is not empty   %}
+      <div class="mt-125 grid-col grid-col--auto grid-col--md-12">
+        <a href="{{ link }}" class="more-link more-link--enlarged">{{ link_title }}<svg viewBox="0 0 16 16"><polygon points="6,13.4 4.6,12 8.6,8 4.6,4 6,2.6 11.4,8"></polygon></svg></a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
 </div>
