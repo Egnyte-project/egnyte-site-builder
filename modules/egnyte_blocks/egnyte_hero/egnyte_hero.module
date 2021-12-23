@@ -106,6 +106,7 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
         if ($bkrd_image && !empty($bkrd_image)) {
           $entity = Media::load($bkrd_image[0]['target_id']);
           if (isset($entity->field_media_image->entity)) {
+            $variables['image_alt'] = $entity->field_media_image->alt;
             $variables['image'] = file_create_url($entity->field_media_image->entity->getFileUri());
           }
         }
@@ -132,6 +133,7 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
         $entity = Media::load($bkrd_image[0]['target_id']);
 
         if (isset($entity->field_media_image->entity)) {
+          $variables['video_thumbnail_alt'] = $entity->field_media_image->alt;
           $variables['video_thumbnail'] = file_create_url($entity->field_media_image->entity->getFileUri());
         }
 
@@ -140,7 +142,7 @@ function egnyte_hero_preprocess_paragraph__egnyte_hero(&$variables) {
 
     //Hero CTA uri
     $uri = !empty($paragraph->field_egnyte_hero__cta_link->getValue()[0]['uri']) ? $paragraph->field_egnyte_hero__cta_link->getValue()[0]['uri'] : '';
-    
+
     //Hero  Link uri
     $hero_uri = !empty($paragraph->field_egnyte_hero__link->getValue()[0]['uri']) ? $paragraph->field_egnyte_hero__link->getValue()[0]['uri'] : '';
 
