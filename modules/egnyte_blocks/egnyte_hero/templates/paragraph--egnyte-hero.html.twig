@@ -21,7 +21,7 @@
         <div class="grid-col grid-col--6 grid-col--md-12">
           <div class="solution-hero__figure">
             <div class="solution-hero__picture solution-hero__picture--1">
-              <img src="{{ image }}"  width="AUTO" height="583" alt="" class="solution-hero__image">
+              <img src="{{ image }}"  width="AUTO" height="583" alt="{{ image_alt }}" class="solution-hero__image">
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
         {% endif %}
 
             {%  if video_thumbnail is defined and video_thumbnail is not null   %}
-            <img src="{{ video_thumbnail }}"  alt="" {{ video_url is defined and video_url is not null  ? '' : 'style="position: relative;width:100%"' }}/>
+            <img src="{{ video_thumbnail }}"  alt="{{ video_thumbnail_alt }}" {{ video_url is defined and video_url is not null  ? '' : 'style="position: relative;width:100%"' }}/>
             {% endif %}
 
         {%  if video_url is defined and video_url is not null   %}
@@ -127,7 +127,7 @@
         </div>
         <div class="grid-col grid-col--7 grid-col--md-12">
           <div class="platform-feature-hero__figure">
-                <img src=" {{ image }} "  width="" height="374" class="platform-feature-hero__image platform-feature-hero__image--5" alt="">
+                <img src=" {{ image }} "  width="" height="374" class="platform-feature-hero__image platform-feature-hero__image--5" alt="{{ image_alt }} ">
           </div>
         </div>
       </div>
